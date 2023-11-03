@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cluonem1j2p4h"]
+
+[ext_resource type="PackedScene" uid="uid://coogyl0u8ymia" path="res://Sprites/Squirrel.tscn" id="1_nn10j"]
+
+[node name="testing" type="Node2D"]
+
+[node name="Squirrel" parent="." instance=ExtResource("1_nn10j")]
+position = Vector2(304, 304)
