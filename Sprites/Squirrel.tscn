@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://coogyl0u8ymia"]
 
-[ext_resource type="Script" path="res://Scripts/Squirrel.gd" id="1_n8r8d"]
+[ext_resource type="Script" path="res://Sprites/Squirrel.gd" id="1_7axbj"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gr2hf"]
 size = Vector2(600, 600)
@@ -8,9 +8,9 @@ size = Vector2(600, 600)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wn516"]
 size = Vector2(600, 600)
 
-[node name="Squirrel" type="Area2D"]
-script = ExtResource("1_n8r8d")
-speed = 4000
+[node name="Squirrel" type="CharacterBody2D"]
+script = ExtResource("1_7axbj")
+jump_velocity = -4000.0
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
