@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmaxhrmqv28la"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_6f0qk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2t7e4"]
+font_size = 59
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_6f0qk")
+
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 321.0
+offset_top = 224.0
+offset_right = 766.0
+offset_bottom = 391.0
+tooltip_text = "This will start the game"
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 323.0
+offset_top = 426.0
+offset_right = 768.0
+offset_bottom = 593.0
+tooltip_text = "This will exit the game"
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 214.0
+offset_top = 34.0
+offset_right = 904.0
+offset_bottom = 173.0
+text = "Operation N.U.T.S."
+label_settings = SubResource("LabelSettings_2t7e4")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
