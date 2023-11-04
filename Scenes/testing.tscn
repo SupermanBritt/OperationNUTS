@@ -1,8 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://cluonem1j2p4h"]
+[gd_scene load_steps=5 format=3 uid="uid://cluonem1j2p4h"]
 
 [ext_resource type="PackedScene" uid="uid://coogyl0u8ymia" path="res://Sprites/Squirrel.tscn" id="1_nn10j"]
+[ext_resource type="Texture2D" uid="uid://8p3n7a4q62ok" path="res://Tilesheets/New Piskel.png" id="2_tp4q6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cuxid"]
+texture = ExtResource("2_tp4q6")
+texture_region_size = Vector2i(600, 600)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+
+[sub_resource type="TileSet" id="TileSet_aa4oc"]
+tile_size = Vector2i(600, 600)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_cuxid")
 
 [node name="testing" type="Node2D"]
 
 [node name="Squirrel" parent="." instance=ExtResource("1_nn10j")]
 position = Vector2(304, 304)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_aa4oc")
+format = 2
+layer_0/name = "FloorAndWalls"
+layer_0/tile_data = PackedInt32Array(131067, 1, 0, 131068, 1, 0, 131069, 1, 0, 131070, 1, 0, 131071, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 1, 0, 65545, 1, 0, 65546, 1, 0, 65547, 1, 0, 65548, 1, 0, 65531, 1, 0, -5, 1, 0, -65541, 1, 0, -131077, 1, 0, -196596, 1, 0, -131060, 1, 0, -65524, 1, 0, 12, 1, 0, -196613, 65537, 0, -196612, 65537, 0, -196611, 65537, 0, -196610, 65537, 0, -196609, 65537, 0, -262144, 65537, 0, -262143, 65537, 0, -262142, 65537, 0, -262141, 65537, 0, -262140, 65537, 0, -262139, 65537, 0, -262138, 65537, 0, -262137, 65537, 0, -262136, 65537, 0, -262135, 65537, 0, -262134, 65537, 0, -262133, 65537, 0, -262132, 65537, 0)

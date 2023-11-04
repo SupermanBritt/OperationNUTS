@@ -14,6 +14,10 @@ config/name="OperationNuts"
 run/main_scene="res://Sprites/Squirrel.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 move_right={
