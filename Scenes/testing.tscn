@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://coogyl0u8ymia" path="res://Sprites/Squirrel.tscn" id="1_nn10j"]
 [ext_resource type="Texture2D" uid="uid://8p3n7a4q62ok" path="res://Tilesheets/New Piskel.png" id="2_tp4q6"]
-[ext_resource type="PackedScene" uid="uid://btkbvpehjqw01" path="res://Sprites/Enemy.tscn" id="3_t66mr"]
+[ext_resource type="PackedScene" uid="uid://cmmfb0ku63rpk" path="res://Paths/PathLeftToRight.tscn" id="3_8cxo8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cuxid"]
 texture = ExtResource("2_tp4q6")
@@ -38,7 +38,7 @@ position = Vector2(304, 304)
 tile_set = SubResource("TileSet_aa4oc")
 format = 2
 layer_0/name = "FloorAndWalls"
-layer_0/tile_data = PackedInt32Array(131070, 1, 0, 131071, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 2, 1, 0, -65534, 1, 0, -131070, 1, 0, -131072, 1, 0, -131071, 1, 0, -65537, 1, 0, -65538, 1, 0, -2, 1, 0, 65534, 1, 0, -196606, 65537, 1, -262142, 65537, 1, -327678, 65537, 1, -393214, 65537, 1, 131074, 65537, 1, 196610, 65537, 1, -393205, 65537, 1, -327669, 65537, 1, -262133, 65537, 1, -196597, 65537, 1, -131061, 65537, 1, -65525, 65537, 1, 196619, 65537, 1, 11, 65537, 1, 65547, 65537, 1, 131083, 65537, 1, -393213, 65537, 1, -393212, 65537, 1, -393211, 65537, 1, -393210, 65537, 1, -393209, 65537, 1, -393208, 65537, 1, -393207, 65537, 1, -393206, 65537, 1, 196611, 65537, 1, 196612, 65537, 1, 196613, 65537, 1, 196614, 65537, 1, 196615, 65537, 1, 196616, 65537, 1, 196617, 65537, 1, 196618, 65537, 1)
+layer_0/tile_data = PackedInt32Array(131070, 1, 0, 131071, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 2, 1, 0, -65534, 1, 0, -131070, 1, 0, -131072, 1, 0, -131071, 1, 0, -65537, 1, 0, -65538, 1, 0, -2, 1, 0, 65534, 1, 0, -131069, 65537, 1, -131068, 65537, 1, -131067, 65537, 1, -131066, 65537, 1, -131065, 65537, 1, -131064, 65537, 1, -131063, 65537, 1, -131062, 65537, 1, -131061, 65537, 1)
 
-[node name="Enemy" parent="." instance=ExtResource("3_t66mr")]
-position = Vector2(2216, 600)
+[node name="PathLeftToRight" parent="." instance=ExtResource("3_8cxo8")]
+position = Vector2(-632, -2400)
