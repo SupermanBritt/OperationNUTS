@@ -26,13 +26,10 @@ metadata/_edit_lock_ = true
 position = Vector2(2100, 0)
 scale = Vector2(1, 4)
 script = ExtResource("3_yago7")
-metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flashlight"]
 polygon = PackedVector2Array(-1800, -30, 1800, -300.25, 1800, 299, -1800, 28)
-metadata/_edit_lock_ = true
 
 [node name="FlashlightLight" type="PointLight2D" parent="Flashlight"]
 shadow_enabled = true
 texture = ExtResource("2_txfa5")
-metadata/_edit_lock_ = true
