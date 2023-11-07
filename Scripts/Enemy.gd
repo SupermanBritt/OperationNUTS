@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var gravity : float = 6000.0
-@export var speed : float = 3000.0
+@export var speed : float = 750.0
 
 func _physics_process(delta):
 	# Add the gravity.
