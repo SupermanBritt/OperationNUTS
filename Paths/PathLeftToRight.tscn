@@ -1,15 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmmfb0ku63rpk"]
 
-[ext_resource type="PackedScene" uid="uid://c5uf7v7ng07ie" path="res://Sprites/Enemy.tscn" id="1_mdbft"]
+[ext_resource type="PackedScene" uid="uid://btkbvpehjqw01" path="res://Sprites/Enemy.tscn" id="1_mdbft"]
 
 [sub_resource type="Curve2D" id="Curve2D_lvtlv"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2658.13, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3984, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 3
 
 [node name="PathLeftToRight" type="Path2D"]
-scale = Vector2(1.875, 1)
 curve = SubResource("Curve2D_lvtlv")
 metadata/_edit_lock_ = true
 
