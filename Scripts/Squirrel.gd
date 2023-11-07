@@ -12,11 +12,12 @@ var isGliding : bool = false
 @export var gliding_mult_final : float = .1
 var gliding_mult : float = 1
 @export var max_gliding_speed : float = 4500.0
-@export var wall_climbing_speed : float = 2000.0
+@export var wall_climbing_speed : float = 3500.0
 @export var wall_jump_pushback : float = max_speed_final
 var isClinging : bool = false
 var wall_jump_timer : float = -10000
 var direction_facing : float = 1
+@export var wall_jump_delay : float = 250
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
  
@@ -30,7 +31,7 @@ func _physics_process(delta):
 	if direction_held:
 		isClinging = false
 		
-	if delta_time > 250:
+	if delta_time > wall_jump_delay:
 		if abs(velocity.x + direction_held * acceleration) <= max_speed:
 			velocity.x += direction_held * acceleration
 		else:
@@ -53,13 +54,17 @@ func _physics_process(delta):
 			velocity.y += gravity * delta * jump_hold_mult
 		else:
 			velocity.y += gravity * delta * gliding_mult
-		if Input.is_action_just_pressed("jump") && !is_on_wall() && delta_time > 250:
+			
+		if Input.is_action_just_pressed("jump") && !on_wall() && delta_time > wall_jump_delay:
 			isGliding = true
-			gliding_mult = gliding_mult_final
 			velocity.y = 0
-			max_speed = max_gliding_speed
 		if Input.is_action_just_released("jump"):
 			isGliding = false
+
+		if isGliding:
+			gliding_mult = gliding_mult_final
+			max_speed = max_gliding_speed
+		else:
 			gliding_mult = 1
 			max_speed = max_speed_final
 			

@@ -23,8 +23,9 @@ offset_right = 768.0
 offset_bottom = 593.0
 tooltip_text = "This will exit the game"
 text = "Quit"
+icon_alignment = 1
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 offset_left = 214.0
 offset_top = 34.0
 offset_right = 904.0
@@ -32,6 +33,9 @@ offset_bottom = 173.0
 text = "Operation N.U.T.S."
 label_settings = SubResource("LabelSettings_2t7e4")
 horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(574, 324)
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
