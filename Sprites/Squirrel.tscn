@@ -33,7 +33,40 @@ target_position = Vector2(0, 10)
 [node name="RayCast2DTop" type="RayCast2D" parent="."]
 position = Vector2(0, -300)
 target_position = Vector2(0, -10)
+hit_from_inside = true
 
 [node name="RayCast2DLeft" type="RayCast2D" parent="."]
 position = Vector2(-300, 0)
 target_position = Vector2(-10, 0)
+
+[node name="RayCast2DTRR" type="RayCast2D" parent="."]
+position = Vector2(300, -290)
+target_position = Vector2(10, 0)
+
+[node name="RayCast2DTRU" type="RayCast2D" parent="."]
+position = Vector2(290, -300)
+target_position = Vector2(0, -10)
+
+[node name="RayCast2DBRR" type="RayCast2D" parent="."]
+position = Vector2(300, 290)
+target_position = Vector2(10, 0)
+
+[node name="RayCast2DBRD" type="RayCast2D" parent="."]
+position = Vector2(290, 300)
+target_position = Vector2(0, 10)
+
+[node name="RayCast2DTLL" type="RayCast2D" parent="."]
+position = Vector2(-300, -290)
+target_position = Vector2(-10, 0)
+
+[node name="RayCast2DTLU" type="RayCast2D" parent="."]
+position = Vector2(-290, -300)
+target_position = Vector2(0, -10)
+
+[node name="RayCast2DBLL" type="RayCast2D" parent="."]
+position = Vector2(-300, 290)
+target_position = Vector2(-10, 0)
+
+[node name="RayCast2DBLD" type="RayCast2D" parent="."]
+position = Vector2(-290, 300)
+target_position = Vector2(0, 10)
