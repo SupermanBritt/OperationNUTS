@@ -102,17 +102,56 @@ func _physics_process(delta):
 		velocity.y = jump_velocity * 1.2
 		velocity.x = wall_jump_pushback * -on_wall()
 		wall_jump_timer = Time.get_ticks_msec()
-	print("x:", velocity.x, ", y:", velocity.y, ", max_speed:", max_speed)
+	#print("x:", velocity.x, ", y:", velocity.y, ", max_speed:", max_speed)
 	
-	
+	vent_check()
 	
 	move_and_slide()
 
 func on_wall() -> float:
-	if $RayCast2DTR.is_colliding() or $RayCast2DBR.is_colliding():
+	if $RayCast2DRight.is_colliding():
 		return 1
-	elif $RayCast2DTL.is_colliding() or $RayCast2DBL.is_colliding():
+	elif $RayCast2DLeft.is_colliding():
 		return -1
 	else:
 		return 0
 
+var current_tilemap: TileMap
+
+enum TileType {
+	LEFTVENT = 0,
+	BOTTOMVENT = 1,
+	RIGHTVENT = 2,
+	TOPVENT = 3
+}
+
+func _update_terrain(terrain_mask : Variant):
+	print(terrain_mask)
+
+func _process_tilemap_collision(body: Node2D, body_rid: RID):
+		current_tilemap = body
+		
+		var collided_tile_coords = current_tilemap.get_coords_for_body_rid(body_rid)
+		for index in current_tilemap.get_layers_count():
+			var tile_data = current_tilemap.get_cell_tile_data(index, collided_tile_coords)
+			if !tile_data is TileData:
+				continue
+			var terrain_mask = tile_data.get_custom_data_by_layer_id(0)
+			_update_terrain(terrain_mask)
+			break
+
+func _on_body_shape_entered(body_rid: RID, body : Node2D, _body_shape_index : int, _local_shape_index : int):
+	print("GERe")
+	if body is TileMap:
+		_process_tilemap_collision(body, body_rid)
+		
+func vent_check():
+	if check_vent_dir($RayCast2DRight, 2):
+		print("4")
+
+func check_vent_dir(raycast : RayCast2D, dir : int) -> bool:
+	var colliding = raycast.is_colliding()
+	var collision_point = raycast.get_collision_point()
+	var map = current_tilemap.world_to_map(Vector2(0,0))
+	print(current_tilemap.get_cell(map.x, map.y))
+	return false
