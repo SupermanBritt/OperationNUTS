@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Squirrel.gd" id="1_7axbj"]
 [ext_resource type="Texture2D" uid="uid://baoowv1nbmywj" path="res://Textures/Squirrel-Run-Keys-Apart-Suit.png" id="2_kktpl"]
-[ext_resource type="PackedScene" uid="uid://d2lnccob6lmsc" path="res://Scenes/TerrainDetector.tscn" id="3_y3mvv"]
+[ext_resource type="PackedScene" path="res://Scenes/TerrainDetector.tscn" id="3_y3mvv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wn516"]
 size = Vector2(576, 496)
