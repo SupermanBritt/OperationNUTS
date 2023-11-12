@@ -23,8 +23,7 @@ var direction_facing : float = 1
  
 
 func _physics_process(delta):
-		# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	# Get the input direction and handle the movement/deceleration.
 	var direction_held = Input.get_axis("move_left", "move_right")
 	var delta_time = Time.get_ticks_msec() - wall_jump_timer
 	
@@ -103,8 +102,6 @@ func _physics_process(delta):
 		velocity.x = wall_jump_pushback * -on_wall()
 		wall_jump_timer = Time.get_ticks_msec()
 	print("x:", velocity.x, ", y:", velocity.y, ", max_speed:", max_speed)
-	
-	
 	
 	move_and_slide()
 
