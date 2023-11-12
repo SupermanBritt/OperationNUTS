@@ -1,9 +1,9 @@
 extends Area2D
 
+# Checks if the player has hit the flashlight
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
-#		print(str('Player has entered'))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

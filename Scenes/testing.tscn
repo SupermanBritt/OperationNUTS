@@ -38,7 +38,7 @@ scale = Vector2(158.712, 94.5908)
 texture = ExtResource("1_hbjj8")
 
 [node name="Squirrel" parent="." instance=ExtResource("1_nn10j")]
-position = Vector2(-11461, -1508)
+position = Vector2(-11461, -1432)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_aa4oc")
