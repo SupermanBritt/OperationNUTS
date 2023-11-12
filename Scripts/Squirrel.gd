@@ -25,8 +25,7 @@ var raycastLength = 10
  
 
 func _physics_process(delta):
-		# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	# Get the input direction and handle the movement/deceleration.
 	var direction_held = Input.get_axis("move_left", "move_right")
 	var delta_time = Time.get_ticks_msec() - wall_jump_timer
 	

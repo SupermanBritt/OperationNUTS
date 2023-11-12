@@ -1,16 +1,16 @@
 [gd_scene load_steps=6 format=3 uid="uid://btkbvpehjqw01"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_3338g"]
-[ext_resource type="Texture2D" uid="uid://6nar3a1osgva" path="res://Textures/flashlight.png" id="2_txfa5"]
+[ext_resource type="Texture2D" uid="uid://donxcre54cw0p" path="res://Textures/flashlight.png" id="2_txfa5"]
 [ext_resource type="Script" path="res://Scripts/FlashlightDetection.gd" id="3_yago7"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_de522"]
-size = Vector2(600, 2400)
+size = Vector2(600, 1800)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwkg5"]
-size = Vector2(600, 2400)
+size = Vector2(600, 1800)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_3338g")
 metadata/_edit_lock_ = true
 
@@ -29,10 +29,12 @@ script = ExtResource("3_yago7")
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flashlight"]
-polygon = PackedVector2Array(-1800, -30, 1800, -300.25, 1800, 299, -1800, 28)
+polygon = PackedVector2Array(-1800, -42, 5400, -225, 5400, 225, -1800, 42)
 metadata/_edit_lock_ = true
 
 [node name="FlashlightLight" type="PointLight2D" parent="Flashlight"]
+position = Vector2(1800, 0)
+scale = Vector2(1, 0.25)
 shadow_enabled = true
 texture = ExtResource("2_txfa5")
 metadata/_edit_lock_ = true
