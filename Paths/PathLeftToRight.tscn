@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmmfb0ku63rpk"]
+[gd_scene load_steps=4 format=3 uid="uid://cmmfb0ku63rpk"]
 
+[ext_resource type="Script" path="res://Paths/EnemyFollower.gd" id="1_m5aae"]
 [ext_resource type="PackedScene" uid="uid://btkbvpehjqw01" path="res://Sprites/Enemy.tscn" id="1_mdbft"]
 
 [sub_resource type="Curve2D" id="Curve2D_lvtlv"]
@@ -13,6 +14,8 @@ curve = SubResource("Curve2D_lvtlv")
 metadata/_edit_lock_ = true
 
 [node name="EnemyFollower" type="PathFollow2D" parent="."]
+rotates = false
+script = ExtResource("1_m5aae")
 metadata/_edit_lock_ = true
 
 [node name="Enemy" parent="EnemyFollower" instance=ExtResource("1_mdbft")]
