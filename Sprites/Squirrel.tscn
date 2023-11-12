@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://baoowv1nbmywj" path="res://Textures/Squirrel-Run-Keys-Apart-Suit.png" id="2_kktpl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wn516"]
-size = Vector2(600, 600)
+size = Vector2(576, 496)
 
 [node name="Squirrel" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_7axbj")
@@ -15,6 +15,7 @@ texture = ExtResource("2_kktpl")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_wn516")
 metadata/_edit_lock_ = true
 
@@ -23,17 +24,17 @@ zoom = Vector2(0.08, 0.08)
 metadata/_edit_lock_ = true
 
 [node name="RayCast2DTR" type="RayCast2D" parent="."]
-position = Vector2(300, -300)
+position = Vector2(288, -264)
 target_position = Vector2(10, 0)
 
 [node name="RayCast2DBR" type="RayCast2D" parent="."]
-position = Vector2(300, 300)
+position = Vector2(288, 232)
 target_position = Vector2(10, 0)
 
 [node name="RayCast2DTL" type="RayCast2D" parent="."]
-position = Vector2(-300, -300)
+position = Vector2(-288, -264)
 target_position = Vector2(-10, 0)
 
 [node name="RayCast2DBL" type="RayCast2D" parent="."]
-position = Vector2(-300, 300)
+position = Vector2(-288, 232)
 target_position = Vector2(-10, 0)
