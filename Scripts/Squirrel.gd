@@ -18,6 +18,9 @@ var isClinging : bool = false
 var wall_jump_timer : float = -10000
 var direction_facing : float = 1
 @export var wall_jump_delay : float = 250
+var current_tilemap: TileMap
+var raycastLength = 10
+var currVent = []
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
  
@@ -35,17 +38,13 @@ func _physics_process(delta):
 			velocity.x += direction_held * acceleration
 		else:
 			velocity.x = max_speed * direction_held
-
-	# -1 moving left, 0 standing still, 1 moving right
-	var direction_moving = 0
 	
 	#Friction
 	if velocity.x != 0:
-		direction_moving = velocity.x / abs(velocity.x)
 		if abs(velocity.x) - friction < 0:
 			velocity.x = 0
 		else:
-			velocity.x -= friction * direction_moving
+			velocity.x -= friction * sign(velocity.x)
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -101,15 +100,136 @@ func _physics_process(delta):
 		velocity.y = jump_velocity * 1.2
 		velocity.x = wall_jump_pushback * -on_wall()
 		wall_jump_timer = Time.get_ticks_msec()
-	print("x:", velocity.x, ", y:", velocity.y, ", max_speed:", max_speed)
+	#print("x:", velocity.x, ", y:", velocity.y, ", max_speed:", max_speed)
 	
+	if Input.is_action_just_pressed("vent") and currVent.size() != 0:
+		vent()
+	
+	reset()
 	move_and_slide()
 
 func on_wall() -> float:
-	if $RayCast2DTR.is_colliding() or $RayCast2DBR.is_colliding():
+	if $RayCast2DRight.is_colliding():
 		return 1
-	elif $RayCast2DTL.is_colliding() or $RayCast2DBL.is_colliding():
+	elif $RayCast2DLeft.is_colliding():
 		return -1
 	else:
 		return 0
+
+enum TileType {
+	NORMAL = 0,
+	LEFTVENT = 1,
+	TOPVENT = 2,
+	RIGHTVENT = 3,
+	BOTTOMVENT = 4
+}
+
+func _on_terrain_detector_terrain_entered(terrain_type, tile_coords, c_map):
+	current_tilemap = c_map
+	currVent = [terrain_type, tile_coords]
+
+func _on_terrain_detector_body_shape_exited(_body_rid, _body, _body_shape_index, _local_shape_index):
+	currVent = []
+				
+func vent():
+	var ventDir = currVent[0]
+	var map = currVent[1]
+	var ventLocation = map * 600
+	if Input.is_action_just_pressed("vent"):
+		match ventDir:
+			1: #Left
+				position.y = ventLocation.y + sign(ventLocation.y) * -300
+				map.x -= 1
+				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+					map.x -= 1
+				position.x = map.x * 600 + 300
+			2: #Top
+				position.x = ventLocation.x + sign(ventLocation.x) * -300
+				map.y -= 1
+				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+					map.y -= 1
+				position.y = map.y * 600 + 300
+			3: #Right
+				position.y = ventLocation.y + sign(ventLocation.y) * -300
+				map.x += 1
+				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+					map.x += 1
+				position.x = map.x * 600 + 300
+			4: #Bottom
+				position.x = ventLocation.x + sign(ventLocation.x) * -300
+				map.y += 1
+				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+					map.y += 1
+				position.y = map.y * 600 + 100
+
+		
+func vent_check():
+	var ventDir = 0
+	var ventLocation
+	var output = vent_collision()
+	if output.size() != 0:
+		ventLocation = output[0]
+		ventDir = output[1]
+		var map = ventLocation / 600
+		if Input.is_action_just_pressed("vent"):
+			match ventDir:
+				1: #Left
+					position.y = ventLocation.y + sign(ventLocation.y) * -300
+					map.x -= 1
+					while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+						map.x -= 1
+					position.x = map.x * 600 + 300
+				2: #Top
+					position.x = ventLocation.x + sign(ventLocation.x) * -300
+					map.y -= 1
+					while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+						map.y -= 1
+					position.y = map.y * 600 + 300
+				3: #Right
+					position.y = ventLocation.y + sign(ventLocation.y) * -300
+					map.x += 1
+					while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+						map.x += 1
+					position.x = map.x * 600 + 300
+				4: #Bottom
+					position.x = ventLocation.x + sign(ventLocation.x) * -300
+					map.y += 1
+					while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+						map.y += 1
+					position.y = map.y * 600 + 100
+				
+#(ventLocation, ventDir)
+func vent_collision() -> Array:
+#	var i = 0
+	for node in self.get_children():
+		var output = []
+		if node.get_class() == "RayCast2D":
+#			i += 1
+#			print(i)
+			if node.is_colliding():
+				current_tilemap = node.get_collider()
+				var collision_point = node.get_collision_point()
+				var map = current_tilemap.local_to_map(collision_point)
+				var tiledata = current_tilemap.get_cell_tile_data(0, map)
+				var ventDir
+				if tiledata != null:
+					ventDir = tiledata.get_custom_data("tileType")
+				else:
+					var dir = sign(node.get_target_position())
+					map += dir as Vector2i
+					tiledata = current_tilemap.get_cell_tile_data(0, map)
+					ventDir = tiledata.get_custom_data("tileType")
+				if (ventDir > 0 and ventDir < 5):
+					var ventLocation = map * 600
+					output.append(ventLocation)
+					output.append(ventDir)
+					return output
+	return []
+			
+func reset():
+	if Input.is_action_just_pressed("reset"):
+		position.x = -11400
+		position.y = -1500
+
+
 

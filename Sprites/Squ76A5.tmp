@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://coogyl0u8ymia"]
+
+[ext_resource type="Script" path="res://Scripts/Squirrel.gd" id="1_7axbj"]
+[ext_resource type="Texture2D" uid="uid://baoowv1nbmywj" path="res://Textures/Squirrel-Run-Keys-Apart-Suit.png" id="2_kktpl"]
+[ext_resource type="Script" path="res://tileDetector.gd" id="3_fb2vd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wn516"]
+size = Vector2(600, 600)
+
+[node name="Squirrel" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_7axbj")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_kktpl")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wn516")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.08, 0.08)
+metadata/_edit_lock_ = true
+
+[node name="RayCast2DRight" type="RayCast2D" parent="."]
+position = Vector2(300, 0)
+target_position = Vector2(10, 0)
+
+[node name="RayCast2DDown" type="RayCast2D" parent="."]
+position = Vector2(0, 300)
+target_position = Vector2(0, 10)
+
+[node name="RayCast2DTop" type="RayCast2D" parent="."]
+position = Vector2(0, -300)
+target_position = Vector2(0, -10)
+
+[node name="RayCast2DLeft" type="RayCast2D" parent="."]
+position = Vector2(-300, 0)
+target_position = Vector2(-10, 0)
+
+[node name="TilemapDetector" type="Area2D" parent="."]
+script = ExtResource("3_fb2vd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TilemapDetector"]
