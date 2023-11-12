@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbyd3r0ave6c0"]
 
-[ext_resource type="Script" path="res://Scenes/game_over.gd" id="1_fx44e"]
+[ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_ywf4n"]
 [ext_resource type="Texture2D" uid="uid://d13dcn0xjixgp" path="res://Textures/SquirrelDeadTemp.png" id="2_8g6j0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_enmhj"]
 font_size = 60
 
 [node name="GameOverScreen" type="Node2D"]
-script = ExtResource("1_fx44e")
+script = ExtResource("1_ywf4n")
 
 [node name="Label" type="Label" parent="."]
 modulate = Color(1, 0.137255, 0.113725, 1)
