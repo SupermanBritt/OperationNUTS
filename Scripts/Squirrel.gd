@@ -20,6 +20,7 @@ var direction_facing : float = 1
 @export var wall_jump_delay : float = 250
 var current_tilemap: TileMap
 var raycastLength = 10
+var currVent = []
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
  
@@ -100,8 +101,10 @@ func _physics_process(delta):
 		velocity.x = wall_jump_pushback * -on_wall()
 		wall_jump_timer = Time.get_ticks_msec()
 	#print("x:", velocity.x, ", y:", velocity.y, ", max_speed:", max_speed)
-
-	vent_check()
+	
+	if Input.is_action_just_pressed("vent") and currVent.size() != 0:
+		vent()
+	
 	reset()
 	move_and_slide()
 
@@ -120,6 +123,44 @@ enum TileType {
 	RIGHTVENT = 3,
 	BOTTOMVENT = 4
 }
+
+func _on_terrain_detector_terrain_entered(terrain_type, tile_coords, c_map):
+	current_tilemap = c_map
+	currVent = [terrain_type, tile_coords]
+
+func _on_terrain_detector_body_shape_exited(_body_rid, _body, _body_shape_index, _local_shape_index):
+	currVent = []
+				
+func vent():
+	var ventDir = currVent[0]
+	var map = currVent[1]
+	var ventLocation = map * 600
+	if Input.is_action_just_pressed("vent"):
+		match ventDir:
+			1: #Left
+				position.y = ventLocation.y + sign(ventLocation.y) * -300
+				map.x -= 1
+				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+					map.x -= 1
+				position.x = map.x * 600 + 300
+			2: #Top
+				position.x = ventLocation.x + sign(ventLocation.x) * -300
+				map.y -= 1
+				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+					map.y -= 1
+				position.y = map.y * 600 + 300
+			3: #Right
+				position.y = ventLocation.y + sign(ventLocation.y) * -300
+				map.x += 1
+				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+					map.x += 1
+				position.x = map.x * 600 + 300
+			4: #Bottom
+				position.x = ventLocation.x + sign(ventLocation.x) * -300
+				map.y += 1
+				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+					map.y += 1
+				position.y = map.y * 600 + 100
 
 		
 func vent_check():
@@ -189,3 +230,6 @@ func reset():
 	if Input.is_action_just_pressed("reset"):
 		position.x = -11400
 		position.y = -1500
+
+
+
