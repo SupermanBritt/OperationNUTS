@@ -38,17 +38,13 @@ func _physics_process(delta):
 			velocity.x += direction_held * acceleration
 		else:
 			velocity.x = max_speed * direction_held
-
-	# -1 moving left, 0 standing still, 1 moving right
-	var direction_moving = 0
 	
 	#Friction
 	if velocity.x != 0:
-		direction_moving = velocity.x / abs(velocity.x)
 		if abs(velocity.x) - friction < 0:
 			velocity.x = 0
 		else:
-			velocity.x -= friction * direction_moving
+			velocity.x -= friction * sign(velocity.x)
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -171,7 +167,6 @@ func vent_collision() -> Array:
 #			i += 1
 #			print(i)
 			if node.is_colliding():
-
 				current_tilemap = node.get_collider()
 				var collision_point = node.get_collision_point()
 				var map = current_tilemap.local_to_map(collision_point)
