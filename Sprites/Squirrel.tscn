@@ -1,8 +1,107 @@
-[gd_scene load_steps=5 format=3 uid="uid://coogyl0u8ymia"]
+[gd_scene load_steps=16 format=3 uid="uid://coogyl0u8ymia"]
 
 [ext_resource type="Script" path="res://Scripts/Squirrel.gd" id="1_7axbj"]
+[ext_resource type="Texture2D" uid="uid://coma22gflw40v" path="res://Textures/Squirrel-Run-Keys-Apart-Suit-Left.png" id="2_2apcc"]
+[ext_resource type="Texture2D" uid="uid://b5ldbsnv0b167" path="res://Textures/Squirrel-Glide-Keys-Left.png" id="2_5a6cu"]
+[ext_resource type="Texture2D" uid="uid://b5yoh6635r24c" path="res://Textures/Squirrel-Run-Keys-Apart-Suit-Right.png" id="2_d0mrn"]
 [ext_resource type="Texture2D" uid="uid://baoowv1nbmywj" path="res://Textures/Squirrel-Run-Keys-Apart-Suit.png" id="2_kktpl"]
+[ext_resource type="Texture2D" uid="uid://dogaodn8gksqw" path="res://Textures/Squirrel-Glide-Keys-Right.png" id="3_f47w3"]
+[ext_resource type="Texture2D" uid="uid://dp4jpg1k0u57q" path="res://Textures/Squirrel-Run-Keys-Together-Suit-Left.png" id="3_o0lax"]
+[ext_resource type="Texture2D" uid="uid://copxgjofrnngu" path="res://Textures/Squirrel-Run-Keys-Together-Suit.png" id="3_p6658"]
 [ext_resource type="PackedScene" uid="uid://d2lnccob6lmsc" path="res://Scenes/TerrainDetector.tscn" id="3_y3mvv"]
+[ext_resource type="Texture2D" uid="uid://bn4bdhryeqq08" path="res://Textures/Squirrel-Jump-Keys-Down-Left.png" id="4_trb46"]
+[ext_resource type="Texture2D" uid="uid://c7dtslw26wl10" path="res://Textures/Squirrel-Jump-Keys-Down-Right.png" id="5_4fyj7"]
+[ext_resource type="Texture2D" uid="uid://ch7u2dcogvyxc" path="res://Textures/Squirrel-Jump-Keys-Up-Left.png" id="6_2s8tv"]
+[ext_resource type="Texture2D" uid="uid://0jgo6soloyfj" path="res://Textures/Squirrel-Jump-Keys-Up-Right.png" id="7_yk51m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x27mp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5a6cu")
+}],
+"loop": true,
+"name": &"glide_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_f47w3")
+}],
+"loop": true,
+"name": &"glide_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2apcc")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d0mrn")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_trb46")
+}],
+"loop": true,
+"name": &"jump_down_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_4fyj7")
+}],
+"loop": true,
+"name": &"jump_down_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_2s8tv")
+}],
+"loop": true,
+"name": &"jump_up_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_yk51m")
+}],
+"loop": true,
+"name": &"jump_up_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2apcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o0lax")
+}],
+"loop": true,
+"name": &"run_left",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kktpl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p6658")
+}],
+"loop": true,
+"name": &"run_right",
+"speed": 9.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wn516"]
 size = Vector2(576, 496)
@@ -11,7 +110,12 @@ size = Vector2(576, 496)
 script = ExtResource("1_7axbj")
 metadata/_edit_lock_ = true
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x27mp")
+animation = &"glide_right"
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_kktpl")
 metadata/_edit_lock_ = true
 
