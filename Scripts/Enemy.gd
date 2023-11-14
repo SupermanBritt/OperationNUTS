@@ -24,13 +24,13 @@ func _physics_process(delta):
 	if abs(startingX-currentX) >= pathLength:
 		scale.x *= -1
 		velocity.x = -1 * speed
-		print("Scale is: ", scale.x)
+#		print("Scale is: ", scale.x)
 	
 	# Checking if the enemy has returned to the starting position
 	if currentX <= startingX:
 		scale.x *= -1
 		velocity.x = speed
-		print("Scale is: ", scale.x)
+#		print("Scale is: ", scale.x)
 	
 	move_and_slide()
 

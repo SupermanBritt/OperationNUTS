@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://btkbvpehjqw01"]
+[gd_scene load_steps=10 format=3 uid="uid://btkbvpehjqw01"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_3338g"]
 [ext_resource type="Texture2D" uid="uid://dgxatdrkefnkm" path="res://Textures/enemy.png" id="2_ilepf"]
@@ -9,7 +9,7 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_de522"]
 size = Vector2(600, 1800)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xuxai"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_7pjmq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -34,6 +34,9 @@ metadata/_edit_lock_ = true
 visible = false
 texture = SubResource("PlaceholderTexture2D_de522")
 metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7pjmq")
 
 [node name="FloorDetection" type="CollisionShape2D" parent="."]
 position = Vector2(0, 875)

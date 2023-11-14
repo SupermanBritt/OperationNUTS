@@ -125,7 +125,7 @@ shape = SubResource("RectangleShape2D_wn516")
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.08, 0.08)
+zoom = Vector2(0.1, 0.1)
 metadata/_edit_lock_ = true
 
 [node name="RayCast2DRight" type="RayCast2D" parent="."]
@@ -144,38 +144,6 @@ hit_from_inside = true
 [node name="RayCast2DLeft" type="RayCast2D" parent="."]
 position = Vector2(-288, 0)
 target_position = Vector2(-10, 0)
-
-[node name="RayCast2DTRR" type="RayCast2D" parent="."]
-position = Vector2(288, -254)
-target_position = Vector2(10, 0)
-
-[node name="RayCast2DTRU" type="RayCast2D" parent="."]
-position = Vector2(278, -264)
-target_position = Vector2(0, -10)
-
-[node name="RayCast2DBRR" type="RayCast2D" parent="."]
-position = Vector2(288, 222)
-target_position = Vector2(10, 0)
-
-[node name="RayCast2DBRD" type="RayCast2D" parent="."]
-position = Vector2(278, 232)
-target_position = Vector2(0, 10)
-
-[node name="RayCast2DTLL" type="RayCast2D" parent="."]
-position = Vector2(-288, -254)
-target_position = Vector2(-10, 0)
-
-[node name="RayCast2DTLU" type="RayCast2D" parent="."]
-position = Vector2(-278, -264)
-target_position = Vector2(0, -10)
-
-[node name="RayCast2DBLL" type="RayCast2D" parent="."]
-position = Vector2(-288, 222)
-target_position = Vector2(-10, 0)
-
-[node name="RayCast2DBLD" type="RayCast2D" parent="."]
-position = Vector2(-278, 232)
-target_position = Vector2(0, 10)
 
 [node name="TerrainDetector" parent="." instance=ExtResource("3_y3mvv")]
 
