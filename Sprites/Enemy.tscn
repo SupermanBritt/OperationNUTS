@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_3338g"]
 [ext_resource type="Texture2D" uid="uid://dgxatdrkefnkm" path="res://Textures/enemy.png" id="2_ilepf"]
 [ext_resource type="Texture2D" uid="uid://donxcre54cw0p" path="res://Textures/flashlight.png" id="2_txfa5"]
+[ext_resource type="Script" path="res://Scripts/EnemyHitbox.gd" id="2_wul0i"]
 [ext_resource type="Script" path="res://Scripts/FlashlightDetection.gd" id="3_yago7"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_de522"]
@@ -20,6 +21,9 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwkg5"]
+size = Vector2(500, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y41t1"]
 size = Vector2(600, 1800)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
@@ -31,12 +35,17 @@ visible = false
 texture = SubResource("PlaceholderTexture2D_de522")
 metadata/_edit_lock_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_xuxai")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="FloorDetection" type="CollisionShape2D" parent="."]
+position = Vector2(0, 875)
 shape = SubResource("RectangleShape2D_jwkg5")
 metadata/_edit_lock_ = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("2_wul0i")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_y41t1")
 
 [node name="Flashlight" type="Area2D" parent="."]
 position = Vector2(2100, 0)
