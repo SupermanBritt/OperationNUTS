@@ -43,5 +43,8 @@ target_position = Vector2(-10, 0)
 
 [node name="TerrainDetector" parent="." instance=ExtResource("3_y3mvv")]
 
+[node name="AttackRange" type="RayCast2D" parent="."]
+target_position = Vector2(2400, 0)
+
 [connection signal="body_shape_exited" from="TerrainDetector" to="." method="_on_terrain_detector_body_shape_exited"]
 [connection signal="terrain_entered" from="TerrainDetector" to="." method="_on_terrain_detector_terrain_entered"]
