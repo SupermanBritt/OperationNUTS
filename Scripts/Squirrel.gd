@@ -26,11 +26,14 @@ var inVent = false
 
 @onready var _animated_sprite = $AnimatedSprite2D
 
+signal venting
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
  
 func _ready():
 	reset_camera()
+	current_tilemap = self.get_parent().get_node("TileMap")
 
 
 func _process(_delta):
@@ -84,9 +87,6 @@ func _physics_process(delta):
 		else:
 			velocity.x -= friction * sign(velocity.x)
 	
-	if Input.is_action_just_pressed("debug"):
-		get_tree().change_scene_to_file("res://Scenes/testing2.tscn")
-	
 	# Add the gravity.
 	if not is_on_floor():
 		if Input.is_action_pressed("jump") && velocity.y < -500 && let_go_off_jump == false:
@@ -123,6 +123,7 @@ func _physics_process(delta):
 	#Climbing
 	if on_wall() == direction_held and direction_held:
 		isClinging = true
+		isGliding = false
 	
 	if !on_wall():
 		isClinging = false
@@ -145,7 +146,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("vent") and currVent.size() != 0:
 		vent()
-	
+
 	reset()
 	move_and_slide()
 
@@ -193,47 +194,34 @@ func vent():
 			1: #Left
 				position.y = ventLocation.y + sign(ventLocation.y) * -300
 				map.x -= 1
-				var distance = 1
 				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
 					map.x -= 1
-					distance += 1
 				position.x = map.x * 600 + 300
-				if inVent:
-					$Camera2D.limit_left -= distance * 600
-				else:
-					reset_camera()
+				emit_signal("venting")
 			2: #Top
 				position.x = ventLocation.x + sign(ventLocation.x) * -300
 				map.y -= 1
 				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
 					map.y -= 1
 				position.y = map.y * 600 + 300
-				if inVent:
-					$Camera2D.limit_top -= 1200
-				else:
-					reset_camera()
+				emit_signal("venting")
 			3: #Right
 				position.y = ventLocation.y + sign(ventLocation.y) * -300
 				map.x += 1
 				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
 					map.x += 1
 				position.x = map.x * 600 + 300
-				if inVent:
-					$Camera2D.limit_right += 1200
-				else:
-					reset_camera()
+				emit_signal("venting")
 			4: #Bottom
 				position.x = ventLocation.x + sign(ventLocation.x) * -300
 				map.y += 1
 				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
 					map.y += 1
 				position.y = map.y * 600 + 100
-				if inVent:
-					$Camera2D.limit_bottom += 1200
-				else:
-					reset_camera()
-		
+				emit_signal("venting")
+	
 
+	
 		
 #func vent_check():
 #	var ventDir = 0
