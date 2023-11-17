@@ -21,7 +21,7 @@ shape = SubResource("RectangleShape2D_wn516")
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.08, 0.08)
+zoom = Vector2(0.11, 0.11)
 metadata/_edit_lock_ = true
 
 [node name="RayCast2DRight" type="RayCast2D" parent="."]
