@@ -41,38 +41,6 @@ hit_from_inside = true
 position = Vector2(-288, 0)
 target_position = Vector2(-10, 0)
 
-[node name="RayCast2DTRR" type="RayCast2D" parent="."]
-position = Vector2(288, -254)
-target_position = Vector2(10, 0)
-
-[node name="RayCast2DTRU" type="RayCast2D" parent="."]
-position = Vector2(278, -264)
-target_position = Vector2(0, -10)
-
-[node name="RayCast2DBRR" type="RayCast2D" parent="."]
-position = Vector2(288, 222)
-target_position = Vector2(10, 0)
-
-[node name="RayCast2DBRD" type="RayCast2D" parent="."]
-position = Vector2(278, 232)
-target_position = Vector2(0, 10)
-
-[node name="RayCast2DTLL" type="RayCast2D" parent="."]
-position = Vector2(-288, -254)
-target_position = Vector2(-10, 0)
-
-[node name="RayCast2DTLU" type="RayCast2D" parent="."]
-position = Vector2(-278, -264)
-target_position = Vector2(0, -10)
-
-[node name="RayCast2DBLL" type="RayCast2D" parent="."]
-position = Vector2(-288, 222)
-target_position = Vector2(-10, 0)
-
-[node name="RayCast2DBLD" type="RayCast2D" parent="."]
-position = Vector2(-278, 232)
-target_position = Vector2(0, 10)
-
 [node name="TerrainDetector" parent="." instance=ExtResource("3_y3mvv")]
 
 [connection signal="body_shape_exited" from="TerrainDetector" to="." method="_on_terrain_detector_body_shape_exited"]
