@@ -22,6 +22,8 @@ var current_tilemap: TileMap
 var raycastLength = 10
 var currVent = []
 var inVent = false
+var in_debug_mode = false
+var spawn_pos
 
 
 @onready var _animated_sprite = $AnimatedSprite2D
@@ -34,6 +36,7 @@ signal venting
 func _ready():
 	reset_camera()
 	current_tilemap = self.get_parent().get_node("TileMap")
+	spawn_pos = position
 
 
 func _process(_delta):
@@ -148,8 +151,22 @@ func _physics_process(delta):
 		vent()
 
 	reset()
+	if Input.is_action_just_pressed("debug"):
+		in_debug_mode = !in_debug_mode
+		
+	if in_debug_mode:
+		debug_mode()
+	else:
+		move_and_slide()
+	
+func debug_mode():
+	velocity.x = 0
+	velocity.y = 0
+	velocity.x = Input.get_axis("move_left", "move_right") * 5000
+	velocity.y = Input.get_axis("move_up", "move_down") * 5000
 	move_and_slide()
-
+	
+	
 func on_wall() -> float:
 	if $RayCast2DRight.is_colliding():
 		return 1
@@ -288,10 +305,7 @@ func vent():
 			
 			
 func reset():
-	if Input.is_action_just_pressed("reset") and Input.is_action_pressed("vent"):
-		position.x = 26400
-		position.y = -1500
-	elif Input.is_action_just_pressed("reset"):
+	if Input.is_action_just_pressed("reset"):
 		position.x = -11400
 		position.y = -1500
 

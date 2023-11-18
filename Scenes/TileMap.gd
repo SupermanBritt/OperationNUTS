@@ -4,11 +4,10 @@ var should_disapear = false
 var layer1_visible = true
 var alpha_delta = .06
 
-func ready():
+func _ready():
 	var tiles = get_used_cells(1)
 	for tile in tiles:
-		get_cell_tile_data(1, tile).remove_collision_polygon(1, 0)
-
+		get_cell_tile_data(1, tile).remove_collision_polygon(0, 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
