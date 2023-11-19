@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c7dtslw26wl10" path="res://Textures/Squirrel-Jump-Keys-Down-Right.png" id="5_4fyj7"]
 [ext_resource type="Texture2D" uid="uid://ch7u2dcogvyxc" path="res://Textures/Squirrel-Jump-Keys-Up-Left.png" id="6_2s8tv"]
 [ext_resource type="Texture2D" uid="uid://0jgo6soloyfj" path="res://Textures/Squirrel-Jump-Keys-Up-Right.png" id="7_yk51m"]
-[ext_resource type="Texture2D" uid="uid://lsjt0qetmp7e" path="res://Textures/Squirrel-Run-Keys-Together-Suit-Right.png" id="11_42rel"]
+[ext_resource type="Texture2D" uid="uid://lsjt0qetmp7e" path="res://Textures/Squirrel-Run-Keys-Together-Suit-Right.png" id="11_5xnic"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x27mp"]
 animations = [{
@@ -95,7 +95,7 @@ animations = [{
 "texture": ExtResource("2_d0mrn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_42rel")
+"texture": ExtResource("11_5xnic")
 }],
 "loop": true,
 "name": &"run_right",
