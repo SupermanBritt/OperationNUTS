@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://btkbvpehjqw01"]
+[gd_scene load_steps=11 format=3 uid="uid://btkbvpehjqw01"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_3338g"]
 [ext_resource type="Shader" path="res://Shaders/EnemyOutline.gdshader" id="2_a3edx"]
@@ -7,10 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/EnemyHitbox.gd" id="2_wul0i"]
 [ext_resource type="Script" path="res://Scripts/FlashlightDetection.gd" id="3_yago7"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_de522"]
-size = Vector2(600, 1800)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0apr1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2w2oy"]
 shader = ExtResource("2_a3edx")
 shader_parameter/rainbow = false
 shader_parameter/line_color = Color(0, 1, 0, 1)
@@ -40,13 +37,8 @@ size = Vector2(600, 1800)
 script = ExtResource("1_3338g")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture = SubResource("PlaceholderTexture2D_de522")
-metadata/_edit_lock_ = true
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_0apr1")
+material = SubResource("ShaderMaterial_2w2oy")
 sprite_frames = SubResource("SpriteFrames_7pjmq")
 
 [node name="FloorDetection" type="CollisionShape2D" parent="."]
@@ -69,11 +61,18 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flashlight"]
 polygon = PackedVector2Array(-1800, -42, 5400, -225, 5400, 225, -1800, 42)
-metadata/_edit_lock_ = true
 
 [node name="FlashlightLight" type="PointLight2D" parent="Flashlight"]
-position = Vector2(1800, 0)
+position = Vector2(-1800, 0)
 scale = Vector2(1, 0.25)
 shadow_enabled = true
 texture = ExtResource("2_txfa5")
-metadata/_edit_lock_ = true
+offset = Vector2(3600, 0)
+
+[node name="RayCastTop" type="RayCast2D" parent="Flashlight"]
+position = Vector2(-1800, -42)
+target_position = Vector2(7100, -150)
+
+[node name="RayCastBottom" type="RayCast2D" parent="Flashlight"]
+position = Vector2(-1800, 42)
+target_position = Vector2(7100, 150)

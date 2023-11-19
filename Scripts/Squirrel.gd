@@ -24,7 +24,7 @@ var currVent = []
 var inVent = false
 var in_debug_mode = false
 var spawn_pos
-
+var is_dead = false
 
 @onready var _animated_sprite = $AnimatedSprite2D
 
@@ -41,7 +41,9 @@ func _ready():
 
 func _process(_delta):
 	var direction_held = Input.get_axis("move_left", "move_right") 
-	if sign(velocity.x) == 1 and direction_held == 1 and is_on_floor():
+	if is_dead:
+		_animated_sprite.stop()
+	elif sign(velocity.x) == 1 and direction_held == 1 and is_on_floor():
 		_animated_sprite.play("run_right")
 	elif sign(velocity.x) == -1 and direction_held == -1 and is_on_floor():
 		_animated_sprite.play("run_left")
@@ -201,6 +203,10 @@ func _on_terrain_detector_terrain_entered(terrain_type, tile_coords, c_map):
 func _on_terrain_detector_body_shape_exited(_body_rid, _body, _body_shape_index, _local_shape_index):
 	currVent = []
 				
+				
+func set_is_dead(isdead):
+	is_dead = isdead
+
 func vent():
 	var ventDir = currVent[0]
 	var map = currVent[1]
