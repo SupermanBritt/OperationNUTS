@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://btkbvpehjqw01"]
+[gd_scene load_steps=12 format=3 uid="uid://btkbvpehjqw01"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_3338g"]
 [ext_resource type="Shader" path="res://Shaders/EnemyOutline.gdshader" id="2_a3edx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://donxcre54cw0p" path="res://Textures/flashlight.png" id="2_txfa5"]
 [ext_resource type="Script" path="res://Scripts/EnemyHitbox.gd" id="2_wul0i"]
 [ext_resource type="Script" path="res://Scripts/FlashlightDetection.gd" id="3_yago7"]
+[ext_resource type="Script" path="res://Scripts/EnemyAnimatedSprite2D.gd" id="4_vrdsh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0apr1"]
 shader = ExtResource("2_a3edx")
@@ -42,6 +43,7 @@ metadata/_edit_lock_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_0apr1")
 sprite_frames = SubResource("SpriteFrames_7pjmq")
+script = ExtResource("4_vrdsh")
 metadata/_edit_lock_ = true
 
 [node name="FloorDetection" type="CollisionShape2D" parent="."]
@@ -55,7 +57,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CapsuleShape2D_vm2a4")
 
-[node name="Flashlight" type="Area2D" parent="."]
+[node name="Flashlight" type="Area2D" parent="." groups=["flashlight"]]
 position = Vector2(2100, 0)
 scale = Vector2(1, 4)
 script = ExtResource("3_yago7")
