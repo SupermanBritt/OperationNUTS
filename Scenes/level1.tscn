@@ -1,0 +1,108 @@
+[gd_scene load_steps=11 format=3 uid="uid://cj0r8b5hi7pqd"]
+
+[ext_resource type="Texture2D" uid="uid://evynel21dtow" path="res://Textures/Untitled.png" id="1_sm8lk"]
+[ext_resource type="PackedScene" uid="uid://coogyl0u8ymia" path="res://Sprites/Squirrel.tscn" id="2_6iihy"]
+[ext_resource type="Texture2D" uid="uid://dmoc3ibejtou8" path="res://Tilesheets/ventsTile.png" id="4_6884c"]
+[ext_resource type="Texture2D" uid="uid://c3ho1rvb6oj0x" path="res://Tilesheets/tempbricks.png" id="4_qyene"]
+[ext_resource type="Script" path="res://Scripts/TileMap.gd" id="5_2n3c0"]
+[ext_resource type="PackedScene" uid="uid://btkbvpehjqw01" path="res://Sprites/Enemy.tscn" id="6_gav6d"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fsfy4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cuxid"]
+texture = ExtResource("4_qyene")
+texture_region_size = Vector2i(600, 600)
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+0:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_1/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ge6if"]
+texture = ExtResource("4_6884c")
+texture_region_size = Vector2i(600, 600)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+0:0/0/custom_data_0 = 1
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_1/angular_velocity = 0.0
+1:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+1:0/0/custom_data_0 = 4
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_1/angular_velocity = 0.0
+0:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+0:1/0/custom_data_0 = 3
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_1/angular_velocity = 0.0
+1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+1:1/0/custom_data_0 = 2
+
+[sub_resource type="TileSet" id="TileSet_elskt"]
+tile_size = Vector2i(600, 600)
+physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 2
+physics_layer_1/collision_mask = 2
+custom_data_layer_0/name = "tileType"
+custom_data_layer_0/type = 2
+sources/1 = SubResource("TileSetAtlasSource_cuxid")
+sources/3 = SubResource("TileSetAtlasSource_ge6if")
+
+[node name="level1" type="Node2D"]
+
+[node name="TempBackground" type="Sprite2D" parent="."]
+position = Vector2(4964, -7329)
+scale = Vector2(105.555, 62.6783)
+texture = ExtResource("1_sm8lk")
+
+[node name="CameraBorder" type="Polygon2D" parent="."]
+show_behind_parent = true
+color = Color(0, 0.733333, 0.529412, 0.176471)
+polygon = PackedVector2Array(4930, -11428, 30000, -24000, 4930, -11428, -15000, 600)
+
+[node name="Squirrel" parent="." instance=ExtResource("2_6iihy")]
+position = Vector2(-13491, -1512)
+
+[node name="Debugger" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-13800, -1800)
+texture = SubResource("PlaceholderTexture2D_fsfy4")
+
+[node name="Enemy" parent="." instance=ExtResource("6_gav6d")]
+position = Vector2(-3000, -13500)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_elskt")
+format = 2
+layer_0/name = "FloorAndWalls"
+layer_0/tile_data = PackedInt32Array(-65558, 1, 0, -393238, 1, 0, -458774, 1, 0, -65557, 1, 0, -65556, 1, 0, -65555, 1, 0, -65554, 1, 0, -65553, 1, 0, -65552, 1, 0, -65551, 1, 0, -65550, 1, 0, -65549, 1, 0, -65548, 1, 0, -65547, 1, 0, -65546, 1, 0, -65545, 1, 0, -131090, 65539, 0, -18, 65539, 1, -21, 1, 0, 65515, 1, 0, 65516, 1, 0, 65517, 1, 0, 65518, 1, 0, 65519, 1, 0, 65526, 1, 0, -10, 1, 0, -22, 1, 0, 65514, 1, 0, 131050, 1, 0, 131051, 1, 0, 131052, 1, 0, 131053, 1, 0, 131054, 1, 0, 131055, 1, 0, 131056, 1, 0, 131057, 1, 0, 131058, 1, 0, 131059, 1, 0, 131060, 1, 0, 131061, 1, 0, 131062, 1, 0, 131063, 1, 0, 65527, 1, 0, -9, 1, 0, -131083, 1, 0, -393237, 1, 0, -393236, 1, 0, -393235, 1, 0, -393234, 1, 0, -393233, 1, 0, -393232, 1, 0, -327696, 1, 0, -262160, 1, 0, -196624, 1, 0, -131088, 1, 0, -458773, 1, 0, -458772, 1, 0, -458771, 1, 0, -458770, 1, 0, -458769, 1, 0, -458768, 1, 0, -458767, 1, 0, -458766, 1, 0, -393231, 1, 0, -327695, 1, 0, -262159, 1, 0, -196623, 1, 0, -131087, 1, 0, -131086, 1, 0, -196622, 1, 0, -262158, 1, 0, -327694, 1, 0, -393230, 1, 0, 65520, 1, 0, 65521, 1, 0, 65522, 1, 0, 65523, 1, 0, 65524, 1, 0, 65525, 1, 0, -11, 65539, 1, -131085, 1, 0, -131084, 1, 0, -131082, 1, 0, -131081, 1, 0, -196619, 65539, 0, 131049, 1, 0, 65513, 1, 0, -23, 1, 0, -65559, 1, 0, -393240, 1, 0, -393241, 1, 0, -393242, 1, 0, -327706, 1, 0, -262170, 1, 0, -196634, 1, 0, -131098, 1, 0, -65562, 1, 0, -26, 1, 0, 65510, 1, 0, 131046, 1, 0, 65511, 1, 0, -25, 1, 0, -65561, 1, 0, -131096, 1, 0, 65512, 1, 0, 131048, 1, 0, -24, 1, 0, -65560, 1, 0, 131047, 1, 0, -196632, 1, 0, -262168, 1, 0, -131097, 1, 0, -196633, 1, 0, -262169, 1, 0, -327705, 1, 0, -458777, 1, 0, -327704, 1, 0, -458776, 1, 0, -393239, 1, 0, -458775, 1, 0, -458778, 1, 0)
+layer_1/name = "Overvents"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array(-20, 1, 0, -19, 1, 0, -18, 1, 0, -17, 1, 0, -16, 1, 0, -15, 1, 0, -14, 1, 0, -13, 1, 0, -12, 1, 0, -11, 1, 0)
+script = ExtResource("5_2n3c0")
+
+[connection signal="venting" from="Squirrel" to="TileMap" method="_on_squirrel_venting"]

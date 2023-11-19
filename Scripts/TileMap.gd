@@ -4,10 +4,10 @@ var should_disapear = false
 var layer1_turning_visible = true
 var alpha_delta = .06
 
-func _use_tile_data_runtime_update(layer: int, coords: Vector2i) -> bool:
+func _use_tile_data_runtime_update(layer: int, _coords: Vector2i) -> bool:
 	return layer in [1]
 
-func _tile_data_runtime_update(layer: int, coords: Vector2i, tile_data: TileData) -> void:
+func _tile_data_runtime_update(_layer: int, _coords: Vector2i, tile_data: TileData) -> void:
 	tile_data.set_collision_polygons_count(0, 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
