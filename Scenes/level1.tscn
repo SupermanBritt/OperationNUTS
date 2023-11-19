@@ -1,14 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://cluonem1j2p4h"]
+[gd_scene load_steps=11 format=3 uid="uid://cj0r8b5hi7pqd"]
 
-[ext_resource type="Texture2D" uid="uid://evynel21dtow" path="res://Textures/Untitled.png" id="1_hbjj8"]
-[ext_resource type="PackedScene" uid="uid://coogyl0u8ymia" path="res://Sprites/Squirrel.tscn" id="1_nn10j"]
-[ext_resource type="Texture2D" uid="uid://c3ho1rvb6oj0x" path="res://Tilesheets/tempbricks.png" id="3_15hvj"]
-[ext_resource type="Texture2D" uid="uid://dmoc3ibejtou8" path="res://Tilesheets/ventsTile.png" id="4_7eek8"]
-[ext_resource type="PackedScene" uid="uid://btkbvpehjqw01" path="res://Sprites/Enemy.tscn" id="5_84cy3"]
-[ext_resource type="Script" path="res://Scripts/TileMap.gd" id="5_yrlpv"]
+[ext_resource type="Texture2D" uid="uid://evynel21dtow" path="res://Textures/Untitled.png" id="1_sm8lk"]
+[ext_resource type="PackedScene" uid="uid://coogyl0u8ymia" path="res://Sprites/Squirrel.tscn" id="2_6iihy"]
+[ext_resource type="Texture2D" uid="uid://8p3n7a4q62ok" path="res://Tilesheets/New Piskel.png" id="3_175yy"]
+[ext_resource type="Texture2D" uid="uid://dmoc3ibejtou8" path="res://Tilesheets/ventsTile.png" id="4_6884c"]
+[ext_resource type="Script" path="res://Scripts/TileMap.gd" id="5_2n3c0"]
+[ext_resource type="PackedScene" uid="uid://btkbvpehjqw01" path="res://Sprites/Enemy.tscn" id="6_gav6d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cuxid"]
-texture = ExtResource("3_15hvj")
+texture = ExtResource("3_175yy")
 texture_region_size = Vector2i(600, 600)
 0:0/next_alternative_id = 2
 0:0/0 = 0
@@ -17,15 +17,27 @@ texture_region_size = Vector2i(600, 600)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
 0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_1/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+1:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_1/angular_velocity = 0.0
 0:1/0 = 0
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
 0:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_1/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+1:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_1/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ge6if"]
-texture = ExtResource("4_7eek8")
+texture = ExtResource("4_6884c")
 texture_region_size = Vector2i(600, 600)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -68,19 +80,19 @@ sources/3 = SubResource("TileSetAtlasSource_ge6if")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fsfy4"]
 
-[node name="testing" type="Node2D"]
+[node name="level1" type="Node2D"]
 
 [node name="TempBackground" type="Sprite2D" parent="."]
 position = Vector2(4964, -7329)
 scale = Vector2(105.555, 62.6783)
-texture = ExtResource("1_hbjj8")
+texture = ExtResource("1_sm8lk")
 
 [node name="CameraBorder" type="Polygon2D" parent="."]
 show_behind_parent = true
 color = Color(0, 0.733333, 0.529412, 0.176471)
 polygon = PackedVector2Array(30000, -600, 30000, -24000, -17400, -24000, -17726.2, -17313.4, -18600, 600)
 
-[node name="Squirrel" parent="." instance=ExtResource("1_nn10j")]
+[node name="Squirrel" parent="." instance=ExtResource("2_6iihy")]
 position = Vector2(-12325, -1542)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -94,15 +106,15 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 1
-layer_1/tile_data = PackedInt32Array(-131102, 1, 0, -196638, 1, 0, -262174, 1, 0, -458782, 1, 0, -524318, 1, 0, -589854, 1, 0, -655390, 1, 0, -720926, 1, 0, -786462, 1, 0, -851998, 1, 0, -917534, 1, 0, -983070, 1, 0, -1048606, 1, 0, -1114142, 1, 0, -1179678, 1, 0, -1245214, 1, 0, -1310750, 1, 0, -1376286, 1, 0, -1441822, 1, 0, -1507358, 1, 0, -1572894, 1, 0, -1638430, 1, 0, -1703966, 1, 0, -28, 1, 0, -27, 1, 0, -26, 1, 0, -25, 1, 0, -24, 1, 0, -23, 1, 0, -22, 1, 0, -21, 1, 0, -20, 1, 0, -19, 1, 0, -18, 1, 0, -17, 1, 0, -16, 1, 0, -15, 1, 0, -14, 1, 0, -13, 1, 0, -131080, 1, 1, -196616, 1, 1, -262152, 1, 1, -327688, 1, 1, -393224, 1, 1, -458760, 1, 1, -524296, 1, 1, -589832, 1, 1, -655368, 1, 1, -720904, 1, 1, -786440, 1, 1, -851976, 1, 1, -917512, 1, 1, -983048, 1, 1, -1048584, 1, 1, -1114120, 1, 1, -1179656, 1, 1, -1245192, 1, 1, -1245191, 1, 1, -1179655, 1, 1, -1114119, 1, 1, -1048583, 1, 1, -983047, 1, 1, -917511, 1, 1, -851975, 1, 1, -786439, 1, 1, -720903, 1, 1, -655367, 1, 1, -589831, 1, 1, -524295, 1, 1, -458759, 1, 1, -393223, 1, 1, -327687, 1, 1, -262151, 1, 1, -131079, 1, 1, -196615, 1, 1, -393246, 1, 0, -327710, 1, 0)
-script = ExtResource("5_yrlpv")
+layer_1/tile_data = PackedInt32Array(-131102, 1, 0, -196638, 1, 0, -262174, 1, 0, -327710, 1, 0, -393246, 1, 0, -458782, 1, 0, -524318, 1, 0, -589854, 1, 0, -655390, 1, 0, -720926, 1, 0, -786462, 1, 0, -851998, 1, 0, -917534, 1, 0, -983070, 1, 0, -1048606, 1, 0, -1114142, 1, 0, -1179678, 1, 0, -1245214, 1, 0, -1310750, 1, 0, -1376286, 1, 0, -1441822, 1, 0, -1507358, 1, 0, -1572894, 1, 0, -1638430, 1, 0, -1703966, 1, 0, -28, 1, 0, -27, 1, 0, -26, 1, 0, -25, 1, 0, -24, 1, 0, -23, 1, 0, -22, 1, 0, -21, 1, 0, -20, 1, 0, -19, 1, 0, -18, 1, 0, -17, 1, 0, -16, 1, 0, -15, 1, 0, -14, 1, 0, -13, 1, 0, -131080, 1, 1, -196616, 1, 1, -262152, 1, 1, -327688, 1, 1, -393224, 1, 1, -458760, 1, 1, -524296, 1, 1, -589832, 1, 1, -655368, 1, 1, -720904, 1, 1, -786440, 1, 1, -851976, 1, 1, -917512, 1, 1, -983048, 1, 1, -1048584, 1, 1, -1114120, 1, 1, -1179656, 1, 1, -1245192, 1, 1, -1245191, 1, 1, -1179655, 1, 1, -1114119, 1, 1, -1048583, 1, 1, -983047, 1, 1, -917511, 1, 1, -851975, 1, 1, -786439, 1, 1, -720903, 1, 1, -655367, 1, 1, -589831, 1, 1, -524295, 1, 1, -458759, 1, 1, -393223, 1, 1, -327687, 1, 1, -262151, 1, 1, -131079, 1, 1, -196615, 1, 1)
+script = ExtResource("5_2n3c0")
 
 [node name="Debugger" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-13800, -1800)
 texture = SubResource("PlaceholderTexture2D_fsfy4")
 
-[node name="Enemy" parent="." instance=ExtResource("5_84cy3")]
+[node name="Enemy" parent="." instance=ExtResource("6_gav6d")]
 position = Vector2(-3000, -13500)
 
 [connection signal="venting" from="Squirrel" to="TileMap" method="_on_squirrel_venting"]
