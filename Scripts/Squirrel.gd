@@ -306,8 +306,7 @@ func vent():
 			
 func reset():
 	if Input.is_action_just_pressed("reset"):
-		position.x = -11400
-		position.y = -1500
+		position = spawn_pos
 
 
 

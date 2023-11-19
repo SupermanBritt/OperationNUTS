@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var gravity : float = 6000.0
 @export var speed : float = 750.0
-@export var pathLength : float = 4000.0
+@export var pathLength : float = 3000.0
 var currentX
 var startingX
 
