@@ -3,11 +3,19 @@
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_3338g"]
 [ext_resource type="Texture2D" uid="uid://dgxatdrkefnkm" path="res://Textures/enemy.png" id="2_ilepf"]
 [ext_resource type="Texture2D" uid="uid://donxcre54cw0p" path="res://Textures/flashlight.png" id="2_txfa5"]
+[ext_resource type="Shader" path="res://Sprites/EnemyShader.gdshader" id="2_wod24"]
 [ext_resource type="Script" path="res://Scripts/EnemyHitbox.gd" id="2_wul0i"]
+[ext_resource type="Texture2D" uid="uid://cpm514xedsxws" path="res://Textures/Enemy v02.png" id="3_op6mw"]
 [ext_resource type="Script" path="res://Scripts/FlashlightDetection.gd" id="3_yago7"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_de522"]
-size = Vector2(600, 1800)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8luqf"]
+shader = ExtResource("2_wod24")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(0, 1, 0, 1)
+shader_parameter/line_scale = 15.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7pjmq"]
 animations = [{
@@ -23,23 +31,25 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwkg5"]
 size = Vector2(500, 50)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y41t1"]
-size = Vector2(600, 1800)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k15w0"]
+radius = 310.0
+height = 1800.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_3338g")
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture = SubResource("PlaceholderTexture2D_de522")
+material = SubResource("ShaderMaterial_8luqf")
+texture = ExtResource("3_op6mw")
+flip_h = true
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7pjmq")
 
 [node name="FloorDetection" type="CollisionShape2D" parent="."]
-position = Vector2(0, 875)
+position = Vector2(0, 860)
 shape = SubResource("RectangleShape2D_jwkg5")
 metadata/_edit_lock_ = true
 
@@ -48,7 +58,7 @@ script = ExtResource("2_wul0i")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("RectangleShape2D_y41t1")
+shape = SubResource("CapsuleShape2D_k15w0")
 
 [node name="Flashlight" type="Area2D" parent="."]
 position = Vector2(2100, 0)
