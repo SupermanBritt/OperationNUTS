@@ -16,6 +16,7 @@ func _process(_delta):
 func die(x, y):
 	var deadenemy = preloadedSprite.instantiate()
 	deadenemy.position.x = x + 1800
-	deadenemy.position.y = x + 600
+	deadenemy.position.y = y
 	get_tree().current_scene.add_child(deadenemy)
-	queue_free()
+	get_parent().queue_free()
+	
