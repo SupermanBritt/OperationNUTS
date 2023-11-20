@@ -5,7 +5,6 @@ extends CharacterBody2D
 var preloadedSprite = preload("res://Sprites/dead_enemy.tscn")
 
 func _physics_process(delta):
-	print(self.get_path())
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
