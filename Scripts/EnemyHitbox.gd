@@ -18,5 +18,6 @@ func die(x, y):
 	deadenemy.position.x = x + 1800 * sign(get_parent().velocity.x)
 	deadenemy.position.y = y - 200
 	get_tree().current_scene.add_child(deadenemy)
+	get_parent().get_parent().get_node("end_door").decrement_enemies()
 	get_parent().queue_free()
 	

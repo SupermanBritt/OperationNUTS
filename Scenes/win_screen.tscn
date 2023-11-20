@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://ec2bikncvck"]
+
+[ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_51vos"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2t7e4"]
+font_size = 59
+
+[node name="WinScreen" type="Node2D"]
+script = ExtResource("1_51vos")
+
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 324.0
+offset_top = 129.0
+offset_right = 769.0
+offset_bottom = 248.0
+tooltip_text = "This will start the game"
+text = "Play Again"
+
+[node name="TitleButton" type="Button" parent="."]
+offset_left = 324.0
+offset_top = 290.0
+offset_right = 769.0
+offset_bottom = 409.0
+tooltip_text = "This will go back to the main menu"
+text = "Back to Main Menu"
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 323.0
+offset_top = 453.0
+offset_right = 768.0
+offset_bottom = 572.0
+tooltip_text = "This will exit the game"
+text = "Quit"
+icon_alignment = 1
+
+[node name="Title" type="Label" parent="."]
+offset_left = 214.0
+offset_top = 34.0
+offset_right = 904.0
+offset_bottom = 173.0
+text = "YOU WIN!!!"
+label_settings = SubResource("LabelSettings_2t7e4")
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(574, 324)
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="TitleButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

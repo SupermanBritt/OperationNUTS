@@ -1,8 +1,13 @@
 extends Area2D
 
+
 # Checks if the player has hit the flashlight
-func _on_body_entered(body):
-	if body.is_in_group("player"):
+func _on_body_entered(_body):
+	var bottom = $RayCastBottom.is_colliding() and $RayCastBottom.get_collider().is_in_group("player")
+	var top = $RayCastTop.is_colliding() and $RayCastTop.get_collider().is_in_group("player")
+	if  bottom or top:
+		get_parent().get_parent().get_node("Squirrel").set_is_dead(true)
+		await get_tree().create_timer(0.1).timeout
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

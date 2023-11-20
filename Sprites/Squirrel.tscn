@@ -1,22 +1,73 @@
-[gd_scene load_steps=17 format=3 uid="uid://coogyl0u8ymia"]
+[gd_scene load_steps=24 format=3 uid="uid://coogyl0u8ymia"]
 
 [ext_resource type="Script" path="res://Scripts/Squirrel.gd" id="1_7axbj"]
 [ext_resource type="Texture2D" uid="uid://coma22gflw40v" path="res://Textures/Squirrel-Run-Keys-Apart-Suit-Left.png" id="2_2apcc"]
 [ext_resource type="Texture2D" uid="uid://b5ldbsnv0b167" path="res://Textures/Squirrel-Glide-Keys-Left.png" id="2_5a6cu"]
+[ext_resource type="Texture2D" path="res://Textures/Squirrel-Run-Keys-Apart-Suit-Left-Climb-Down.png" id="2_8qjnn"]
 [ext_resource type="Texture2D" uid="uid://b5yoh6635r24c" path="res://Textures/Squirrel-Run-Keys-Apart-Suit-Right.png" id="2_d0mrn"]
 [ext_resource type="Texture2D" uid="uid://dogaodn8gksqw" path="res://Textures/Squirrel-Glide-Keys-Right.png" id="3_f47w3"]
+[ext_resource type="Texture2D" path="res://Textures/Squirrel-Run-Keys-Together-Suit-Left-Climb-Down.png" id="3_glrag"]
 [ext_resource type="Texture2D" uid="uid://dp4jpg1k0u57q" path="res://Textures/Squirrel-Run-Keys-Together-Suit-Left.png" id="3_o0lax"]
 [ext_resource type="PackedScene" uid="uid://d2lnccob6lmsc" path="res://Scenes/TerrainDetector.tscn" id="3_y3mvv"]
+[ext_resource type="Texture2D" path="res://Textures/Squirrel-Run-Keys-Apart-Suit-Climb-Left-Up.png" id="4_crdlt"]
 [ext_resource type="Texture2D" uid="uid://bn4bdhryeqq08" path="res://Textures/Squirrel-Jump-Keys-Down-Left.png" id="4_trb46"]
 [ext_resource type="Texture2D" uid="uid://c7dtslw26wl10" path="res://Textures/Squirrel-Jump-Keys-Down-Right.png" id="5_4fyj7"]
+[ext_resource type="Texture2D" path="res://Textures/Squirrel-Run-Keys-Together-Suit-Left-Climb-Up.png" id="5_7hb1h"]
 [ext_resource type="Texture2D" uid="uid://ch7u2dcogvyxc" path="res://Textures/Squirrel-Jump-Keys-Up-Left.png" id="6_2s8tv"]
+[ext_resource type="Texture2D" path="res://Textures/Squirrel-Run-Keys-Apart-Suit-Right-Climb-Down.png" id="6_uqqh2"]
+[ext_resource type="Texture2D" path="res://Textures/Squirrel-Run-Keys-Together-Suit-Right-Climb-Down.png" id="7_ei4q2"]
 [ext_resource type="Texture2D" uid="uid://0jgo6soloyfj" path="res://Textures/Squirrel-Jump-Keys-Up-Right.png" id="7_yk51m"]
+[ext_resource type="Texture2D" path="res://Textures/Squirrel-Run-Keys-Apart-Suit-Climb-Right-Up.png" id="8_l27i7"]
+[ext_resource type="Texture2D" path="res://Textures/Squirrel-Run-Keys-Together-Suit-Right-Climb-Up.png" id="9_7xkp1"]
 [ext_resource type="Texture2D" uid="uid://lsjt0qetmp7e" path="res://Textures/Squirrel-Run-Keys-Together-Suit-Right.png" id="11_5xnic"]
-[ext_resource type="Script" path="res://Scripts/EnemyAnimatedSprite2D.gd" id="12_6xmbr"]
 [ext_resource type="Script" path="res://Scripts/MeleeAttackRange.gd" id="13_gfh0d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x27mp"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8qjnn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_glrag")
+}],
+"loop": true,
+"name": &"climb_left_down",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_crdlt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7hb1h")
+}],
+"loop": true,
+"name": &"climb_left_up",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_uqqh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ei4q2")
+}],
+"loop": true,
+"name": &"climb_right_down",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_l27i7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7xkp1")
+}],
+"loop": true,
+"name": &"climb_right_up",
+"speed": 9.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_5a6cu")
@@ -113,9 +164,7 @@ metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x27mp")
-animation = &"run_right"
-script = ExtResource("12_6xmbr")
-metadata/_edit_lock_ = true
+animation = &"climb_left_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)

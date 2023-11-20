@@ -68,8 +68,16 @@ polygon = PackedVector2Array(-1800, -42, 5400, -225, 5400, 225, -1800, 42)
 metadata/_edit_lock_ = true
 
 [node name="FlashlightLight" type="PointLight2D" parent="Flashlight"]
-position = Vector2(1800, 0)
+position = Vector2(-1800, 0)
 scale = Vector2(1, 0.25)
 shadow_enabled = true
 texture = ExtResource("2_txfa5")
-metadata/_edit_lock_ = true
+offset = Vector2(3600, 0)
+
+[node name="RayCastTop" type="RayCast2D" parent="Flashlight"]
+position = Vector2(-1800, -42)
+target_position = Vector2(7100, -150)
+
+[node name="RayCastBottom" type="RayCast2D" parent="Flashlight"]
+position = Vector2(-1800, 42)
+target_position = Vector2(7100, 150)
