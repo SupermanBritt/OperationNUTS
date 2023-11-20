@@ -43,6 +43,14 @@ func _process(_delta):
 	var direction_held = Input.get_axis("move_left", "move_right") 
 	if is_dead:
 		_animated_sprite.stop()
+	elif isClinging and direction_facing == 1 and sign(velocity.y) == -1:
+		_animated_sprite.play("climb_right_up")
+	elif isClinging and direction_facing == 1 and sign(velocity.y) == 1:
+		_animated_sprite.play("climb_right_down")
+	elif isClinging and direction_facing == -1 and sign(velocity.y) == -1:
+		_animated_sprite.play("climb_left_up")
+	elif isClinging and direction_facing == -1 and sign(velocity.y) == 1:
+		_animated_sprite.play("climb_left_down")
 	elif sign(velocity.x) == 1 and direction_held == 1 and is_on_floor():
 		_animated_sprite.play("run_right")
 	elif sign(velocity.x) == -1 and direction_held == -1 and is_on_floor():
@@ -127,6 +135,10 @@ func _physics_process(delta):
 	
 	#Climbing
 	if on_wall() == direction_held and direction_held:
+		if direction_facing == 1:
+			_animated_sprite.play("climb_right_up")
+		else:
+			_animated_sprite.play("climb_left_up")
 		isClinging = true
 		isGliding = false
 	
