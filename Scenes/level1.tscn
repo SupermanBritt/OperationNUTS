@@ -112,4 +112,9 @@ script = ExtResource("5_2n3c0")
 [node name="end_door" parent="." instance=ExtResource("7_7bioq")]
 position = Vector2(-4497, -14105)
 
+[node name="Enemy2" parent="." instance=ExtResource("6_gav6d")]
+position = Vector2(-12589, -18913)
+speed = 800.0
+pathLength = 2400.0
+
 [connection signal="venting" from="Squirrel" to="TileMap" method="_on_squirrel_venting"]

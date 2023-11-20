@@ -7,6 +7,7 @@ var open = false
 func _ready():
 	_animated_sprite.play("close")
 	_animated_sprite.stop()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
