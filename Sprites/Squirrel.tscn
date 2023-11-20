@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://coogyl0u8ymia"]
+[gd_scene load_steps=17 format=3 uid="uid://coogyl0u8ymia"]
 
 [ext_resource type="Script" path="res://Scripts/Squirrel.gd" id="1_7axbj"]
 [ext_resource type="Texture2D" uid="uid://coma22gflw40v" path="res://Textures/Squirrel-Run-Keys-Apart-Suit-Left.png" id="2_2apcc"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://ch7u2dcogvyxc" path="res://Textures/Squirrel-Jump-Keys-Up-Left.png" id="6_2s8tv"]
 [ext_resource type="Texture2D" uid="uid://0jgo6soloyfj" path="res://Textures/Squirrel-Jump-Keys-Up-Right.png" id="7_yk51m"]
 [ext_resource type="Texture2D" uid="uid://lsjt0qetmp7e" path="res://Textures/Squirrel-Run-Keys-Together-Suit-Right.png" id="11_5xnic"]
+[ext_resource type="Script" path="res://Scripts/EnemyAnimatedSprite2D.gd" id="12_6xmbr"]
+[ext_resource type="Script" path="res://Scripts/MeleeAttackRange.gd" id="13_gfh0d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x27mp"]
 animations = [{
@@ -112,6 +114,8 @@ metadata/_edit_lock_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x27mp")
 animation = &"run_right"
+script = ExtResource("12_6xmbr")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -125,21 +129,31 @@ metadata/_edit_lock_ = true
 [node name="RayCast2DRight" type="RayCast2D" parent="."]
 position = Vector2(288, 0)
 target_position = Vector2(10, 0)
+metadata/_edit_lock_ = true
 
 [node name="RayCast2DDown" type="RayCast2D" parent="."]
 position = Vector2(0, 232)
 target_position = Vector2(0, 10)
+metadata/_edit_lock_ = true
 
 [node name="RayCast2DTop" type="RayCast2D" parent="."]
 position = Vector2(0, -264)
 target_position = Vector2(0, -10)
 hit_from_inside = true
+metadata/_edit_lock_ = true
 
 [node name="RayCast2DLeft" type="RayCast2D" parent="."]
 position = Vector2(-288, 0)
 target_position = Vector2(-10, 0)
+metadata/_edit_lock_ = true
 
 [node name="TerrainDetector" parent="." instance=ExtResource("3_y3mvv")]
+metadata/_edit_lock_ = true
+
+[node name="MeleeAttackRange" type="RayCast2D" parent="."]
+target_position = Vector2(1200, 0)
+collide_with_areas = true
+script = ExtResource("13_gfh0d")
 
 [connection signal="body_shape_exited" from="TerrainDetector" to="." method="_on_terrain_detector_body_shape_exited"]
 [connection signal="terrain_entered" from="TerrainDetector" to="." method="_on_terrain_detector_terrain_entered"]

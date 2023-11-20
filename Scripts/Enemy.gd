@@ -33,6 +33,3 @@ func _physics_process(delta):
 #		print("Scale is: ", scale.x)
 	
 	move_and_slide()
-
-#func _process(delta):
-	#get_parent().set_progress(get_parent().get_progress() + speed * delta)
