@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfmypul1rfpl1"]
+[gd_scene load_steps=5 format=3 uid="uid://b65xyxkxh6lnq"]
 
 [ext_resource type="Script" path="res://Scripts/dead_enemy.gd" id="1_gmx2g"]
-[ext_resource type="Texture2D" uid="uid://vcu08wxfnyyk" path="res://Textures/EnemyDead.png" id="1_ocule"]
+[ext_resource type="Texture2D" path="res://Textures/EnemyDead.png" id="1_ocule"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f4wkt"]
 animations = [{

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dg57vhh5ynqwh"]
+[gd_scene load_steps=13 format=3 uid="uid://cj0r8b5hi7pqd"]
 
 [ext_resource type="Texture2D" uid="uid://evynel21dtow" path="res://Textures/Untitled.png" id="1_sm8lk"]
 [ext_resource type="PackedScene" uid="uid://coogyl0u8ymia" path="res://Sprites/Squirrel.tscn" id="2_6iihy"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c3ho1rvb6oj0x" path="res://Tilesheets/tempbricks.png" id="4_qyene"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="5_2n3c0"]
 [ext_resource type="PackedScene" uid="uid://btkbvpehjqw01" path="res://Sprites/Enemy.tscn" id="6_gav6d"]
-[ext_resource type="PackedScene" uid="uid://bjh3j2ipoidj4" path="res://Scenes/end_door.tscn" id="7_7bioq"]
+[ext_resource type="PackedScene" uid="uid://bfpmm1v732cy7" path="res://Scenes/end_door.tscn" id="7_7bioq"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mypsq"]
 polygon = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
@@ -90,7 +90,7 @@ color = Color(0, 0.733333, 0.529412, 0.176471)
 polygon = PackedVector2Array(-7200, -4565, -3600, -21600, -6600, -4965, -15000, 600)
 
 [node name="Squirrel" parent="." instance=ExtResource("2_6iihy")]
-position = Vector2(-11844, -10936)
+position = Vector2(-12879, -1524)
 
 [node name="Enemy" parent="." instance=ExtResource("6_gav6d")]
 position = Vector2(-10214, -14114)
