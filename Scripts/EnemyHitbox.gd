@@ -1,5 +1,7 @@
 extends Area2D
 
+var preloadedSprite = preload("res://Sprites/dead_enemy.tscn")
+
 # Checks if the player has hit the enemy
 func _on_body_entered(body):
 	if body.is_in_group("player"):
@@ -10,3 +12,11 @@ func _process(_delta):
 	var bodies = get_overlapping_bodies()
 	for i in range(0,bodies.size()):
 		_on_body_entered(bodies[i])
+
+func die(x, y):
+	var deadenemy = preloadedSprite.instantiate()
+	deadenemy.position.x = x + 1800 * sign(get_parent().velocity.x)
+	deadenemy.position.y = y - 200
+	get_tree().current_scene.add_child(deadenemy)
+	get_parent().queue_free()
+	

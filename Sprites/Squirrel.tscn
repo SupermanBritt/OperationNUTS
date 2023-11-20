@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" path="res://Textures/Squirrel-Run-Keys-Apart-Suit-Climb-Right-Up.png" id="8_l27i7"]
 [ext_resource type="Texture2D" path="res://Textures/Squirrel-Run-Keys-Together-Suit-Right-Climb-Up.png" id="9_7xkp1"]
 [ext_resource type="Texture2D" uid="uid://lsjt0qetmp7e" path="res://Textures/Squirrel-Run-Keys-Together-Suit-Right.png" id="11_5xnic"]
+[ext_resource type="Script" path="res://Scripts/EnemyAnimatedSprite2D.gd" id="12_6xmbr"]
+[ext_resource type="Script" path="res://Scripts/MeleeAttackRange.gd" id="13_gfh0d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x27mp"]
 animations = [{
@@ -177,21 +179,31 @@ metadata/_edit_lock_ = true
 [node name="RayCast2DRight" type="RayCast2D" parent="."]
 position = Vector2(288, 0)
 target_position = Vector2(10, 0)
+metadata/_edit_lock_ = true
 
 [node name="RayCast2DDown" type="RayCast2D" parent="."]
 position = Vector2(0, 232)
 target_position = Vector2(0, 10)
+metadata/_edit_lock_ = true
 
 [node name="RayCast2DTop" type="RayCast2D" parent="."]
 position = Vector2(0, -264)
 target_position = Vector2(0, -10)
 hit_from_inside = true
+metadata/_edit_lock_ = true
 
 [node name="RayCast2DLeft" type="RayCast2D" parent="."]
 position = Vector2(-288, 0)
 target_position = Vector2(-10, 0)
+metadata/_edit_lock_ = true
 
 [node name="TerrainDetector" parent="." instance=ExtResource("3_y3mvv")]
+metadata/_edit_lock_ = true
+
+[node name="MeleeAttackRange" type="RayCast2D" parent="."]
+target_position = Vector2(1200, 0)
+collide_with_areas = true
+script = ExtResource("13_gfh0d")
 
 [connection signal="body_shape_exited" from="TerrainDetector" to="." method="_on_terrain_detector_body_shape_exited"]
 [connection signal="terrain_entered" from="TerrainDetector" to="." method="_on_terrain_detector_terrain_entered"]

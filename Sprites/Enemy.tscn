@@ -6,9 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://donxcre54cw0p" path="res://Textures/flashlight.png" id="2_txfa5"]
 [ext_resource type="Script" path="res://Scripts/EnemyHitbox.gd" id="2_wul0i"]
 [ext_resource type="Script" path="res://Scripts/FlashlightDetection.gd" id="3_yago7"]
+[ext_resource type="Script" path="res://Scripts/EnemyAnimatedSprite2D.gd" id="4_vrdsh"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2w2oy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0apr1"]
 shader = ExtResource("2_a3edx")
+shader_parameter/enabled = false
 shader_parameter/rainbow = false
 shader_parameter/line_color = Color(0, 1, 0, 1)
 shader_parameter/line_scale = 15.0
@@ -28,10 +30,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwkg5"]
-size = Vector2(500, 50)
+size = Vector2(435, 50)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y41t1"]
-size = Vector2(600, 1800)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vm2a4"]
+radius = 307.0
+height = 1776.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_3338g")
@@ -40,20 +43,21 @@ metadata/_edit_lock_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_2w2oy")
 sprite_frames = SubResource("SpriteFrames_7pjmq")
-
-[node name="FloorDetection" type="CollisionShape2D" parent="."]
-position = Vector2(0, 875)
-shape = SubResource("RectangleShape2D_jwkg5")
+script = ExtResource("4_vrdsh")
 metadata/_edit_lock_ = true
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="FloorDetection" type="CollisionShape2D" parent="."]
+position = Vector2(-12.5, 863)
+shape = SubResource("RectangleShape2D_jwkg5")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["enemy"]]
 script = ExtResource("2_wul0i")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("RectangleShape2D_y41t1")
+shape = SubResource("CapsuleShape2D_vm2a4")
 
-[node name="Flashlight" type="Area2D" parent="."]
+[node name="Flashlight" type="Area2D" parent="." groups=["flashlight"]]
 position = Vector2(2100, 0)
 scale = Vector2(1, 4)
 script = ExtResource("3_yago7")
