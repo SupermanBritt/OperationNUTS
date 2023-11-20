@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://56v1fx35pt3g"]
+[gd_scene load_steps=5 format=3 uid="uid://56v1fx35pt3g"]
 
+[ext_resource type="Script" path="res://Scripts/dead_enemy.gd" id="1_gmx2g"]
 [ext_resource type="Texture2D" uid="uid://vcu08wxfnyyk" path="res://Textures/EnemyDead.png" id="1_ocule"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f4wkt"]
@@ -17,7 +18,8 @@ animations = [{
 radius = 305.0
 height = 1762.0
 
-[node name="DeadEnemy" type="CharacterBody2D"]
+[node name="Dead_Enemy" type="CharacterBody2D"]
+script = ExtResource("1_gmx2g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f4wkt")

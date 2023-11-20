@@ -50,7 +50,7 @@ metadata/_edit_lock_ = true
 position = Vector2(-12.5, 863)
 shape = SubResource("RectangleShape2D_jwkg5")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["enemy"]]
 script = ExtResource("2_wul0i")
 metadata/_edit_lock_ = true
 
