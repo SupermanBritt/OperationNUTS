@@ -25,6 +25,7 @@ var inVent = false
 var in_debug_mode = false
 var spawn_pos
 var is_dead = false
+var allow_debug = true
 
 @onready var _animated_sprite = $AnimatedSprite2D
 
@@ -163,11 +164,12 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("vent") and currVent.size() != 0:
 		vent()
+	
+	if allow_debug:
+		reset()
+		if Input.is_action_just_pressed("debug"):
+			in_debug_mode = !in_debug_mode
 
-	reset()
-	if Input.is_action_just_pressed("debug"):
-		in_debug_mode = !in_debug_mode
-		
 	if in_debug_mode:
 		debug_mode()
 	else:
