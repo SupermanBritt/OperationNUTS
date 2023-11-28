@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0jgo6soloyfj"
-path="res://.godot/imported/Squirrel-Jump-Keys-Up-Right.png-bc49f0270b41107b60ece6fe5660dbd7.ctex"
+uid="uid://d3rhkovh1wges"
+path="res://.godot/imported/EnemyWalkCycleSpriteSheet.png-9bef5b846e58a243ab40a34f513c6558.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Squirrel-Jump-Keys-Up-Right.png"
-dest_files=["res://.godot/imported/Squirrel-Jump-Keys-Up-Right.png-bc49f0270b41107b60ece6fe5660dbd7.ctex"]
+source_file="res://Textures/Enemy/EnemyWalkCycleSpriteSheet.png"
+dest_files=["res://.godot/imported/EnemyWalkCycleSpriteSheet.png-9bef5b846e58a243ab40a34f513c6558.ctex"]
 
 [params]
 

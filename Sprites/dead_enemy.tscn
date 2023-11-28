@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://b65xyxkxh6lnq"]
 
 [ext_resource type="Script" path="res://Scripts/dead_enemy.gd" id="1_gmx2g"]
-[ext_resource type="Texture2D" uid="uid://vcu08wxfnyyk" path="res://Textures/EnemyDead.png" id="1_ocule"]
+[ext_resource type="Texture2D" uid="uid://vcu08wxfnyyk" path="res://Textures/Enemy/EnemyDead.png" id="2_ym8md"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f4wkt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ocule")
+"texture": ExtResource("2_ym8md")
 }],
 "loop": true,
 "name": &"default",

@@ -5,13 +5,14 @@ extends CharacterBody2D
 @export var pathLength : float = 3000.0
 var currentX
 var startingX
-
+@onready var _animated_sprite = $AnimatedSprite2D
 
 func _ready():
 	startingX = get_position().x
 	currentX = startingX
 	velocity.x = speed
-	scale.x = -1
+	scale.x = 1
+	_animated_sprite.play("walk")
 
 func _physics_process(delta):
 	# Getting the current X position

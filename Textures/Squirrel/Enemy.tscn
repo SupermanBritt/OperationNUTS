@@ -1,0 +1,166 @@
+[gd_scene load_steps=23 format=3 uid="uid://btkbvpehjqw01"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_3338g"]
+[ext_resource type="Shader" path="res://Shaders/EnemyOutline.gdshader" id="2_a3edx"]
+[ext_resource type="Texture2D" uid="uid://donxcre54cw0p" path="res://Textures/flashlight.png" id="2_txfa5"]
+[ext_resource type="Script" path="res://Scripts/EnemyHitbox.gd" id="2_wul0i"]
+[ext_resource type="Texture2D" uid="uid://dgxatdrkefnkm" path="res://Textures/Enemy/enemy.png" id="3_56nyl"]
+[ext_resource type="Script" path="res://Scripts/FlashlightDetection.gd" id="3_yago7"]
+[ext_resource type="Texture2D" uid="uid://d3rhkovh1wges" path="res://Textures/Enemy/EnemyWalkCycleSpriteSheet.png" id="4_1evea"]
+[ext_resource type="Script" path="res://Scripts/EnemyAnimatedSprite2D.gd" id="4_vrdsh"]
+[ext_resource type="Script" path="res://Scripts/SusMeter.gd" id="8_ccqgo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0apr1"]
+shader = ExtResource("2_a3edx")
+shader_parameter/enabled = false
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(0, 1, 0, 1)
+shader_parameter/line_scale = 15.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vacj6"]
+atlas = ExtResource("4_1evea")
+region = Rect2(0, 0, 679, 1785)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ithe2"]
+atlas = ExtResource("4_1evea")
+region = Rect2(679, 0, 679, 1785)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04cjw"]
+atlas = ExtResource("4_1evea")
+region = Rect2(1358, 0, 679, 1785)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3pwh"]
+atlas = ExtResource("4_1evea")
+region = Rect2(2037, 0, 679, 1785)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olwsh"]
+atlas = ExtResource("4_1evea")
+region = Rect2(2716, 0, 679, 1785)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7c2h"]
+atlas = ExtResource("4_1evea")
+region = Rect2(0, 1785, 679, 1785)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnqg3"]
+atlas = ExtResource("4_1evea")
+region = Rect2(679, 1785, 679, 1785)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v35pm"]
+atlas = ExtResource("4_1evea")
+region = Rect2(1358, 1785, 679, 1785)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cwnx"]
+atlas = ExtResource("4_1evea")
+region = Rect2(2037, 1785, 679, 1785)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7pjmq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_56nyl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vacj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ithe2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04cjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3pwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olwsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7c2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnqg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v35pm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cwnx")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwkg5"]
+size = Vector2(435, 50)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vm2a4"]
+radius = 307.0
+height = 1776.0
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_3338g")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_0apr1")
+sprite_frames = SubResource("SpriteFrames_7pjmq")
+animation = &"walk"
+script = ExtResource("4_vrdsh")
+metadata/_edit_lock_ = true
+
+[node name="FloorDetection" type="CollisionShape2D" parent="."]
+position = Vector2(-12.5, 863)
+shape = SubResource("RectangleShape2D_jwkg5")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["enemy"]]
+script = ExtResource("2_wul0i")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_vm2a4")
+
+[node name="Flashlight" type="Area2D" parent="." groups=["flashlight"]]
+position = Vector2(2100, 0)
+scale = Vector2(1, 4)
+script = ExtResource("3_yago7")
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flashlight"]
+polygon = PackedVector2Array(-1800, -42, 5400, -225, 5400, 225, -1800, 42)
+metadata/_edit_lock_ = true
+
+[node name="FlashlightLight" type="PointLight2D" parent="Flashlight"]
+position = Vector2(-1800, 0)
+scale = Vector2(1, 0.25)
+shadow_enabled = true
+texture = ExtResource("2_txfa5")
+offset = Vector2(3600, 0)
+
+[node name="RayCastTop" type="RayCast2D" parent="Flashlight"]
+position = Vector2(-1800, -42)
+target_position = Vector2(7100, -100)
+
+[node name="RayCastBottom" type="RayCast2D" parent="Flashlight"]
+position = Vector2(-1800, 42)
+target_position = Vector2(7100, 100)
+
+[node name="RayCastMiddle" type="RayCast2D" parent="Flashlight"]
+position = Vector2(-1800, 0)
+target_position = Vector2(7100, 0)
+
+[node name="SusMeter" type="Polygon2D" parent="."]
+position = Vector2(0, -38)
+color = Color(1, 0.219608, 0.231373, 1)
+polygon = PackedVector2Array(-300, -1000, 300, -1000, 300, -900, -300, -900)
+script = ExtResource("8_ccqgo")
+
+[connection signal="suspicionValue" from="Flashlight" to="SusMeter" method="_on_flashlight_suspicion_value"]

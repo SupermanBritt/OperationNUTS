@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7dtslw26wl10"
-path="res://.godot/imported/Squirrel-Jump-Keys-Down-Right.png-f3efb7c20e0e3136feaeba215e8a08cf.ctex"
+uid="uid://dyed6rcvqr4i0"
+path="res://.godot/imported/Squirrel-Run-Keys-Together-Suit-Left-Climb-Up.png-abcd39125fd783d5eaa1376c54acd1cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Squirrel-Jump-Keys-Down-Right.png"
-dest_files=["res://.godot/imported/Squirrel-Jump-Keys-Down-Right.png-f3efb7c20e0e3136feaeba215e8a08cf.ctex"]
+source_file="res://Textures/Squirrel/Squirrel-Run-Keys-Together-Suit-Left-Climb-Up.png"
+dest_files=["res://.godot/imported/Squirrel-Run-Keys-Together-Suit-Left-Climb-Up.png-abcd39125fd783d5eaa1376c54acd1cc.ctex"]
 
 [params]
 

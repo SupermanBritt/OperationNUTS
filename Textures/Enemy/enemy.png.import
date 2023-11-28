@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn4bdhryeqq08"
-path="res://.godot/imported/Squirrel-Jump-Keys-Down-Left.png-27ce9ea9761a44a5967cd854832eb9ec.ctex"
+uid="uid://dgxatdrkefnkm"
+path="res://.godot/imported/enemy.png-15d2976e1658cd34c3fe4d381167da76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Squirrel-Jump-Keys-Down-Left.png"
-dest_files=["res://.godot/imported/Squirrel-Jump-Keys-Down-Left.png-27ce9ea9761a44a5967cd854832eb9ec.ctex"]
+source_file="res://Textures/Enemy/enemy.png"
+dest_files=["res://.godot/imported/enemy.png-15d2976e1658cd34c3fe4d381167da76.ctex"]
 
 [params]
 
