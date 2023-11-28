@@ -6,6 +6,7 @@ extends CharacterBody2D
 var currentX
 var startingX
 
+
 func _ready():
 	startingX = get_position().x
 	currentX = startingX
