@@ -12,6 +12,13 @@ func _ready():
 	velocity.x = speed
 	scale.x = -1
 
+func enableOutline():
+	get_node("AnimatedSprite2D").enableOutline()
+
+func disableOutline():
+	get_node("AnimatedSprite2D").disableOutline()
+
+
 func _physics_process(delta):
 	# Getting the current X position
 	currentX = get_position().x
