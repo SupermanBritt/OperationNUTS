@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3rhkovh1wges"
-path="res://.godot/imported/EnemyWalkCycleSpriteSheet.png-9bef5b846e58a243ab40a34f513c6558.ctex"
+uid="uid://dm6kj2k5q6gbr"
+path="res://.godot/imported/WalkCycleRight (1).png-997078717a3536679b152c7ac6812321.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Enemy/EnemyWalkCycleSpriteSheet.png"
-dest_files=["res://.godot/imported/EnemyWalkCycleSpriteSheet.png-9bef5b846e58a243ab40a34f513c6558.ctex"]
+source_file="res://Textures/Squirrel/WalkCycleRight (1).png"
+dest_files=["res://.godot/imported/WalkCycleRight (1).png-997078717a3536679b152c7ac6812321.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://btkbvpehjqw01"]
+[gd_scene load_steps=13 format=3 uid="uid://btkbvpehjqw01"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_3338g"]
 [ext_resource type="Shader" path="res://Shaders/EnemyOutline.gdshader" id="2_a3edx"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://Scripts/EnemyHitbox.gd" id="2_wul0i"]
 [ext_resource type="Texture2D" uid="uid://dgxatdrkefnkm" path="res://Textures/Enemy/enemy.png" id="3_56nyl"]
 [ext_resource type="Script" path="res://Scripts/FlashlightDetection.gd" id="3_yago7"]
-[ext_resource type="Texture2D" uid="uid://d3rhkovh1wges" path="res://Textures/Enemy/EnemyWalkCycleSpriteSheet.png" id="4_1evea"]
 [ext_resource type="Script" path="res://Scripts/EnemyAnimatedSprite2D.gd" id="4_vrdsh"]
 [ext_resource type="Script" path="res://Scripts/SusMeter.gd" id="8_ccqgo"]
 
@@ -20,42 +19,6 @@ shader_parameter/frequency = 0.5
 shader_parameter/light_offset = 0.5
 shader_parameter/alpha = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vacj6"]
-atlas = ExtResource("4_1evea")
-region = Rect2(0, 0, 679, 1785)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ithe2"]
-atlas = ExtResource("4_1evea")
-region = Rect2(679, 0, 679, 1785)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_04cjw"]
-atlas = ExtResource("4_1evea")
-region = Rect2(1358, 0, 679, 1785)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f3pwh"]
-atlas = ExtResource("4_1evea")
-region = Rect2(2037, 0, 679, 1785)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_olwsh"]
-atlas = ExtResource("4_1evea")
-region = Rect2(2716, 0, 679, 1785)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j7c2h"]
-atlas = ExtResource("4_1evea")
-region = Rect2(0, 1785, 679, 1785)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nnqg3"]
-atlas = ExtResource("4_1evea")
-region = Rect2(679, 1785, 679, 1785)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v35pm"]
-atlas = ExtResource("4_1evea")
-region = Rect2(1358, 1785, 679, 1785)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5cwnx"]
-atlas = ExtResource("4_1evea")
-region = Rect2(2037, 1785, 679, 1785)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_7pjmq"]
 animations = [{
 "frames": [{
@@ -66,36 +29,14 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vacj6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ithe2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_04cjw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f3pwh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_olwsh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j7c2h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nnqg3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v35pm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5cwnx")
-}],
+"frames": [],
 "loop": true,
-"name": &"walk",
+"name": &"walkleft",
+"speed": 7.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walkright",
 "speed": 5.0
 }]
 
@@ -113,7 +54,7 @@ metadata/_edit_lock_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_0apr1")
 sprite_frames = SubResource("SpriteFrames_7pjmq")
-animation = &"walk"
+animation = &"walkleft"
 script = ExtResource("4_vrdsh")
 metadata/_edit_lock_ = true
 

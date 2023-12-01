@@ -11,8 +11,8 @@ func _ready():
 	startingX = get_position().x
 	currentX = startingX
 	velocity.x = speed
-	scale.x = 1
-	_animated_sprite.play("walk")
+	scale.x *= -1
+	_animated_sprite.play("walkleft")
 
 func _physics_process(delta):
 	# Getting the current X position
