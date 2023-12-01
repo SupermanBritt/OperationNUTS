@@ -20,4 +20,6 @@ func die(x, y):
 	get_tree().current_scene.add_child(deadenemy)
 	get_parent().get_parent().get_node("end_door").decrement_enemies()
 	get_parent().queue_free()
-	
+
+func enableOutline():
+	get_parent().enableOutline()

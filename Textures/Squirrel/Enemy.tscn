@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/SusMeter.gd" id="8_ccqgo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0apr1"]
+resource_local_to_scene = true
 shader = ExtResource("2_a3edx")
 shader_parameter/enabled = false
 shader_parameter/rainbow = false
