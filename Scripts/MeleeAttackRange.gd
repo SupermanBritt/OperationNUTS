@@ -4,9 +4,13 @@ extends RayCast2D
 
 func _on_body_entered(body, x, y):
 	if body.is_in_group("enemy"):
+		var instance = body.get_instance_id()
+		print(instance)
+		var enemyInstance = instance_from_id(instance)
+		enemyInstance.enableOutline()
+#Call a function and have the enemy always call a function to turn off the highlight so that it is off as soon as it leave the range
 		if Input.is_action_just_pressed("kill"):
 			body.die(x, y)
-#		body.get_node("AnimatedSprite2D").enableOutline()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
