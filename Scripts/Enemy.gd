@@ -13,8 +13,10 @@ func _ready():
 	scale.x = -1
 
 func enableOutline():
-	print("makes it here")
 	get_node("AnimatedSprite2D").enableOutline()
+
+func disableOutline():
+	get_node("AnimatedSprite2D").disableOutline()
 
 
 func _physics_process(delta):

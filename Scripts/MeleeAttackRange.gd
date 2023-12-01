@@ -5,7 +5,6 @@ extends RayCast2D
 func _on_body_entered(body, x, y):
 	if body.is_in_group("enemy"):
 		body.enableOutline()
-#Call a function and have the enemy always call a function to turn off the highlight so that it is off as soon as it leave the range
 		if Input.is_action_just_pressed("kill"):
 			body.die(x, y)
 
@@ -18,3 +17,9 @@ func _process(_delta):
 	target_position.x = attackRange * get_parent().direction_facing
 	if is_colliding():
 		_on_body_entered(get_collider(), get_collision_point().x, get_collision_point().y)
+	else:
+		var childrenCount = get_tree().get_current_scene().get_child_count()
+		for i in childrenCount:
+			var child = get_tree().get_current_scene().get_child(i)
+			if child.is_in_group("enemy"):
+				child.disableOutline()
