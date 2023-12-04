@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b65xyxkxh6lnq"]
+[gd_scene load_steps=9 format=3 uid="uid://b65xyxkxh6lnq"]
 
 [ext_resource type="Script" path="res://Scripts/dead_enemy.gd" id="1_gmx2g"]
 [ext_resource type="Texture2D" uid="uid://vcu08wxfnyyk" path="res://Textures/EnemyDead.png" id="1_ocule"]
 [ext_resource type="Shader" path="res://Shaders/EnemyOutline.gdshader" id="2_4c5xy"]
+[ext_resource type="Script" path="res://Scripts/DeadEnemyAnimatedSprite2D.gd" id="4_fr5j0"]
+[ext_resource type="Script" path="res://Scripts/DeadEnemyCollisionShape2D.gd" id="5_gbblb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1allm"]
 shader = ExtResource("2_4c5xy")
@@ -29,13 +31,15 @@ animations = [{
 radius = 305.0
 height = 1762.0
 
-[node name="Dead_Enemy" type="CharacterBody2D"]
+[node name="Dead_Enemy" type="CharacterBody2D" groups=["dead_enemy"]]
 script = ExtResource("1_gmx2g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_1allm")
 sprite_frames = SubResource("SpriteFrames_f4wkt")
+script = ExtResource("4_fr5j0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_vqfwn")
+script = ExtResource("5_gbblb")
