@@ -12,6 +12,8 @@ func _on_body_entered(body, x, y):
 		body.enableOutline()
 	elif body.is_in_group("dead_enemy"):
 		body.enableOutline()
+		if Input.is_action_just_pressed("kill"):
+			body.despawn()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

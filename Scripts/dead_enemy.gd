@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var gravity : float = 6000.0
 
-var preloadedSprite = preload("res://Sprites/dead_enemy.tscn")
+#var preloadedSprite = preload("res://Sprites/dead_enemy.tscn")
 
 func _physics_process(delta):
 	# Add the gravity.
