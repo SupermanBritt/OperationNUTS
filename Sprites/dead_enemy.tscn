@@ -1,7 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://b65xyxkxh6lnq"]
+[gd_scene load_steps=7 format=3 uid="uid://b65xyxkxh6lnq"]
 
 [ext_resource type="Script" path="res://Scripts/dead_enemy.gd" id="1_gmx2g"]
 [ext_resource type="Texture2D" uid="uid://vcu08wxfnyyk" path="res://Textures/EnemyDead.png" id="1_ocule"]
+[ext_resource type="Shader" path="res://Shaders/EnemyOutline.gdshader" id="2_4c5xy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1allm"]
+shader = ExtResource("2_4c5xy")
+shader_parameter/enabled = false
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(0, 1, 0, 1)
+shader_parameter/line_scale = 15.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f4wkt"]
 animations = [{
@@ -22,6 +33,7 @@ height = 1762.0
 script = ExtResource("1_gmx2g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_1allm")
 sprite_frames = SubResource("SpriteFrames_f4wkt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

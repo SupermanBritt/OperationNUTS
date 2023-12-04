@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cj0r8b5hi7pqd"]
+[gd_scene load_steps=14 format=3 uid="uid://cj0r8b5hi7pqd"]
 
 [ext_resource type="Texture2D" uid="uid://evynel21dtow" path="res://Textures/Untitled.png" id="1_sm8lk"]
 [ext_resource type="PackedScene" uid="uid://coogyl0u8ymia" path="res://Sprites/Squirrel.tscn" id="2_6iihy"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="5_2n3c0"]
 [ext_resource type="PackedScene" uid="uid://btkbvpehjqw01" path="res://Sprites/Enemy.tscn" id="6_gav6d"]
 [ext_resource type="PackedScene" uid="uid://bfpmm1v732cy7" path="res://Scenes/end_door.tscn" id="7_7bioq"]
+[ext_resource type="PackedScene" uid="uid://dt57gpyxrtkf6" path="res://Sprites/cardboard.tscn" id="8_7w8od"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mypsq"]
 polygon = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
@@ -112,5 +113,8 @@ position = Vector2(-4497, -14105)
 position = Vector2(-12589, -18913)
 speed = 800.0
 pathLength = 2400.0
+
+[node name="Cardboard" parent="." instance=ExtResource("8_7w8od")]
+position = Vector2(-10496, -2711)
 
 [connection signal="venting" from="Squirrel" to="TileMap" method="_on_squirrel_venting"]

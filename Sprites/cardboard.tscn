@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://dt57gpyxrtkf6"]
+
+[ext_resource type="Script" path="res://Scripts/cardboard.gd" id="1_4tfn5"]
+[ext_resource type="Shader" path="res://Shaders/EnemyOutline.gdshader" id="1_vp74q"]
+[ext_resource type="Texture2D" uid="uid://bsr8hoxp3ubfu" path="res://Textures/CardboardBox.png" id="2_h3dka"]
+[ext_resource type="Script" path="res://Scripts/ObjectAnimatedSprite2D.gd" id="3_oy4ch"]
+[ext_resource type="Script" path="res://Scripts/ObjectHitboxCollision2D.gd" id="4_a27vy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tqbw0"]
+resource_local_to_scene = true
+shader = ExtResource("1_vp74q")
+shader_parameter/enabled = false
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(0, 1, 0, 1)
+shader_parameter/line_scale = 15.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_buuxn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h3dka")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slp8y"]
+size = Vector2(600, 600)
+
+[node name="Cardboard" type="Area2D" groups=["interactable"]]
+script = ExtResource("1_4tfn5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_tqbw0")
+sprite_frames = SubResource("SpriteFrames_buuxn")
+script = ExtResource("3_oy4ch")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_slp8y")
+script = ExtResource("4_a27vy")

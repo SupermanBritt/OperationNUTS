@@ -7,6 +7,8 @@ func _on_body_entered(body, x, y):
 		body.enableOutline()
 		if Input.is_action_just_pressed("kill"):
 			body.die(x, y)
+	elif body.is_in_group("interactable"):
+		body.enableOutline()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,4 +24,6 @@ func _process(_delta):
 		for i in childrenCount:
 			var child = get_tree().get_current_scene().get_child(i)
 			if child.is_in_group("enemy"):
+				child.disableOutline()
+			elif child.is_in_group("interactable"):
 				child.disableOutline()
