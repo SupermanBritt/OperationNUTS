@@ -21,3 +21,6 @@ func enableOutline():
 
 func disableOutline():
 	get_node("AnimatedSprite2D").disableOutline()
+
+func despawn():
+	queue_free()

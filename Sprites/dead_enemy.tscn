@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://b65xyxkxh6lnq"]
 
 [ext_resource type="Script" path="res://Scripts/dead_enemy.gd" id="1_gmx2g"]
-[ext_resource type="Texture2D" uid="uid://vcu08wxfnyyk" path="res://Textures/Enemy/EnemyDead.png" id="2_dig2l"]
 [ext_resource type="Shader" path="res://Shaders/EnemyOutline.gdshader" id="2_4c5xy"]
+[ext_resource type="Texture2D" uid="uid://vcu08wxfnyyk" path="res://Textures/Enemy/EnemyDead.png" id="2_dig2l"]
 [ext_resource type="Script" path="res://Scripts/DeadEnemyAnimatedSprite2D.gd" id="4_fr5j0"]
 [ext_resource type="Script" path="res://Scripts/DeadEnemyCollisionShape2D.gd" id="5_gbblb"]
 
