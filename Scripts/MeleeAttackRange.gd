@@ -21,7 +21,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	target_position.x = attackRange * get_parent().direction_facing
+	#target_position.x = attackRange * get_parent().direction_facing
+
 	if is_colliding():
 		_on_body_entered(get_collider(), get_collision_point().x, get_collision_point().y)
 	else:

@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://btkbvpehjqw01"]
+[gd_scene load_steps=13 format=3 uid="uid://btkbvpehjqw01"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_3338g"]
 [ext_resource type="Shader" path="res://Shaders/EnemyOutline.gdshader" id="2_a3edx"]
-[ext_resource type="Texture2D" uid="uid://dgxatdrkefnkm" path="res://Textures/enemy.png" id="2_ilepf"]
 [ext_resource type="Texture2D" uid="uid://donxcre54cw0p" path="res://Textures/flashlight.png" id="2_txfa5"]
 [ext_resource type="Script" path="res://Scripts/EnemyHitbox.gd" id="2_wul0i"]
+[ext_resource type="Texture2D" uid="uid://dgxatdrkefnkm" path="res://Textures/Enemy/enemy.png" id="3_56nyl"]
 [ext_resource type="Script" path="res://Scripts/FlashlightDetection.gd" id="3_yago7"]
 [ext_resource type="Script" path="res://Scripts/EnemyAnimatedSprite2D.gd" id="4_vrdsh"]
+[ext_resource type="Script" path="res://Scripts/SusMeter.gd" id="8_ccqgo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0apr1"]
 resource_local_to_scene = true
@@ -23,10 +24,20 @@ shader_parameter/alpha = 1.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ilepf")
+"texture": ExtResource("3_56nyl")
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walkleft",
+"speed": 7.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walkright",
 "speed": 5.0
 }]
 
@@ -77,8 +88,20 @@ offset = Vector2(3600, 0)
 
 [node name="RayCastTop" type="RayCast2D" parent="Flashlight"]
 position = Vector2(-1800, -42)
-target_position = Vector2(7100, -150)
+target_position = Vector2(7100, -100)
 
 [node name="RayCastBottom" type="RayCast2D" parent="Flashlight"]
 position = Vector2(-1800, 42)
-target_position = Vector2(7100, 150)
+target_position = Vector2(7100, 100)
+
+[node name="RayCastMiddle" type="RayCast2D" parent="Flashlight"]
+position = Vector2(-1800, 0)
+target_position = Vector2(7100, 0)
+
+[node name="SusMeter" type="Polygon2D" parent="."]
+position = Vector2(0, -38)
+color = Color(1, 0.219608, 0.231373, 1)
+polygon = PackedVector2Array(-300, -1000, 300, -1000, 300, -900, -300, -900)
+script = ExtResource("8_ccqgo")
+
+[connection signal="suspicionValue" from="Flashlight" to="SusMeter" method="_on_flashlight_suspicion_value"]
