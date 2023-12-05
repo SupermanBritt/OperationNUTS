@@ -22,7 +22,7 @@ func decrement_enemies():
 		_animated_sprite.stop()
 		open = true
 
-func _process(delta):
+func _process(_delta):
 	if goToNextLevel:
 		get_tree().change_scene_to_file("res://Scenes/win_screen.tscn")
 func _on_area_2d_body_entered(body):
