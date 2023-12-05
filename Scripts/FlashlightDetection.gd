@@ -7,6 +7,7 @@ var susValue = 0
 
 signal suspicionValue(suspicionValue)
 
+var squirrelShouldDie = false
 # Checks if the player has hit the flashlight
 func _on_body_entered(_body):
 	var bottom = $RayCastBottom.is_colliding() and $RayCastBottom.get_collider().is_in_group("player")
@@ -17,10 +18,14 @@ func _on_body_entered(_body):
 		emit_signal("suspicionValue", susValue)
 		if susValue > susLimit:
 			get_parent().get_parent().get_node("Squirrel").set_is_dead(true)
-			get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
+			squirrelShouldDie = true
+		else:
+			squirrelShouldDie = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if squirrelShouldDie:
+		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 	var bodies = get_overlapping_bodies()
 	if susValue > 0:
 		susValue -= susDecrement
