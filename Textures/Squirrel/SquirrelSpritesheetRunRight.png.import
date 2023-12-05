@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch7u2dcogvyxc"
-path="res://.godot/imported/Squirrel-Jump-Keys-Up-Left.png-2734f3d3d1937c56ee570cdd1f75701a.ctex"
+uid="uid://dj5ao718rd5qy"
+path="res://.godot/imported/SquirrelSpritesheetRunRight.png-c8760931d9952033ff34bfb0186641d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Squirrel-Jump-Keys-Up-Left.png"
-dest_files=["res://.godot/imported/Squirrel-Jump-Keys-Up-Left.png-2734f3d3d1937c56ee570cdd1f75701a.ctex"]
+source_file="res://Textures/Squirrel/SquirrelSpritesheetRunRight.png"
+dest_files=["res://.godot/imported/SquirrelSpritesheetRunRight.png-c8760931d9952033ff34bfb0186641d1.ctex"]
 
 [params]
 

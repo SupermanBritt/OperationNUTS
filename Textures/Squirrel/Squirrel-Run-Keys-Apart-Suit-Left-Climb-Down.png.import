@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgxatdrkefnkm"
-path="res://.godot/imported/enemy.png-d2d8c9a5f1e1df06afdd24a3788fa05e.ctex"
+uid="uid://cpfvns3rkvsww"
+path="res://.godot/imported/Squirrel-Run-Keys-Apart-Suit-Left-Climb-Down.png-781914eba9463a372da1225fd8e9d3c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/enemy.png"
-dest_files=["res://.godot/imported/enemy.png-d2d8c9a5f1e1df06afdd24a3788fa05e.ctex"]
+source_file="res://Textures/Squirrel/Squirrel-Run-Keys-Apart-Suit-Left-Climb-Down.png"
+dest_files=["res://.godot/imported/Squirrel-Run-Keys-Apart-Suit-Left-Climb-Down.png-781914eba9463a372da1225fd8e9d3c0.ctex"]
 
 [params]
 

@@ -26,8 +26,15 @@ var in_debug_mode = false
 var spawn_pos
 var is_dead = false
 var allow_debug = true
+var prevDirectionFacing = direction_facing
+var baseTailPos
+var direction_held
+var direction_held_y
+var direction_facing_y = -1
+var prevDirectionFacing_y = direction_facing_y
 
 @onready var _animated_sprite = $AnimatedSprite2D
+@onready var _tail_sprite = $TailAnimatedSprite
 
 signal venting
 
@@ -38,62 +45,82 @@ func _ready():
 	reset_camera()
 	current_tilemap = self.get_parent().get_node("TileMap")
 	spawn_pos = position
+	baseTailPos = get_child(0).position
 
 
 func _process(_delta):
-	var direction_held = Input.get_axis("move_left", "move_right") 
+	squirrel_animation()
+	#scale.x = direction_held
+	#_animated_sprite.play("run_right")
+	tail_animation()
+
+func tail_animation():
+	if velocity.x or velocity.y:
+		_tail_sprite.play("moving")
+	else:
+		_tail_sprite.stop()
+
+func squirrel_animation():
 	if is_dead:
 		_animated_sprite.stop()
-	elif isClinging and direction_facing == 1 and sign(velocity.y) == -1:
-		_animated_sprite.play("climb_right_up")
-	elif isClinging and direction_facing == 1 and sign(velocity.y) == 1:
-		_animated_sprite.play("climb_right_down")
-	elif isClinging and direction_facing == -1 and sign(velocity.y) == -1:
-		_animated_sprite.play("climb_left_up")
-	elif isClinging and direction_facing == -1 and sign(velocity.y) == 1:
-		_animated_sprite.play("climb_left_down")
-	elif sign(velocity.x) == 1 and direction_held == 1 and is_on_floor():
-		_animated_sprite.play("run_right")
-	elif sign(velocity.x) == -1 and direction_held == -1 and is_on_floor():
-		_animated_sprite.play("run_left")
-	elif !is_on_floor() and isGliding and direction_facing == 1:
-		_animated_sprite.play("glide_right")
-	elif !is_on_floor() and isGliding and direction_facing == -1:
-		_animated_sprite.play("glide_left")
-	elif !is_on_floor() and velocity.y < 0 and direction_facing == 1 and !isGliding:
-		_animated_sprite.play("jump_up_right")
-	elif !is_on_floor() and velocity.y > 0 and direction_facing == 1 and !isGliding:
-		_animated_sprite.play("jump_down_right")
-	elif !is_on_floor() and velocity.y < 0 and direction_facing == -1 and !isGliding:
-		_animated_sprite.play("jump_up_left")
-	elif !is_on_floor() and velocity.y > 0 and direction_facing == -1 and !isGliding:
-		_animated_sprite.play("jump_down_left")
-	elif direction_held == 1 and is_on_floor():
-		_animated_sprite.play("run_right")
-	elif direction_held == -1 and is_on_floor():
-		_animated_sprite.play("run_left")
-	elif direction_facing == -1 and is_on_floor(): #Have these at the end
-		_animated_sprite.play("idle_left")
-	elif direction_facing == 1 and is_on_floor(): 
-		_animated_sprite.play("idle_right")
+	#elif isClinging and direction_facing == 1 and sign(velocity.y) == -1:
+		#_animated_sprite.play("climb_right_up")
+	#elif isClinging and direction_facing == 1 and sign(velocity.y) == 1:
+		#_animated_sprite.play("climb_right_down")
+	#elif isClinging and direction_facing == -1 and sign(velocity.y) == -1:
+		#_animated_sprite.play("climb_left_up")
+	#elif isClinging and direction_facing == -1 and sign(velocity.y) == 1:
+		#_animated_sprite.play("climb_left_down")
+	elif direction_held_y and isClinging:
+		_animated_sprite.play("run")
+	elif !direction_held_y and isClinging:
+		_animated_sprite.play("climb_idle")
+	elif sign(velocity.x) and direction_held and is_on_floor():
+		_animated_sprite.play("run")
+	elif !is_on_floor() and isGliding:
+		_animated_sprite.play("glide")
+	elif !is_on_floor() and velocity.y < 0 and !isGliding:
+		_animated_sprite.play("jump_up")
+	elif !is_on_floor() and velocity.y > 0 and !isGliding:
+		_animated_sprite.play("jump_down")
+	elif is_on_floor(): 
+		_animated_sprite.play("idle")
 	else:
 		_animated_sprite.stop()
-		
+	
 func _physics_process(delta):		
 	# Get the input direction and handle the movement/deceleration.
-	var direction_held = Input.get_axis("move_left", "move_right")
+	direction_held_y = Input.get_axis("move_up", "move_down") 
+	direction_held = Input.get_axis("move_left", "move_right")
 	var delta_time = Time.get_ticks_msec() - wall_jump_timer
 	
 	if direction_held:
+		if prevDirectionFacing != direction_held:
+			scale.x = -1
 		direction_facing = direction_held
-		isClinging = false
-		
+		prevDirectionFacing = direction_facing	
+		if direction_held != direction_facing:
+			isClinging = false
+	
+	
+	if direction_held_y:
+		if prevDirectionFacing_y != direction_held_y:
+			scale.y *= -1
+		direction_facing_y = direction_held_y
+		prevDirectionFacing_y = direction_facing_y
+	
+	if !isClinging:
+		if direction_facing_y == 1:
+			scale.y *= -1
+		direction_facing_y = -1
+		prevDirectionFacing_y = -1
+	
 	if delta_time > wall_jump_delay:
 		if abs(velocity.x + direction_held * acceleration) <= max_speed:
 			velocity.x += direction_held * acceleration
 		else:
 			velocity.x = max_speed * direction_held
-	
+		
 	#Friction
 	if velocity.x != 0:
 		if abs(velocity.x) - friction < 0:
@@ -133,13 +160,9 @@ func _physics_process(delta):
 			velocity.y = jump_velocity
 	
 	
-	
+	#print("held: ", direction_held, ", facing: ", direction_facing, ", on_wall(): ", on_wall(), ", isclingin:", isClinging)
 	#Climbing
-	if on_wall() == direction_held and direction_held:
-		if direction_facing == 1:
-			_animated_sprite.play("climb_right_up")
-		else:
-			_animated_sprite.play("climb_left_up")
+	if on_wall() and direction_held == direction_facing:
 		isClinging = true
 		isGliding = false
 	
@@ -147,12 +170,22 @@ func _physics_process(delta):
 		isClinging = false
 
 	if isClinging:
+		if direction_facing == 1:
+			setRotate(-PI/2.0)
+		else:
+			setRotate(-PI/2.0)
 		if Input.is_action_pressed("move_up"):
 			velocity.y = -1 * wall_climbing_speed
 		elif Input.is_action_pressed("move_down"):
 			velocity.y = wall_climbing_speed
 		else:
 			velocity.y = 0
+	else:
+		setRotate(0)
+
+		
+		
+
 	
 	#Wall sliding/jumping
 	if Input.is_action_just_pressed("jump") and isClinging:
@@ -169,12 +202,32 @@ func _physics_process(delta):
 		reset()
 		if Input.is_action_just_pressed("debug"):
 			in_debug_mode = !in_debug_mode
-
 	if in_debug_mode:
 		debug_mode()
 	else:
 		move_and_slide()
 	
+func setRotate(radians):
+	get_child(1).set_rotation(radians)
+	var tail = get_child(0)
+	tail.set_rotation(radians)
+	var newX
+	var newY
+	if radians == PI/2.0:
+		newX = -baseTailPos.y
+		newY = -baseTailPos.x
+	elif radians == -PI/2.0:
+		newX = baseTailPos.y
+		newY = -baseTailPos.x
+	else:
+		newX = baseTailPos.x
+		newY = baseTailPos.y
+	tail.position.x = newX
+	tail.position.y = newY
+	#for node in get_children():
+		#if node.get_class() != "AnimatedSprite2D":
+			#node.set_rotation(0)
+			
 func debug_mode():
 	velocity.x = 0
 	velocity.y = 0
@@ -184,10 +237,8 @@ func debug_mode():
 	
 	
 func on_wall() -> float:
-	if $RayCast2DRight.is_colliding():
+	if $RayCast2DRight.is_colliding() || $RayCast2DLeft.is_colliding():
 		return 1
-	elif $RayCast2DLeft.is_colliding():
-		return -1
 	else:
 		return 0
 		
