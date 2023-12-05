@@ -98,8 +98,9 @@ func _physics_process(delta):
 		if prevDirectionFacing != direction_held:
 			scale.x = -1
 		direction_facing = direction_held
-		prevDirectionFacing = direction_facing
-		isClinging = false
+		prevDirectionFacing = direction_facing	
+		if direction_held != direction_facing:
+			isClinging = false
 	
 	
 	if direction_held_y:
@@ -201,8 +202,6 @@ func _physics_process(delta):
 		reset()
 		if Input.is_action_just_pressed("debug"):
 			in_debug_mode = !in_debug_mode
-		if Input.is_action_just_pressed("debug2"):
-			rotation = PI
 	if in_debug_mode:
 		debug_mode()
 	else:
