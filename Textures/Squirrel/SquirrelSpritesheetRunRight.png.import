@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm6kj2k5q6gbr"
-path="res://.godot/imported/WalkCycleRight (1).png-997078717a3536679b152c7ac6812321.ctex"
+uid="uid://dj5ao718rd5qy"
+path="res://.godot/imported/SquirrelSpritesheetRunRight.png-c8760931d9952033ff34bfb0186641d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Squirrel/WalkCycleRight (1).png"
-dest_files=["res://.godot/imported/WalkCycleRight (1).png-997078717a3536679b152c7ac6812321.ctex"]
+source_file="res://Textures/Squirrel/SquirrelSpritesheetRunRight.png"
+dest_files=["res://.godot/imported/SquirrelSpritesheetRunRight.png-c8760931d9952033ff34bfb0186641d1.ctex"]
 
 [params]
 

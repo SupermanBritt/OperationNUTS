@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dmoc3ibejtou8" path="res://Tilesheets/ventsTile.png" id="4_6884c"]
 [ext_resource type="Texture2D" uid="uid://c3ho1rvb6oj0x" path="res://Tilesheets/tempbricks.png" id="4_qyene"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="5_2n3c0"]
-[ext_resource type="PackedScene" uid="uid://btkbvpehjqw01" path="res://Textures/Squirrel/Enemy.tscn" id="6_gav6d"]
+[ext_resource type="PackedScene" uid="uid://btkbvpehjqw01" path="res://Sprites/Enemy.tscn" id="6_gav6d"]
 [ext_resource type="PackedScene" uid="uid://bfpmm1v732cy7" path="res://Scenes/end_door.tscn" id="7_7bioq"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mypsq"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm6kj2k5q6gbr"
-path="res://.godot/imported/WalkCycleRight (1).png-6fd647119bb9710fe4a55d4986a32d7d.ctex"
+uid="uid://drfmxxngm8kky"
+path="res://.godot/imported/SpritesheetTail.png-679dcfbebfcba6dc60777d01162327cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Enemy/WalkCycleRight (1).png"
-dest_files=["res://.godot/imported/WalkCycleRight (1).png-6fd647119bb9710fe4a55d4986a32d7d.ctex"]
+source_file="res://Textures/Squirrel/SpritesheetTail.png"
+dest_files=["res://.godot/imported/SpritesheetTail.png-679dcfbebfcba6dc60777d01162327cd.ctex"]
 
 [params]
 
