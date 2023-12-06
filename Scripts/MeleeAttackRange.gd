@@ -56,7 +56,7 @@ func _process(_delta):
 			elif child.is_in_group("dead_enemy"):
 				child.disableOutline()
 		var deadenemy = preloadedDeadEnemySprite.instantiate()
-		deadenemy.position.x = get_parent().get_position().x + 2400
+		deadenemy.position.x = get_parent().get_position().x + 2400 * sign(get_parent().velocity.x)
 		deadenemy.position.y = get_parent().get_position().y
 		get_tree().current_scene.add_child(deadenemy)
 		get_parent().dropBody()
