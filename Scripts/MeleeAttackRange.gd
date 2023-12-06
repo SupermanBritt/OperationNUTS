@@ -4,6 +4,7 @@ extends RayCast2D
 var hasBody = false
 var currentBody
 var flag = true
+var preloadedDeadEnemySprite = preload("res://Sprites/dead_enemy.tscn")
 
 func _on_body_entered(body, x, y):
 	print(body)
@@ -23,6 +24,15 @@ func _on_body_entered(body, x, y):
 		if Input.is_action_just_pressed("kill"):
 			body.despawn()
 			get_parent().grabBody()
+	#else:
+		#if Input.is_action_just_pressed("kill") && get_parent().getHasBody():
+			#var deadenemy = preloadedDeadEnemySprite.instantiate()
+			#deadenemy.position.x = get_parent().position.x + 1800 * sign(get_parent().velocity.x)
+			#deadenemy.position.y = get_parent().position.y
+			#get_tree().current_scene.add_child(deadenemy)
+			#print(get_parent().position.x)
+			#print(get_parent().position.y)
+			#print("puked!")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -35,6 +45,21 @@ func _process(_delta):
 		currentBody = get_collider()
 		print(currentBody)
 		_on_body_entered(currentBody, get_collision_point().x, get_collision_point().y)
+	elif Input.is_action_just_pressed("kill") && get_parent().getHasBody():
+		var childrenCount = get_tree().get_current_scene().get_child_count()
+		for i in childrenCount:
+			var child = get_tree().get_current_scene().get_child(i)
+			if child.is_in_group("enemy"):
+				child.disableOutline()
+			elif child.is_in_group("interactable"):
+				child.disableOutline()
+			elif child.is_in_group("dead_enemy"):
+				child.disableOutline()
+		var deadenemy = preloadedDeadEnemySprite.instantiate()
+		deadenemy.position.x = get_parent().get_position().x + 2400
+		deadenemy.position.y = get_parent().get_position().y
+		get_tree().current_scene.add_child(deadenemy)
+		get_parent().dropBody()
 	else:
 		var childrenCount = get_tree().get_current_scene().get_child_count()
 		for i in childrenCount:
@@ -45,3 +70,4 @@ func _process(_delta):
 				child.disableOutline()
 			elif child.is_in_group("dead_enemy"):
 				child.disableOutline()
+	
