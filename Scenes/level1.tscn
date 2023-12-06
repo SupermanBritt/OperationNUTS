@@ -91,7 +91,7 @@ color = Color(0, 0.733333, 0.529412, 0.176471)
 polygon = PackedVector2Array(-7200, -4565, -3600, -21600, -6600, -4965, -15000, 600)
 
 [node name="Squirrel" parent="." instance=ExtResource("2_6iihy")]
-position = Vector2(-12879, -1524)
+position = Vector2(-12714, -13511)
 
 [node name="Enemy" parent="." instance=ExtResource("6_gav6d")]
 position = Vector2(-10214, -14114)
@@ -115,6 +115,6 @@ speed = 800.0
 pathLength = 2400.0
 
 [node name="Cardboard" parent="." instance=ExtResource("8_7w8od")]
-position = Vector2(-10496, -2711)
+position = Vector2(-11675, -13504)
 
 [connection signal="venting" from="Squirrel" to="TileMap" method="_on_squirrel_venting"]

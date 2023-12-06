@@ -12,11 +12,15 @@ func _on_body_entered(body, x, y):
 		if Input.is_action_just_pressed("kill"):
 			body.die(x, y)
 	elif (body!=null) && body.is_in_group("interactable"):
-		body.enableOutline()
+		if (body.getHasBody()==false):
+			body.enableOutline()
+			if Input.is_action_just_pressed("kill") && get_parent().getHasBody():
+				body.grabBody()
 	elif (body!=null) && body.is_in_group("dead_enemy"):
 		body.enableOutline()
 		if Input.is_action_just_pressed("kill"):
 			body.despawn()
+			get_parent().grabBody()
 
 
 # Called when the node enters the scene tree for the first time.

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var hasBody = false;
 var max_speed_final : float = 3000.0
 @export var max_speed : float = max_speed_final
 @export var jump_velocity: float = -6000.0
@@ -307,10 +308,7 @@ func vent():
 					map.y += 1
 				position.y = map.y * 600 + 100
 				emit_signal("venting")
-	
 
-	
-		
 #func vent_check():
 #	var ventDir = 0
 #	var ventLocation
@@ -379,5 +377,11 @@ func reset():
 	if Input.is_action_just_pressed("reset"):
 		position = spawn_pos
 
+func grabBody():
+	hasBody = true;
 
+func dropBody():
+	hasBody = false
 
+func getHasBody():
+	return hasBody
