@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var susLimit = 1000
-@export var susIncrement = 13
+@export var susLimit = 500
+@export var susIncrement = 15
 @export var susDecrement = 5
 var susValue = 0
 
@@ -27,7 +27,6 @@ func _process(_delta):
 	if squirrelShouldDie:
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 	var bodies = get_overlapping_bodies()
-	print(susValue)
 	if susValue > 0:
 		susValue -= susDecrement
 		if susValue < 0:
