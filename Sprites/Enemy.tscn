@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://btkbvpehjqw01"]
+[gd_scene load_steps=14 format=3 uid="uid://btkbvpehjqw01"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_3338g"]
 [ext_resource type="Shader" path="res://Shaders/EnemyOutline.gdshader" id="2_a3edx"]
@@ -41,6 +41,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4lbjm"]
+polygon = PackedVector2Array(124, -235, 114, -124, 109, -31, 109, 25, 142, 62, 184, 95, 213, 115, 252, 119, 282, 121, 241, 136, 177, 165, 57, 215, 42, 751, 144, 819, 140, 870, -189, 887, -212, 872, -196, 820, -191, 686, -206, 510, -202, 416, -200, 266, -199, 227, -233, 227, -255, 218, -274.816, 211.619, -298, 189, -303.096, 25.4359, -292, 11, -298, -8, -300.176, -67.833, -293, -297, -229, -486, -114, -526, -110, -541, -97, -599, -91, -652, -98, -662, -106, -723, -117, -723, -121, -761, -108, -803, -93, -834, -64, -868, -39, -880, -3, -883, 40, -872, 78, -846, 81, -787, 79, -653, 52, -626, 21, -596, -9, -576, -10, -518, 19, -489, 96, -447, 133, -411, 144, -306)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwkg5"]
 size = Vector2(435, 50)
 
@@ -57,6 +60,9 @@ material = SubResource("ShaderMaterial_0apr1")
 sprite_frames = SubResource("SpriteFrames_7pjmq")
 script = ExtResource("4_vrdsh")
 metadata/_edit_lock_ = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite2D"]
+occluder = SubResource("OccluderPolygon2D_4lbjm")
 
 [node name="FloorDetection" type="CollisionShape2D" parent="."]
 position = Vector2(-12.5, 863)
@@ -86,17 +92,26 @@ shadow_enabled = true
 texture = ExtResource("2_txfa5")
 offset = Vector2(3600, 0)
 
+[node name="BounceHitWall" type="RayCast2D" parent="Flashlight"]
+position = Vector2(-2100, 0)
+scale = Vector2(1, 0.25)
+target_position = Vector2(400, 0)
+collide_with_areas = true
+
 [node name="RayCastTop" type="RayCast2D" parent="Flashlight"]
 position = Vector2(-1800, -42)
 target_position = Vector2(7100, -100)
+collide_with_areas = true
 
 [node name="RayCastBottom" type="RayCast2D" parent="Flashlight"]
 position = Vector2(-1800, 42)
 target_position = Vector2(7100, 100)
+collide_with_areas = true
 
 [node name="RayCastMiddle" type="RayCast2D" parent="Flashlight"]
 position = Vector2(-1800, 0)
 target_position = Vector2(7100, 0)
+collide_with_areas = true
 
 [node name="SusMeter" type="Polygon2D" parent="."]
 position = Vector2(0, -38)
