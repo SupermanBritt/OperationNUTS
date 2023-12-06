@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://begd0axr2l2in"]
 
 [ext_resource type="Script" path="res://Scripts/tutorial.gd" id="1_j1yyv"]
-[ext_resource type="LabelSettings" uid="uid://vsrq6wr1jylr" path="res://LabelSettings/tutorial.tres" id="1_p0mto"]
+[ext_resource type="LabelSettings" uid="uid://vsrq6wr1jylr" path="res://SavedSettings/tutorial.tres" id="1_p0mto"]
 
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_j1yyv")

@@ -1,82 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://dtyokq3clw5n4"]
+[gd_scene load_steps=7 format=3 uid="uid://dl7frlhrww5xo"]
 
 [ext_resource type="Texture2D" uid="uid://evynel21dtow" path="res://Textures/Untitled.png" id="1_jrlfs"]
 [ext_resource type="PackedScene" uid="uid://coogyl0u8ymia" path="res://Sprites/Squirrel.tscn" id="2_2dut7"]
 [ext_resource type="PackedScene" uid="uid://btkbvpehjqw01" path="res://Sprites/Enemy.tscn" id="3_0ths4"]
-[ext_resource type="Texture2D" uid="uid://c3ho1rvb6oj0x" path="res://Tilesheets/tempbricks.png" id="4_wqwoa"]
-[ext_resource type="Texture2D" uid="uid://dmoc3ibejtou8" path="res://Tilesheets/ventsTile.png" id="5_uvlv4"]
+[ext_resource type="TileSet" uid="uid://clmqiqap5dfev" path="res://SavedSettings/tilemap.tres" id="4_delfx"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="6_kae7i"]
 [ext_resource type="PackedScene" uid="uid://bfpmm1v732cy7" path="res://Scenes/end_door.tscn" id="7_d2dli"]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mypsq"]
-polygon = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vi3ni"]
-polygon = PackedVector2Array(300, -300, 300, 300, -300, 300, -300, -300)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cuxid"]
-texture = ExtResource("4_wqwoa")
-texture_region_size = Vector2i(600, 600)
-0:0/next_alternative_id = 2
-0:0/0 = 0
-0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_mypsq")
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
-0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_1/angular_velocity = 0.0
-0:1/0 = 0
-0:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_vi3ni")
-0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:1/0/physics_layer_0/angular_velocity = 0.0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
-0:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
-0:1/0/physics_layer_1/angular_velocity = 0.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ge6if"]
-texture = ExtResource("5_uvlv4")
-texture_region_size = Vector2i(600, 600)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_1/angular_velocity = 0.0
-0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
-0:0/0/custom_data_0 = 1
-1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
-1:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_1/angular_velocity = 0.0
-1:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
-1:0/0/custom_data_0 = 4
-0:1/0 = 0
-0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:1/0/physics_layer_0/angular_velocity = 0.0
-0:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
-0:1/0/physics_layer_1/angular_velocity = 0.0
-0:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
-0:1/0/custom_data_0 = 3
-1:1/0 = 0
-1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:1/0/physics_layer_0/angular_velocity = 0.0
-1:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
-1:1/0/physics_layer_1/angular_velocity = 0.0
-1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
-1:1/0/custom_data_0 = 2
-
-[sub_resource type="TileSet" id="TileSet_elskt"]
-tile_size = Vector2i(600, 600)
-occlusion_layer_0/light_mask = 1
-physics_layer_0/collision_layer = 1
-physics_layer_1/collision_layer = 2
-physics_layer_1/collision_mask = 2
-custom_data_layer_0/name = "tileType"
-custom_data_layer_0/type = 2
-sources/1 = SubResource("TileSetAtlasSource_cuxid")
-sources/3 = SubResource("TileSetAtlasSource_ge6if")
-
-[node name="level1" type="Node2D"]
+[node name="level2" type="Node2D"]
 
 [node name="TempBackground" type="Sprite2D" parent="."]
 position = Vector2(7994, -8116)
@@ -85,25 +16,23 @@ texture = ExtResource("1_jrlfs")
 
 [node name="CameraBorder" type="Polygon2D" parent="."]
 show_behind_parent = true
-position = Vector2(0, 25)
 color = Color(0, 0.733333, 0.529412, 0.176471)
-polygon = PackedVector2Array(-7200, -4565, -3600, -21600, -6600, -4965, -15000, 600)
+polygon = PackedVector2Array(-7200, -4565, 1800, -21600, -6600, -4965, -15000, 600)
 
 [node name="Squirrel" parent="." instance=ExtResource("2_2dut7")]
 position = Vector2(-12879, -1524)
 
 [node name="Enemy" parent="." instance=ExtResource("3_0ths4")]
-position = Vector2(-10214, -14114)
+position = Vector2(-5282, -2128)
+speed = 800.0
+pathLength = 2500.0
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_elskt")
+tile_set = ExtResource("4_delfx")
 format = 2
 layer_0/name = "FloorAndWalls"
+layer_0/tile_data = PackedInt32Array(-198307, 1, 0, -65560, 1, 0, -65559, 1, 0, -65558, 1, 0, -65557, 1, 0, -65556, 1, 0, -65555, 1, 0, -65554, 1, 0, -65553, 1, 0, -65552, 1, 0, -131096, 1, 0, -196632, 1, 0, -262168, 1, 0, -65551, 1, 0, -65550, 1, 0, -65549, 1, 0, -65548, 1, 0, -65547, 1, 0, -65546, 1, 0, -65545, 1, 0, -65544, 1, 0, -65543, 1, 0, -65542, 1, 0, -65541, 1, 0, -65540, 1, 0, -65539, 1, 0, -65538, 1, 0, -65537, 1, 0, -131072, 1, 0, -131071, 1, 0, -131070, 1, 0, -131069, 1, 0, -131068, 1, 0, -131067, 1, 0, -131066, 1, 0, -131065, 1, 0, -131064, 1, 0)
 layer_1/name = "Overvents"
-layer_1/enabled = true
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
 layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array()
 script = ExtResource("6_kae7i")
@@ -112,7 +41,7 @@ script = ExtResource("6_kae7i")
 position = Vector2(-4497, -14105)
 
 [node name="Enemy2" parent="." instance=ExtResource("3_0ths4")]
-position = Vector2(-12589, -18913)
+position = Vector2(6505, -16606)
 speed = 800.0
 pathLength = 2400.0
 

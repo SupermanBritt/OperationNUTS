@@ -27,8 +27,11 @@ func _process(_delta):
 	if squirrelShouldDie:
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 	var bodies = get_overlapping_bodies()
+	print(susValue)
 	if susValue > 0:
 		susValue -= susDecrement
+		if susValue < 0:
+			susValue = 0
 		emit_signal("suspicionValue", susValue)
 	for i in range(0,bodies.size()):
 		_on_body_entered(bodies[i])
