@@ -21,7 +21,7 @@ func _on_body_entered(body, x, y):
 				get_parent().dropBody()
 	elif (body!=null) && body.is_in_group("dead_enemy"):
 		body.enableOutline()
-		if Input.is_action_just_pressed("kill"):
+		if Input.is_action_just_pressed("kill") && (get_parent().getHasBody()==false):
 			body.despawn()
 			get_parent().grabBody()
 	#else:
