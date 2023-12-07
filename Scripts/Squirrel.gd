@@ -22,7 +22,8 @@ var direction_facing : float = 1
 var current_tilemap: TileMap
 var raycastLength = 10
 var currVent = []
-var inVent = false
+@export var inVent : bool = false
+#var inVent = false
 var in_debug_mode = false
 var spawn_pos
 var is_dead = false
