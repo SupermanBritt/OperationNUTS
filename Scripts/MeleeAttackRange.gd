@@ -7,7 +7,6 @@ var flag = true
 var preloadedDeadEnemySprite = preload("res://Sprites/dead_enemy.tscn")
 
 func _on_body_entered(body, x, y):
-	print(body)
 	if (body!=null) && body.is_in_group("enemy"):
 		body.enableOutline()
 		if Input.is_action_just_pressed("kill"):
@@ -43,7 +42,6 @@ func _ready():
 func _process(_delta):
 	if is_colliding():
 		currentBody = get_collider()
-		print(currentBody)
 		_on_body_entered(currentBody, get_collision_point().x, get_collision_point().y)
 	elif Input.is_action_just_pressed("kill") && get_parent().getHasBody():
 		var childrenCount = get_tree().get_current_scene().get_child_count()

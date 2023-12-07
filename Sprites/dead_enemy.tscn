@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b65xyxkxh6lnq"]
+[gd_scene load_steps=10 format=3 uid="uid://b65xyxkxh6lnq"]
 
 [ext_resource type="Script" path="res://Scripts/dead_enemy.gd" id="1_gmx2g"]
 [ext_resource type="Shader" path="res://Shaders/EnemyOutline.gdshader" id="2_4c5xy"]
@@ -28,17 +28,23 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6xh5g"]
+polygon = PackedVector2Array(15, -268, 167, -250, 209, -171, 810, -139, 809, 316, -875, 296, -834, -1, -784, -57, -648, -37, -559.043, -67.9941, -436, -187, -299, -230)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vqfwn"]
 radius = 305.0
 height = 1762.0
 
-[node name="Dead_Enemy" type="CharacterBody2D" groups=["dead_enemy"]]
+[node name="Dead_Enemy" type="CharacterBody2D" groups=["dead_enemy", "player"]]
 script = ExtResource("1_gmx2g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_1allm")
 sprite_frames = SubResource("SpriteFrames_f4wkt")
 script = ExtResource("4_fr5j0")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite2D"]
+occluder = SubResource("OccluderPolygon2D_6xh5g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
