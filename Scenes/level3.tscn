@@ -1,13 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://dtyokq3clw5n4"]
+[gd_scene load_steps=14 format=3 uid="uid://tklxriasslyw"]
 
-[ext_resource type="Texture2D" uid="uid://evynel21dtow" path="res://Textures/Untitled.png" id="1_jrlfs"]
-[ext_resource type="PackedScene" uid="uid://coogyl0u8ymia" path="res://Sprites/Squirrel.tscn" id="2_2dut7"]
-[ext_resource type="PackedScene" uid="uid://btkbvpehjqw01" path="res://Sprites/Enemy.tscn" id="3_0ths4"]
-[ext_resource type="Texture2D" uid="uid://c3ho1rvb6oj0x" path="res://Tilesheets/tempbricks.png" id="4_wqwoa"]
-[ext_resource type="Texture2D" uid="uid://dmoc3ibejtou8" path="res://Tilesheets/ventsTile.png" id="5_uvlv4"]
-[ext_resource type="Script" path="res://Scripts/TileMap.gd" id="6_kae7i"]
-[ext_resource type="PackedScene" uid="uid://bfpmm1v732cy7" path="res://Scenes/end_door.tscn" id="7_d2dli"]
-[ext_resource type="PackedScene" uid="uid://dt57gpyxrtkf6" path="res://Sprites/cardboard.tscn" id="8_5jf7e"]
+[ext_resource type="Texture2D" uid="uid://evynel21dtow" path="res://Textures/Untitled.png" id="1_4oaws"]
+[ext_resource type="PackedScene" uid="uid://coogyl0u8ymia" path="res://Sprites/Squirrel.tscn" id="2_4qe3q"]
+[ext_resource type="PackedScene" uid="uid://btkbvpehjqw01" path="res://Sprites/Enemy.tscn" id="3_xvfxj"]
+[ext_resource type="Texture2D" uid="uid://c3ho1rvb6oj0x" path="res://Tilesheets/tempbricks.png" id="4_kt3x0"]
+[ext_resource type="Texture2D" uid="uid://dmoc3ibejtou8" path="res://Tilesheets/ventsTile.png" id="5_11j6m"]
+[ext_resource type="Script" path="res://Scripts/TileMap.gd" id="6_1r4em"]
+[ext_resource type="PackedScene" uid="uid://bfpmm1v732cy7" path="res://Scenes/end_door.tscn" id="7_ntgka"]
+[ext_resource type="PackedScene" uid="uid://dt57gpyxrtkf6" path="res://Sprites/cardboard.tscn" id="8_xnjx8"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mypsq"]
 polygon = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
@@ -16,7 +16,7 @@ polygon = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
 polygon = PackedVector2Array(300, -300, 300, 300, -300, 300, -300, -300)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cuxid"]
-texture = ExtResource("4_wqwoa")
+texture = ExtResource("4_kt3x0")
 texture_region_size = Vector2i(600, 600)
 0:0/next_alternative_id = 2
 0:0/0 = 0
@@ -35,7 +35,7 @@ texture_region_size = Vector2i(600, 600)
 0:1/0/physics_layer_1/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ge6if"]
-texture = ExtResource("5_uvlv4")
+texture = ExtResource("5_11j6m")
 texture_region_size = Vector2i(600, 600)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -82,18 +82,18 @@ sources/3 = SubResource("TileSetAtlasSource_ge6if")
 [node name="TempBackground" type="Sprite2D" parent="."]
 position = Vector2(7994, -8116)
 scale = Vector2(105.555, 62.6783)
-texture = ExtResource("1_jrlfs")
+texture = ExtResource("1_4oaws")
 
 [node name="CameraBorder" type="Polygon2D" parent="."]
 show_behind_parent = true
 color = Color(0, 0.733333, 0.529412, 0.176471)
 polygon = PackedVector2Array(-6000, 600, -6000, -16200, 12600, -16200, 12600, 600)
 
-[node name="Squirrel" parent="." instance=ExtResource("2_2dut7")]
+[node name="Squirrel" parent="." instance=ExtResource("2_4qe3q")]
 position = Vector2(-5097, -3304)
 inVent = true
 
-[node name="Enemy" parent="." instance=ExtResource("3_0ths4")]
+[node name="Enemy" parent="." instance=ExtResource("3_xvfxj")]
 position = Vector2(-646, -925)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -104,56 +104,56 @@ layer_0/tile_data = PackedInt32Array(65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 6553
 layer_1/name = "Overvents"
 layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array(-327689, 1, 0, -327688, 1, 0, -327687, 1, 0, -327686, 1, 0, -327685, 1, 0, -327684, 1, 0, -327683, 1, 0, -327682, 1, 0, -327681, 1, 0, -393216, 1, 0, -393215, 1, 0, -393214, 1, 0, -393213, 1, 0, -393212, 1, 0, -393211, 1, 0, -393210, 1, 0, -393209, 1, 0, -393208, 1, 0, -393207, 1, 0, -393206, 1, 0, -393205, 1, 0, -393204, 1, 0, -393203, 1, 0, -1114093, 1, 0, -1048557, 1, 0, -983021, 1, 0, -917485, 1, 0, -851949, 1, 0, -786413, 1, 0, -720877, 1, 0, -655341, 1, 0, -589805, 1, 0, -524269, 1, 0, -1703917, 1, 0, -1638381, 1, 0, -1572845, 1, 0, -1507309, 1, 0, -1441773, 1, 0, -1376237, 1, 0, -1310701, 1, 0, -1245165, 1, 0, -1179629, 1, 0, -1376239, 1, 0, -1310703, 1, 0, -1245167, 1, 0, -1179631, 1, 0, -1310729, 1, 0, -1245193, 1, 0, -1179657, 1, 0, -1114121, 1, 0, -1048585, 1, 0, -983049, 1, 0, -917513, 1, 0, -851977, 1, 0, -786441, 1, 0)
-script = ExtResource("6_kae7i")
+script = ExtResource("6_1r4em")
 should_disapear = true
 layer1_turning_visible = false
 
-[node name="end_door" parent="." instance=ExtResource("7_d2dli")]
+[node name="end_door" parent="." instance=ExtResource("7_ntgka")]
 position = Vector2(-3891, -11111)
 scale = Vector2(-1, -1)
 
-[node name="Enemy2" parent="." instance=ExtResource("3_0ths4")]
+[node name="Enemy2" parent="." instance=ExtResource("3_xvfxj")]
 position = Vector2(10040, -890)
 speed = 800.0
 pathLength = 2400.0
 
-[node name="Enemy3" parent="." instance=ExtResource("3_0ths4")]
+[node name="Enemy3" parent="." instance=ExtResource("3_xvfxj")]
 position = Vector2(-3600, -5170)
 
-[node name="Enemy4" parent="." instance=ExtResource("3_0ths4")]
+[node name="Enemy4" parent="." instance=ExtResource("3_xvfxj")]
 position = Vector2(1951, -5153)
 
-[node name="Enemy5" parent="." instance=ExtResource("3_0ths4")]
+[node name="Enemy5" parent="." instance=ExtResource("3_xvfxj")]
 position = Vector2(-1351, -14189)
 
-[node name="Enemy6" parent="." instance=ExtResource("3_0ths4")]
+[node name="Enemy6" parent="." instance=ExtResource("3_xvfxj")]
 position = Vector2(7515, -14132)
 
-[node name="Enemy7" parent="." instance=ExtResource("3_0ths4")]
+[node name="Enemy7" parent="." instance=ExtResource("3_xvfxj")]
 position = Vector2(-3221, -8135)
 
-[node name="Enemy8" parent="." instance=ExtResource("3_0ths4")]
+[node name="Enemy8" parent="." instance=ExtResource("3_xvfxj")]
 position = Vector2(-2054, -8153)
 
-[node name="Enemy9" parent="." instance=ExtResource("3_0ths4")]
+[node name="Enemy9" parent="." instance=ExtResource("3_xvfxj")]
 position = Vector2(-3363, -11102)
 
-[node name="Enemy10" parent="." instance=ExtResource("3_0ths4")]
+[node name="Enemy10" parent="." instance=ExtResource("3_xvfxj")]
 position = Vector2(2067, -11129)
 
-[node name="Enemy11" parent="." instance=ExtResource("3_0ths4")]
+[node name="Enemy11" parent="." instance=ExtResource("3_xvfxj")]
 position = Vector2(-3970, -14175)
 
-[node name="Cardboard" parent="." instance=ExtResource("8_5jf7e")]
+[node name="Cardboard" parent="." instance=ExtResource("8_xnjx8")]
 position = Vector2(4299, -318)
 
-[node name="Cardboard2" parent="." instance=ExtResource("8_5jf7e")]
+[node name="Cardboard2" parent="." instance=ExtResource("8_xnjx8")]
 position = Vector2(9906, -4499)
 
-[node name="Cardboard3" parent="." instance=ExtResource("8_5jf7e")]
+[node name="Cardboard3" parent="." instance=ExtResource("8_xnjx8")]
 position = Vector2(8668, -10506)
 
-[node name="Cardboard4" parent="." instance=ExtResource("8_5jf7e")]
+[node name="Cardboard4" parent="." instance=ExtResource("8_xnjx8")]
 position = Vector2(-2901, -13524)
 
 [connection signal="venting" from="Squirrel" to="TileMap" method="_on_squirrel_venting"]
