@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dogaodn8gksqw" path="res://Textures/Squirrel-Glide-Keys-Right.png" id="5_tel5y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2t7e4"]
-font_size = 50
+font_size = 75
 font_color = Color(0, 0, 0, 1)
 shadow_size = 2
 shadow_color = Color(0, 1, 0, 1)
@@ -21,10 +21,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -225.0
-offset_right = 300.0
-offset_bottom = -153.0
+offset_left = -449.5
+offset_top = -250.0
+offset_right = 449.5
+offset_bottom = -147.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Operation Status: Sucess"
