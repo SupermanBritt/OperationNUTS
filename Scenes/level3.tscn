@@ -1,0 +1,159 @@
+[gd_scene load_steps=14 format=3 uid="uid://tklxriasslyw"]
+
+[ext_resource type="Texture2D" uid="uid://evynel21dtow" path="res://Textures/Untitled.png" id="1_4oaws"]
+[ext_resource type="PackedScene" uid="uid://coogyl0u8ymia" path="res://Sprites/Squirrel.tscn" id="2_4qe3q"]
+[ext_resource type="PackedScene" uid="uid://btkbvpehjqw01" path="res://Sprites/Enemy.tscn" id="3_xvfxj"]
+[ext_resource type="Texture2D" uid="uid://c3ho1rvb6oj0x" path="res://Tilesheets/tempbricks.png" id="4_kt3x0"]
+[ext_resource type="Texture2D" uid="uid://dmoc3ibejtou8" path="res://Tilesheets/ventsTile.png" id="5_11j6m"]
+[ext_resource type="Script" path="res://Scripts/TileMap.gd" id="6_1r4em"]
+[ext_resource type="PackedScene" uid="uid://bfpmm1v732cy7" path="res://Scenes/end_door.tscn" id="7_ntgka"]
+[ext_resource type="PackedScene" uid="uid://dt57gpyxrtkf6" path="res://Sprites/cardboard.tscn" id="8_xnjx8"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mypsq"]
+polygon = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vi3ni"]
+polygon = PackedVector2Array(300, -300, 300, 300, -300, 300, -300, -300)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cuxid"]
+texture = ExtResource("4_kt3x0")
+texture_region_size = Vector2i(600, 600)
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_mypsq")
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_vi3ni")
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+0:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_1/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ge6if"]
+texture = ExtResource("5_11j6m")
+texture_region_size = Vector2i(600, 600)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+0:0/0/custom_data_0 = 1
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_1/angular_velocity = 0.0
+1:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+1:0/0/custom_data_0 = 4
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_1/angular_velocity = 0.0
+0:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+0:1/0/custom_data_0 = 3
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_1/angular_velocity = 0.0
+1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+1:1/0/custom_data_0 = 2
+
+[sub_resource type="TileSet" id="TileSet_elskt"]
+tile_size = Vector2i(600, 600)
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 2
+physics_layer_1/collision_mask = 2
+custom_data_layer_0/name = "tileType"
+custom_data_layer_0/type = 2
+sources/1 = SubResource("TileSetAtlasSource_cuxid")
+sources/3 = SubResource("TileSetAtlasSource_ge6if")
+
+[node name="level1" type="Node2D"]
+
+[node name="TempBackground" type="Sprite2D" parent="."]
+position = Vector2(7994, -8116)
+scale = Vector2(105.555, 62.6783)
+texture = ExtResource("1_4oaws")
+
+[node name="CameraBorder" type="Polygon2D" parent="."]
+show_behind_parent = true
+color = Color(0, 0.733333, 0.529412, 0.176471)
+polygon = PackedVector2Array(-6000, 600, -6000, -16200, 12600, -16200, 12600, 600)
+
+[node name="Squirrel" parent="." instance=ExtResource("2_4qe3q")]
+position = Vector2(-5097, -3304)
+inVent = true
+
+[node name="Enemy" parent="." instance=ExtResource("3_xvfxj")]
+position = Vector2(-646, -925)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_elskt")
+format = 2
+layer_0/name = "FloorAndWalls"
+layer_0/tile_data = PackedInt32Array(65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 65531, 1, 0, 65530, 1, 0, 65529, 1, 0, 65528, 1, 0, 65527, 1, 0, 65526, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, -458762, 1, 0, -393226, 1, 0, -327690, 1, 0, -262154, 1, 0, -196618, 1, 0, -131082, 1, 0, -65546, 1, 0, -10, 1, 0, -458732, 1, 0, -393196, 1, 0, -327660, 1, 0, -262124, 1, 0, -196588, 1, 0, -131052, 1, 0, -65516, 1, 0, -589804, 1, 0, -655340, 1, 0, -720876, 1, 0, -786412, 1, 0, -851948, 1, 0, -917484, 1, 0, -983020, 1, 0, -1048556, 1, 0, -1114092, 1, 0, -524298, 1, 0, -589834, 1, 0, -655370, 1, 0, -720906, 1, 0, -786442, 1, 0, -851978, 1, 0, -917514, 1, 0, -983050, 1, 0, -1048586, 1, 0, -1114122, 1, 0, -1179658, 1, 0, -1245194, 1, 0, -1703946, 1, 0, -1638410, 1, 0, -1572874, 1, 0, -1507338, 1, 0, -1441802, 1, 0, -1376266, 1, 0, -1310730, 1, 0, -1179628, 1, 0, -1245164, 1, 0, -1310700, 1, 0, -1376236, 1, 0, -1441772, 1, 0, -1507308, 1, 0, -1572844, 1, 0, -1638380, 1, 0, -1703916, 1, 0, -1769452, 1, 0, -327666, 1, 0, -327667, 1, 0, -327668, 1, 0, -327669, 1, 0, -327670, 1, 0, -327671, 1, 0, -327673, 1, 0, -327674, 1, 0, -327675, 1, 0, -327676, 1, 0, -327677, 1, 0, -327678, 1, 0, -327679, 1, 0, -327680, 1, 0, -262145, 1, 0, -262146, 1, 0, -262147, 1, 0, -262148, 1, 0, -262149, 1, 0, -262150, 1, 0, -262151, 1, 0, -262152, 1, 0, -262153, 1, 0, -393225, 1, 0, -393224, 1, 0, -393223, 1, 0, -393222, 1, 0, -393221, 1, 0, -393220, 1, 0, -393219, 1, 0, -393218, 1, 0, -393217, 1, 0, -458752, 1, 0, -458751, 1, 0, -458750, 1, 0, -458749, 1, 0, -458748, 1, 0, -458747, 1, 0, -458746, 1, 0, -458745, 1, 0, -458744, 1, 0, -458743, 1, 0, -458742, 1, 0, -458741, 1, 0, -458740, 1, 0, -458739, 1, 0, -458738, 1, 0, -458737, 1, 0, -458736, 1, 0, -458735, 1, 0, -458734, 1, 0, -458733, 1, 0, -327685, 65539, 0, -393203, 65539, 0, -196613, 65539, 1, -262131, 65539, 1, -720905, 1, 0, -720904, 1, 0, -720903, 1, 0, -720902, 1, 0, -720901, 1, 0, -720900, 1, 0, -720899, 1, 0, -720898, 1, 0, -720897, 1, 0, -786432, 1, 0, -786431, 1, 0, -786430, 1, 0, -786429, 1, 0, -786428, 1, 0, -786427, 1, 0, -786426, 1, 0, -786425, 1, 0, -786424, 1, 0, -786423, 1, 0, -786422, 1, 0, -786421, 1, 0, -786415, 1, 0, -786414, 1, 0, -786420, 1, 0, -786419, 1, 0, -786418, 1, 0, -786416, 1, 0, -786417, 1, 0, -393202, 1, 0, -720878, 1, 0, -655342, 1, 0, -589806, 1, 0, -524270, 1, 0, -851950, 1, 0, -917486, 1, 0, -983022, 1, 0, -1048558, 1, 0, -1114094, 1, 0, -1179630, 1, 0, -1245166, 1, 0, -1310702, 1, 0, -1376238, 1, 0, -1441774, 1, 0, -1507310, 1, 0, -1572846, 1, 0, -1638382, 1, 0, -1703918, 1, 0, -1769454, 1, 0, -327672, 1, 0, -1114095, 1, 0, -1114096, 1, 0, -1114097, 1, 0, -1114098, 1, 0, -1114099, 1, 0, -1114104, 1, 0, -1114105, 1, 0, -1114106, 1, 0, -1114107, 1, 0, -1114108, 1, 0, -1114103, 1, 0, -1114102, 1, 0, -1114101, 1, 0, -1114100, 1, 0, -1114109, 1, 0, -1114110, 1, 0, -1114111, 1, 0, -1114112, 1, 0, -1048577, 1, 0, -1048578, 1, 0, -1048579, 1, 0, -1048580, 1, 0, -1048581, 1, 0, -1048582, 1, 0, -1048583, 1, 0, -1048584, 1, 0, -1441775, 1, 0, -1441776, 1, 0, -1441777, 1, 0, -1441778, 1, 0, -1441779, 1, 0, -1441780, 1, 0, -1441781, 1, 0, -1441782, 1, 0, -1441783, 1, 0, -1441784, 1, 0, -1441785, 1, 0, -1441786, 1, 0, -1441787, 1, 0, -1441788, 1, 0, -1441789, 1, 0, -1441790, 1, 0, -1441791, 1, 0, -1441792, 1, 0, -1376257, 1, 0, -1376258, 1, 0, -1376259, 1, 0, -1376260, 1, 0, -1376261, 1, 0, -1376262, 1, 0, -1376263, 1, 0, -1376264, 1, 0, -1376265, 1, 0, -1507311, 3, 1, -1507309, 3, 0, -1310728, 1, 0, -1245192, 1, 0, -1179656, 1, 0, -1114120, 1, 0, -983048, 1, 0, -917512, 1, 0, -851976, 1, 0, -786440, 1, 0, -786439, 3, 0, -786441, 3, 1, -1179632, 1, 0, -1245168, 1, 0, -1310704, 1, 0, -1376240, 1, 0, -1048559, 65539, 1, -1179631, 65539, 0, -1376239, 3, 0, -1376241, 3, 1, -1310729, 65539, 1, -1441801, 65539, 0, -917508, 65539, 0, -917505, 65539, 0, -983040, 65539, 0, -983039, 65539, 0, -983038, 65539, 0, -983037, 65539, 0, -983036, 65539, 0, -1703945, 1, 0, -1703944, 1, 0, -1703943, 1, 0, -1703942, 1, 0, -1703941, 1, 0, -1703940, 1, 0, -1703939, 1, 0, -1703938, 1, 0, -1703937, 1, 0, -1769472, 1, 0, -1769471, 1, 0, -1769470, 1, 0, -1769469, 1, 0, -1769468, 1, 0, -1769467, 1, 0, -1769466, 1, 0, -1769465, 1, 0, -1769464, 1, 0, -1769463, 1, 0, -1769462, 1, 0, -1769461, 1, 0, -1769460, 1, 0, -1769459, 1, 0, -1769458, 1, 0, -1769457, 1, 0, -1769456, 1, 0, -1769455, 1, 0, -1769453, 1, 0, -393197, 65539, 1, -524268, 1, 0, -524269, 65539, 0)
+layer_1/name = "Overvents"
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array(-327689, 1, 0, -327688, 1, 0, -327687, 1, 0, -327686, 1, 0, -327685, 1, 0, -327684, 1, 0, -327683, 1, 0, -327682, 1, 0, -327681, 1, 0, -393216, 1, 0, -393215, 1, 0, -393214, 1, 0, -393213, 1, 0, -393212, 1, 0, -393211, 1, 0, -393210, 1, 0, -393209, 1, 0, -393208, 1, 0, -393207, 1, 0, -393206, 1, 0, -393205, 1, 0, -393204, 1, 0, -393203, 1, 0, -1114093, 1, 0, -1048557, 1, 0, -983021, 1, 0, -917485, 1, 0, -851949, 1, 0, -786413, 1, 0, -720877, 1, 0, -655341, 1, 0, -589805, 1, 0, -524269, 1, 0, -1703917, 1, 0, -1638381, 1, 0, -1572845, 1, 0, -1507309, 1, 0, -1441773, 1, 0, -1376237, 1, 0, -1310701, 1, 0, -1245165, 1, 0, -1179629, 1, 0, -1376239, 1, 0, -1310703, 1, 0, -1245167, 1, 0, -1179631, 1, 0, -1310729, 1, 0, -1245193, 1, 0, -1179657, 1, 0, -1114121, 1, 0, -1048585, 1, 0, -983049, 1, 0, -917513, 1, 0, -851977, 1, 0, -786441, 1, 0)
+script = ExtResource("6_1r4em")
+should_disapear = true
+layer1_turning_visible = false
+
+[node name="end_door" parent="." instance=ExtResource("7_ntgka")]
+position = Vector2(-3891, -11111)
+scale = Vector2(-1, -1)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_xvfxj")]
+position = Vector2(10040, -890)
+speed = 800.0
+pathLength = 2400.0
+
+[node name="Enemy3" parent="." instance=ExtResource("3_xvfxj")]
+position = Vector2(-3600, -5170)
+
+[node name="Enemy4" parent="." instance=ExtResource("3_xvfxj")]
+position = Vector2(1951, -5153)
+
+[node name="Enemy5" parent="." instance=ExtResource("3_xvfxj")]
+position = Vector2(-1351, -14189)
+
+[node name="Enemy6" parent="." instance=ExtResource("3_xvfxj")]
+position = Vector2(7515, -14132)
+
+[node name="Enemy7" parent="." instance=ExtResource("3_xvfxj")]
+position = Vector2(-3221, -8135)
+
+[node name="Enemy8" parent="." instance=ExtResource("3_xvfxj")]
+position = Vector2(-2054, -8153)
+
+[node name="Enemy9" parent="." instance=ExtResource("3_xvfxj")]
+position = Vector2(-3363, -11102)
+
+[node name="Enemy10" parent="." instance=ExtResource("3_xvfxj")]
+position = Vector2(2067, -11129)
+
+[node name="Enemy11" parent="." instance=ExtResource("3_xvfxj")]
+position = Vector2(-3970, -14175)
+
+[node name="Cardboard" parent="." instance=ExtResource("8_xnjx8")]
+position = Vector2(4299, -318)
+
+[node name="Cardboard2" parent="." instance=ExtResource("8_xnjx8")]
+position = Vector2(9906, -4499)
+
+[node name="Cardboard3" parent="." instance=ExtResource("8_xnjx8")]
+position = Vector2(8668, -10506)
+
+[node name="Cardboard4" parent="." instance=ExtResource("8_xnjx8")]
+position = Vector2(-2901, -13524)
+
+[connection signal="venting" from="Squirrel" to="TileMap" method="_on_squirrel_venting"]

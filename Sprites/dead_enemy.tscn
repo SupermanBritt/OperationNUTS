@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/DeadEnemyCollisionShape2D.gd" id="5_gbblb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1allm"]
+resource_local_to_scene = true
 shader = ExtResource("2_4c5xy")
 shader_parameter/enabled = false
 shader_parameter/rainbow = false
