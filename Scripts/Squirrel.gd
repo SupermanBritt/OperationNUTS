@@ -289,7 +289,7 @@ func vent():
 				position.x = map.x * 600 + 300
 				emit_signal("venting")
 			2: #Top
-				position.x = ventLocation.x + sign(ventLocation.x) * -300
+				position.x = ventLocation.x + 300
 				map.y -= 1
 				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
 					map.y -= 1
@@ -303,7 +303,7 @@ func vent():
 				position.x = map.x * 600 + 300
 				emit_signal("venting")
 			4: #Bottom
-				position.x = ventLocation.x + sign(ventLocation.x) * -300
+				position.x = ventLocation.x + 300
 				map.y += 1
 				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
 					map.y += 1
