@@ -213,17 +213,6 @@ position = Vector2(288, 0)
 target_position = Vector2(10, 0)
 metadata/_edit_lock_ = true
 
-[node name="RayCast2DDown" type="RayCast2D" parent="."]
-position = Vector2(0, 232)
-target_position = Vector2(0, 25)
-metadata/_edit_lock_ = true
-
-[node name="RayCast2DTop" type="RayCast2D" parent="."]
-position = Vector2(0, -264)
-target_position = Vector2(0, -10)
-hit_from_inside = true
-metadata/_edit_lock_ = true
-
 [node name="RayCast2DLeft" type="RayCast2D" parent="."]
 position = Vector2(-288, 0)
 target_position = Vector2(-10, 0)
