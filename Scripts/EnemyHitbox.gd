@@ -23,3 +23,6 @@ func die(x, y):
 
 func enableOutline():
 	get_parent().enableOutline()
+
+func disableOutline():
+	get_parent().disableOutline()
