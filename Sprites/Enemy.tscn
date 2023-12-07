@@ -82,7 +82,9 @@ script = ExtResource("3_yago7")
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flashlight"]
+visible = false
 polygon = PackedVector2Array(-1800, -42, 5400, -225, 5400, 225, -1800, 42)
+disabled = true
 metadata/_edit_lock_ = true
 
 [node name="FlashlightLight" type="PointLight2D" parent="Flashlight"]
