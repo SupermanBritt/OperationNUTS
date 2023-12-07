@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dl7frlhrww5xo"]
+[gd_scene load_steps=13 format=3 uid="uid://dl7frlhrww5xo"]
 
 [ext_resource type="Texture2D" uid="uid://evynel21dtow" path="res://Textures/Untitled.png" id="1_jrlfs"]
 [ext_resource type="PackedScene" uid="uid://coogyl0u8ymia" path="res://Sprites/Squirrel.tscn" id="2_2dut7"]
