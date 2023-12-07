@@ -1,7 +1,9 @@
 extends TileMap
 
-var should_disapear = false
-var layer1_turning_visible = true
+@export var startInVent = false
+	
+var should_disapear = startInVent
+var layer1_turning_visible = !startInVent
 var alpha_delta = .06
 
 func _use_tile_data_runtime_update(layer: int, _coords: Vector2i) -> bool:

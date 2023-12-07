@@ -1,7 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://b65xyxkxh6lnq"]
+[gd_scene load_steps=10 format=3 uid="uid://b65xyxkxh6lnq"]
 
 [ext_resource type="Script" path="res://Scripts/dead_enemy.gd" id="1_gmx2g"]
+[ext_resource type="Shader" path="res://Shaders/EnemyOutline.gdshader" id="2_4c5xy"]
 [ext_resource type="Texture2D" uid="uid://vcu08wxfnyyk" path="res://Textures/Enemy/EnemyDead.png" id="2_dig2l"]
+[ext_resource type="Script" path="res://Scripts/DeadEnemyAnimatedSprite2D.gd" id="4_fr5j0"]
+[ext_resource type="Script" path="res://Scripts/DeadEnemyCollisionShape2D.gd" id="5_gbblb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1allm"]
+shader = ExtResource("2_4c5xy")
+shader_parameter/enabled = false
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(0, 1, 0, 1)
+shader_parameter/line_scale = 15.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f4wkt"]
 animations = [{
@@ -14,22 +27,25 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ujh8y"]
-polygon = PackedVector2Array(60, -279, -341, -246, -451, -194, -496, -92, -630, -60, -731, -82, -797, -76, -844, -34, -842, 28, -788, 73, -712, 80, -599, 53, -577, -1, -491, 7, -429, 77, -9, 135, 145, 202, 190.365, 56.7694, 587, 294, 827, 284, 824, -156, 182, -146, 158, -220, 123, -264)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6xh5g"]
+polygon = PackedVector2Array(15, -268, 167, -250, 209, -171, 810, -139, 809, 316, -875, 296, -834, -1, -784, -57, -648, -37, -559.043, -67.9941, -436, -187, -299, -230)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vqfwn"]
 radius = 305.0
 height = 1762.0
 
-[node name="Dead_Enemy" type="CharacterBody2D"]
+[node name="Dead_Enemy" type="CharacterBody2D" groups=["dead_enemy", "player"]]
 script = ExtResource("1_gmx2g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_1allm")
 sprite_frames = SubResource("SpriteFrames_f4wkt")
+script = ExtResource("4_fr5j0")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite2D"]
-occluder = SubResource("OccluderPolygon2D_ujh8y")
+occluder = SubResource("OccluderPolygon2D_6xh5g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_vqfwn")
+script = ExtResource("5_gbblb")

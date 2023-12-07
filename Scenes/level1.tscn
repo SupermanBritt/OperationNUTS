@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cj0r8b5hi7pqd"]
+[gd_scene load_steps=8 format=3 uid="uid://cj0r8b5hi7pqd"]
 
 [ext_resource type="Texture2D" uid="uid://evynel21dtow" path="res://Textures/Untitled.png" id="1_sm8lk"]
 [ext_resource type="PackedScene" uid="uid://coogyl0u8ymia" path="res://Sprites/Squirrel.tscn" id="2_6iihy"]
@@ -6,17 +6,19 @@
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="5_2n3c0"]
 [ext_resource type="PackedScene" uid="uid://btkbvpehjqw01" path="res://Sprites/Enemy.tscn" id="6_gav6d"]
 [ext_resource type="PackedScene" uid="uid://bfpmm1v732cy7" path="res://Scenes/end_door.tscn" id="7_7bioq"]
-[ext_resource type="PackedScene" uid="uid://dt57gpyxrtkf6" path="res://Sprites/cardboard.tscn" id="8_7w8od"]
+[ext_resource type="PackedScene" uid="uid://b5obpbrmnmfku" path="res://Sprites/cardboard.tscn" id="8_7w8od"]
 
 [node name="level1" type="Node2D"]
 
 [node name="TempBackground" type="Sprite2D" parent="."]
+z_index = -2
 position = Vector2(7994, -8116)
 scale = Vector2(105.555, 62.6783)
 texture = ExtResource("1_sm8lk")
 
 [node name="CameraBorder" type="Polygon2D" parent="."]
 show_behind_parent = true
+z_index = -5
 position = Vector2(0, 25)
 color = Color(0, 0.733333, 0.529412, 0.176471)
 polygon = PackedVector2Array(-7200, -4565, -3600, -21600, -6600, -4965, -15000, 600)
