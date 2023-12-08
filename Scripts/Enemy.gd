@@ -14,7 +14,7 @@ func _ready():
 	velocity.x = speed
 	if startDirection == -1:
 		speed *= -1
-	_animated_sprite.play("walkleft")
+	
 
 func enableOutline():
 	get_node("AnimatedSprite2D").enableOutline()
@@ -22,6 +22,13 @@ func enableOutline():
 func disableOutline():
 	get_node("AnimatedSprite2D").disableOutline()
 
+func _process(_delta):
+	if sign(velocity.x) == 1:
+		_animated_sprite.play("walkright")
+	elif sign(velocity.x) == -1:
+		_animated_sprite.play("walkleft")
+	else:
+		_animated_sprite.stop()
 
 func _physics_process(delta):
 	# Getting the current X position
