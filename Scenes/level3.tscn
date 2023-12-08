@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dmoc3ibejtou8" path="res://Tilesheets/ventsTile.png" id="5_11j6m"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="6_1r4em"]
 [ext_resource type="PackedScene" uid="uid://bfpmm1v732cy7" path="res://Scenes/end_door.tscn" id="7_ntgka"]
-[ext_resource type="PackedScene" uid="uid://b5obpbrmnmfku" path="res://Sprites/cardboard.tscn" id="8_xnjx8"]
+[ext_resource type="PackedScene" uid="uid://dt57gpyxrtkf6" path="res://Sprites/cardboard.tscn" id="8_xnjx8"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mypsq"]
 polygon = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
