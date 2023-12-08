@@ -22,7 +22,7 @@ func enableOutline():
 func disableOutline():
 	get_node("AnimatedSprite2D").disableOutline()
 
-func _process(delta):
+func _process(_delta):
 	if sign(velocity.x) == 1:
 		_animated_sprite.play("walkright")
 	elif sign(velocity.x) == -1:
