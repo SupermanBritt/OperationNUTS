@@ -137,7 +137,7 @@ func _physics_process(delta):
 		else:
 			velocity.y += gravity * delta * gliding_mult
 			
-		if Input.is_action_just_pressed("jump") && !on_wall() && delta_time > wall_jump_delay:
+		if Input.is_action_just_pressed("jump") && !on_wall() && delta_time > wall_jump_delay && !getHasBody():
 			isGliding = true
 			velocity.y = 0
 		if Input.is_action_just_released("jump"):
@@ -148,14 +148,16 @@ func _physics_process(delta):
 			max_speed = max_gliding_speed
 		else:
 			gliding_mult = 1
-			max_speed = max_speed_final
+			if !getHasBody():
+				max_speed = max_speed_final
 			
 	if Input.is_action_just_released("jump"): 
 		let_go_off_jump = true
 	
 	if is_on_floor():
 		isGliding = false
-		max_speed = max_speed_final
+		if !getHasBody():
+			max_speed = max_speed_final
 		#Handle jump
 		if Input.is_action_just_pressed("jump"):
 			let_go_off_jump = false
@@ -380,9 +382,21 @@ func reset():
 
 func grabBody():
 	hasBody = true;
+	max_speed = max_speed - 1500
+	jump_velocity = jump_velocity + 2000
+	#acceleration = acceleration - 400
+#var max_speed_final : float = 3000.0
+#@export var max_speed : float = max_speed_final
+#@export var jump_velocity: float = -6000.0
+#@export var gravity : float = 14000.0
+#@export var friction : float = 200.0
+#@export var acceleration : float = 500.0
 
 func dropBody():
 	hasBody = false
+	max_speed = max_speed + 1500
+	jump_velocity = jump_velocity - 2000
+	#acceleration = acceleration + 400
 
 func getHasBody():
 	return hasBody
