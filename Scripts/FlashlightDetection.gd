@@ -32,7 +32,7 @@ func _process(_delta):
 		emit_signal("suspicionValue", susValue)
 		if susValue > susLimit:
 			get_parent().get_parent().get_node("Squirrel").set_is_dead(true)
-			get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
+			Global.goto_scene("res://Scenes/game_over.tscn")
 		#else:
 			#squirrelShouldDie = false
 	#for i in range(0,bodies.size()):
