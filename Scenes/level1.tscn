@@ -21,7 +21,7 @@ show_behind_parent = true
 z_index = -5
 position = Vector2(0, 25)
 color = Color(0, 0.733333, 0.529412, 0.176471)
-polygon = PackedVector2Array(-7200, -4565, -3600, -21600, -6600, -4965, -15000, 600)
+polygon = PackedVector2Array(-15458, -21518, -3036, -21572, -3109, 1080, -15514, 1032)
 
 [node name="Squirrel" parent="." instance=ExtResource("2_6iihy")]
 position = Vector2(-12816, -1548)

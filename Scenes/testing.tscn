@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://clmqiqap5dfev" path="res://SavedSettings/tilemap.tres" id="3_c6fy8"]
 [ext_resource type="PackedScene" uid="uid://btkbvpehjqw01" path="res://Sprites/Enemy.tscn" id="5_84cy3"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="5_yrlpv"]
-[ext_resource type="PackedScene" uid="uid://b5obpbrmnmfku" path="res://Sprites/cardboard.tscn" id="6_33lxb"]
+[ext_resource type="PackedScene" uid="uid://dt57gpyxrtkf6" path="res://Sprites/cardboard.tscn" id="6_33lxb"]
 [ext_resource type="PackedScene" uid="uid://bfpmm1v732cy7" path="res://Scenes/end_door.tscn" id="7_4wy6h"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fsfy4"]

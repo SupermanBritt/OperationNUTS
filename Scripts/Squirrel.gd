@@ -27,7 +27,7 @@ var currVent = []
 var in_debug_mode = false
 var spawn_pos
 var is_dead = false
-var allow_debug = true
+var allow_debug = false
 var prevDirectionFacing = direction_facing
 var baseTailPos
 var direction_held

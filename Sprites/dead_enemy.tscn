@@ -36,6 +36,8 @@ radius = 305.0
 height = 1762.0
 
 [node name="Dead_Enemy" type="CharacterBody2D" groups=["dead_enemy", "player"]]
+collision_layer = 128
+collision_mask = 128
 script = ExtResource("1_gmx2g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
