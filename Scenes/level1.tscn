@@ -29,7 +29,7 @@ position = Vector2(-12816, -1548)
 [node name="Enemy" parent="." instance=ExtResource("6_gav6d")]
 position = Vector2(-10214, -14114)
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." groups=["walls"]]
 tile_set = ExtResource("4_hxbx0")
 format = 2
 layer_0/name = "FloorAndWalls"
