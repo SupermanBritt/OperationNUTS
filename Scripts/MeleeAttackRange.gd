@@ -40,7 +40,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if is_colliding():
+	if is_colliding() && get_collider() != null && !(get_collider().is_in_group("walls")):
 		currentBody = get_collider()
 		_on_body_entered(currentBody, get_collision_point().x, get_collision_point().y)
 	elif Input.is_action_just_pressed("kill") && get_parent().getHasBody():
@@ -54,10 +54,23 @@ func _process(_delta):
 			elif child.is_in_group("dead_enemy"):
 				child.disableOutline()
 		var deadenemy = preloadedDeadEnemySprite.instantiate()
-		deadenemy.position.x = get_parent().get_position().x + 2400 * sign(get_parent().velocity.x)
-		deadenemy.position.y = get_parent().get_position().y
-		get_tree().current_scene.add_child(deadenemy)
-		get_parent().dropBody()
+		#this is the place to change the spawning
+		var deadBodySpawning = get_parent().get_node("DeadBodySpawningDetection")
+		if(deadBodySpawning.isColliding()):
+			deadenemy.position.x = deadBodySpawning.getCollisionPointX()
+			deadenemy.position.y = deadBodySpawning.getCollisionPointY()
+			get_tree().current_scene.add_child(deadenemy)
+			get_parent().dropBody()
+		else:
+			deadenemy.position.x = deadBodySpawning.getPointX()
+			deadenemy.position.y = deadBodySpawning.getPointY()
+			get_tree().current_scene.add_child(deadenemy)
+			get_parent().dropBody()
+			#print(deadBodySpawning.getPointX())
+		#deadenemy.position.x = get_parent().get_position().x + 2400 * sign(get_parent().velocity.x)
+		#deadenemy.position.y = get_parent().get_position().y
+		#get_tree().current_scene.add_child(deadenemy)
+		#get_parent().dropBody()
 	else:
 		var childrenCount = get_tree().get_current_scene().get_child_count()
 		for i in childrenCount:
