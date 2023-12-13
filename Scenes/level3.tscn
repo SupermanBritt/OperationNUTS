@@ -69,7 +69,8 @@ texture_region_size = Vector2i(600, 600)
 [sub_resource type="TileSet" id="TileSet_elskt"]
 tile_size = Vector2i(600, 600)
 occlusion_layer_0/light_mask = 1
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 129
+physics_layer_0/collision_mask = 129
 physics_layer_1/collision_layer = 2
 physics_layer_1/collision_mask = 2
 custom_data_layer_0/name = "tileType"
