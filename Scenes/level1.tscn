@@ -37,8 +37,9 @@ scale = Vector2(-1, 1)
 speed = 0.0
 startDirection = -1
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." groups=["walls"]]
 position = Vector2(0, -53)
+
 tile_set = ExtResource("4_hxbx0")
 format = 2
 layer_0/name = "FloorAndWalls"

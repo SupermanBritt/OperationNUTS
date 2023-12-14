@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://coogyl0u8ymia"]
+[gd_scene load_steps=30 format=3 uid="uid://coogyl0u8ymia"]
 
 [ext_resource type="Script" path="res://Scripts/Squirrel.gd" id="1_7axbj"]
 [ext_resource type="Texture2D" uid="uid://drfmxxngm8kky" path="res://Textures/Squirrel/SpritesheetTail.png" id="2_r4guj"]
 [ext_resource type="PackedScene" uid="uid://d2lnccob6lmsc" path="res://Scenes/TerrainDetector.tscn" id="3_y3mvv"]
+[ext_resource type="Script" path="res://Scripts/DeadBodySpawningDetection.gd" id="9_sdp37"]
 [ext_resource type="Texture2D" uid="uid://dogaodn8gksqw" path="res://Textures/Squirrel/Squirrel-Glide-Keys-Right.png" id="11_jxut2"]
 [ext_resource type="Script" path="res://Scripts/MeleeAttackRange.gd" id="13_gfh0d"]
 [ext_resource type="Texture2D" uid="uid://c7dtslw26wl10" path="res://Textures/Squirrel/Squirrel-Jump-Keys-Down-Right.png" id="15_u6h1p"]
@@ -226,6 +227,12 @@ target_position = Vector2(1200, 0)
 collision_mask = 129
 collide_with_areas = true
 script = ExtResource("13_gfh0d")
+
+[node name="DeadBodySpawningDetection" type="RayCast2D" parent="."]
+target_position = Vector2(1800, 0)
+collision_mask = 64
+collide_with_areas = true
+script = ExtResource("9_sdp37")
 
 [connection signal="body_shape_exited" from="TerrainDetector" to="." method="_on_terrain_detector_body_shape_exited"]
 [connection signal="terrain_entered" from="TerrainDetector" to="." method="_on_terrain_detector_terrain_entered"]

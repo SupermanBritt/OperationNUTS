@@ -30,7 +30,7 @@ position = Vector2(-13425, -1562)
 position = Vector2(-10054, -2125)
 pathLength = 4000.0
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." groups=["walls"]]
 tile_set = ExtResource("4_delfx")
 format = 2
 layer_0/name = "FloorAndWalls"
