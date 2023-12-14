@@ -19,7 +19,7 @@ func _process_tilemap_collision(body: Node2D, body_rid: RID):
 		current_tilemap = body
 		for index in current_tilemap.get_layers_count():
 			var collided_tile_coords = current_tilemap.get_coords_for_body_rid(body_rid)
-			var tile_data = current_tilemap.get_cell_tile_data(index, collided_tile_coords)
+			var tile_data = current_tilemap.get_cell_tile_data(2, collided_tile_coords)
 			if !tile_data is TileData:
 				continue
 			var terrain_mask = tile_data.get_custom_data_by_layer_id(0)

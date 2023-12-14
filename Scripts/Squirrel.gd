@@ -211,6 +211,7 @@ func _physics_process(delta):
 	else:
 		move_and_slide()
 	
+	
 func setRotate(radians):
 	get_child(1).set_rotation(radians)
 	var tail = get_child(0)
@@ -276,6 +277,8 @@ func _on_terrain_detector_body_shape_exited(_body_rid, _body, _body_shape_index,
 func set_is_dead(isdead):
 	is_dead = isdead
 
+var layerID = 2
+
 func vent():
 	var ventDir = currVent[0]
 	var map = currVent[1]
@@ -284,30 +287,30 @@ func vent():
 		inVent = !inVent
 		match ventDir:
 			1: #Left
-				position.y = ventLocation.y + sign(ventLocation.y) * -300
+				position.y = ventLocation.y + sign(ventLocation.y) * -300 - 200
 				map.x -= 1
-				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+				while current_tilemap.get_cell_tile_data(layerID, map) != null and current_tilemap.get_cell_tile_data(layerID, map).get_custom_data("tileType") == 0:
 					map.x -= 1
 				position.x = map.x * 600 + 300
 				emit_signal("venting")
 			2: #Top
 				position.x = ventLocation.x + 300
 				map.y -= 1
-				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+				while current_tilemap.get_cell_tile_data(layerID, map) != null and current_tilemap.get_cell_tile_data(layerID, map).get_custom_data("tileType") == 0:
 					map.y -= 1
 				position.y = map.y * 600 + 300
 				emit_signal("venting")
 			3: #Right
-				position.y = ventLocation.y + sign(ventLocation.y) * -300
+				position.y = ventLocation.y + sign(ventLocation.y) * -300  - 200
 				map.x += 1
-				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+				while current_tilemap.get_cell_tile_data(layerID, map) != null and current_tilemap.get_cell_tile_data(layerID, map).get_custom_data("tileType") == 0:
 					map.x += 1
 				position.x = map.x * 600 + 300
 				emit_signal("venting")
 			4: #Bottom
 				position.x = ventLocation.x + 300
 				map.y += 1
-				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+				while current_tilemap.get_cell_tile_data(layerID, map) != null and current_tilemap.get_cell_tile_data(layerID, map).get_custom_data("tileType") == 0:
 					map.y += 1
 				position.y = map.y * 600 + 100
 				emit_signal("venting")
