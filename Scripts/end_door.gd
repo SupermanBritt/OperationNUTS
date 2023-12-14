@@ -19,7 +19,6 @@ func decrement_enemies():
 	num_enemies -= 1
 	if num_enemies <= 0:
 		_animated_sprite.play("open")
-		_animated_sprite.stop()
 		open = true
 
 func _process(_delta):
@@ -29,7 +28,9 @@ func _process(_delta):
 		elif Global.curr_path == "res://Scenes/level2.tscn":
 			Global.goto_scene("res://Scenes/level3.tscn")
 		elif Global.curr_path == "res://Scenes/level3.tscn":
-			Global.goto_scene("res://Scenes/win_screen.tscn")	
+			Global.goto_scene("res://Scenes/win_screen.tscn")
+		elif Global.curr_path == "res://Scenes/testing.tscn":
+			Global.goto_scene("res://Scenes/testing.tscn")
 
 func _on_area_2d_body_entered(body):
 	if open and body.is_in_group("player"):
