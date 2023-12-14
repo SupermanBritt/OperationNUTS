@@ -1,16 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfpmm1v732cy7"]
+[gd_scene load_steps=6 format=3 uid="uid://bfpmm1v732cy7"]
 
+[ext_resource type="Texture2D" uid="uid://kkeisoc0e5vi" path="res://Textures/doortemp-close.png" id="1_lbteq"]
 [ext_resource type="Script" path="res://Scripts/end_door.gd" id="1_uxbdu"]
-[ext_resource type="Texture2D" uid="uid://ehhk2k513svo" path="res://Textures/Door/door_closed.png" id="2_5yu6d"]
-[ext_resource type="Texture2D" uid="uid://d4clx3jiy4ahf" path="res://Textures/Door/door_opening_A.png" id="3_cxlop"]
-[ext_resource type="Texture2D" uid="uid://dhqitfb0gw4cg" path="res://Textures/Door/door_opening_B.png" id="4_3w0uj"]
-[ext_resource type="Texture2D" uid="uid://cjipx51w7nqvv" path="res://Textures/Door/door_open.png" id="5_qm2s2"]
+[ext_resource type="Texture2D" uid="uid://bolko5tmceghi" path="res://Textures/doortemp-open.png" id="2_rdvg0"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_nbl0j"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2j7in"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_5yu6d")
+"texture": ExtResource("1_lbteq")
 }],
 "loop": true,
 "name": &"close",
@@ -18,37 +16,27 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_5yu6d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_cxlop")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_3w0uj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_qm2s2")
+"texture": ExtResource("2_rdvg0")
 }],
-"loop": false,
+"loop": true,
 "name": &"open",
-"speed": 7.0
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0yi5s"]
-size = Vector2(989, 1882)
+size = Vector2(91, 1811)
 
 [node name="end_door" type="Node2D"]
-z_index = -1
 script = ExtResource("1_uxbdu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_nbl0j")
+sprite_frames = SubResource("SpriteFrames_2j7in")
 animation = &"close"
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-12.5, 143)
+position = Vector2(259.5, -2.5)
 shape = SubResource("RectangleShape2D_0yi5s")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
