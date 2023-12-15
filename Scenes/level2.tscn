@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtyokq3clw5n4"]
+[gd_scene load_steps=8 format=3 uid="uid://dtyokq3clw5n4"]
 
 [ext_resource type="Texture2D" uid="uid://evynel21dtow" path="res://Textures/Untitled.png" id="1_jrlfs"]
 [ext_resource type="PackedScene" uid="uid://coogyl0u8ymia" path="res://Sprites/Squirrel.tscn" id="2_2dut7"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="6_kae7i"]
 [ext_resource type="PackedScene" uid="uid://bfpmm1v732cy7" path="res://Scenes/end_door.tscn" id="7_d2dli"]
 [ext_resource type="PackedScene" uid="uid://dt57gpyxrtkf6" path="res://Sprites/cardboard.tscn" id="7_mpjni"]
-[ext_resource type="PackedScene" uid="uid://c3plt6d1vd211" path="res://Sprites/trashcan.tscn" id="8_lgatt"]
 
 [node name="level2" type="Node2D"]
 
@@ -41,7 +40,7 @@ layer_1/tile_data = PackedInt32Array(-13, 1, 0, -14, 1, 0, -15, 1, 0, -16, 1, 0,
 script = ExtResource("6_kae7i")
 
 [node name="end_door" parent="." instance=ExtResource("7_d2dli")]
-position = Vector2(11402, -11880)
+position = Vector2(11689, -11700)
 
 [node name="Enemy2" parent="." instance=ExtResource("3_0ths4")]
 position = Vector2(-13526, -6304)
@@ -60,6 +59,9 @@ startDirection = -1
 [node name="Enemy5" parent="." instance=ExtResource("3_0ths4")]
 position = Vector2(3206, -11625)
 
+[node name="Cardboard" parent="." instance=ExtResource("7_mpjni")]
+position = Vector2(2532, -1497)
+
 [node name="Cardboard2" parent="." instance=ExtResource("7_mpjni")]
 position = Vector2(-11475, -5703)
 
@@ -75,8 +77,5 @@ startDirection = -1
 
 [node name="Cardboard3" parent="." instance=ExtResource("7_mpjni")]
 position = Vector2(-3961, -9896)
-
-[node name="Trashcan" parent="." instance=ExtResource("8_lgatt")]
-position = Vector2(693, -1672)
 
 [connection signal="venting" from="Squirrel" to="TileMap" method="_on_squirrel_venting"]
