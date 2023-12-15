@@ -34,6 +34,7 @@ var direction_held
 var direction_held_y
 var direction_facing_y = -1
 var prevDirectionFacing_y = direction_facing_y
+var finished_eating_or_puking = true
 
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _tail_sprite = $TailAnimatedSprite
@@ -63,32 +64,33 @@ func tail_animation():
 		_tail_sprite.stop()
 
 func squirrel_animation():
-	if is_dead:
-		_animated_sprite.stop()
-	#elif isClinging and direction_facing == 1 and sign(velocity.y) == -1:
-		#_animated_sprite.play("climb_right_up")
-	#elif isClinging and direction_facing == 1 and sign(velocity.y) == 1:
-		#_animated_sprite.play("climb_right_down")
-	#elif isClinging and direction_facing == -1 and sign(velocity.y) == -1:
-		#_animated_sprite.play("climb_left_up")
-	#elif isClinging and direction_facing == -1 and sign(velocity.y) == 1:
-		#_animated_sprite.play("climb_left_down")
-	elif direction_held_y and isClinging:
-		_animated_sprite.play("run")
-	elif !direction_held_y and isClinging:
-		_animated_sprite.play("climb_idle")
-	elif sign(velocity.x) and direction_held and is_on_floor():
-		_animated_sprite.play("run")
-	elif !is_on_floor() and isGliding:
-		_animated_sprite.play("glide")
-	elif !is_on_floor() and velocity.y < 0 and !isGliding:
-		_animated_sprite.play("jump_up")
-	elif !is_on_floor() and velocity.y > 0 and !isGliding:
-		_animated_sprite.play("jump_down")
-	elif is_on_floor(): 
-		_animated_sprite.play("idle")
-	else:
-		_animated_sprite.stop()
+	if finished_eating_or_puking:
+		if is_dead:
+			_animated_sprite.stop()
+		elif direction_held_y and isClinging && !hasBody:
+			_animated_sprite.play("run")
+		elif direction_held_y and isClinging:
+			_animated_sprite.play("waddle")
+		elif !direction_held_y and isClinging && !hasBody:
+			_animated_sprite.play("idle")
+		elif !direction_held_y and isClinging:
+			_animated_sprite.play("big_cheeks_idle")
+		elif sign(velocity.x) and direction_held and is_on_floor() && !hasBody:
+			_animated_sprite.play("run")
+		elif sign(velocity.x) and direction_held and is_on_floor():
+			_animated_sprite.play("waddle")
+		elif !is_on_floor() and isGliding:
+			_animated_sprite.play("glide")
+		elif !is_on_floor() and velocity.y < 0 and !isGliding:
+			_animated_sprite.play("jump_up")
+		elif !is_on_floor() and velocity.y > 0 and !isGliding:
+			_animated_sprite.play("jump_down")
+		elif is_on_floor() && !hasBody: 
+			_animated_sprite.play("idle")
+		elif is_on_floor():
+			_animated_sprite.play("big_cheeks_idle")
+		#else:
+			#_animated_sprite.stop()
 	
 func _physics_process(delta):		
 	# Get the input direction and handle the movement/deceleration.
@@ -397,3 +399,20 @@ func getHasBody():
 
 func getInVent():
 	return inVent
+
+func callAttack():
+	_animated_sprite.play("attack")
+
+func callPuke():
+	finished_eating_or_puking = false
+	_animated_sprite.play("puking")
+	finishedEating()
+
+func callEat():
+	finished_eating_or_puking = false
+	_animated_sprite.play("eating")
+	finishedEating()
+
+func finishedEating():
+	await get_tree().create_timer(0.3333).timeout
+	finished_eating_or_puking = true

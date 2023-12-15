@@ -10,17 +10,20 @@ func _on_body_entered(body, x, y):
 	if (body!=null) && body.is_in_group("enemy"):
 		body.enableOutline()
 		if Input.is_action_just_pressed("kill"):
+			get_parent().callAttack()
 			body.die(x, y)
 	elif (body!=null) && body.is_in_group("interactable"):
 		if (body.getHasBody()==false):
 			body.enableOutline()
 			if Input.is_action_just_pressed("kill") && get_parent().getHasBody():
+				get_parent().callPuke()
 				body.grabBody()
 				body.disableOutline()
 				get_parent().dropBody()
 	elif (body!=null) && body.is_in_group("dead_enemy"):
 		body.enableOutline()
 		if Input.is_action_just_pressed("kill") && (get_parent().getHasBody()==false):
+			get_parent().callEat()
 			body.despawn()
 			get_parent().grabBody()
 	#else:
@@ -53,6 +56,7 @@ func _process(_delta):
 				child.disableOutline()
 			elif child.is_in_group("dead_enemy"):
 				child.disableOutline()
+		get_parent().callPuke()
 		var deadenemy = preloadedDeadEnemySprite.instantiate()
 		#this is the place to change the spawning
 		var deadBodySpawning = get_parent().get_node("DeadBodySpawningDetection")
