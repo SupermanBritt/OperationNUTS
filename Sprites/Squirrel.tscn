@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://coogyl0u8ymia"]
+[gd_scene load_steps=64 format=3 uid="uid://coogyl0u8ymia"]
 
 [ext_resource type="Script" path="res://Scripts/Squirrel.gd" id="1_7axbj"]
 [ext_resource type="Texture2D" uid="uid://drfmxxngm8kky" path="res://Textures/Squirrel/SpritesheetTail.png" id="2_r4guj"]
@@ -28,6 +28,22 @@
 [ext_resource type="Texture2D" uid="uid://b5i3g0kewybra" path="res://Textures/Squirrel/Glide/Timeline 1_0017.png" id="21_xd60g"]
 [ext_resource type="Texture2D" uid="uid://dbw0ktb4w8y0s" path="res://Textures/Squirrel/Glide/Timeline 1_0018.png" id="22_jnokg"]
 [ext_resource type="Texture2D" uid="uid://b6q3jnycyi6bd" path="res://Textures/Squirrel/Glide/Timeline 1_0019.png" id="23_qixcj"]
+[ext_resource type="Texture2D" uid="uid://c62esbm5ewsiu" path="res://Textures/Squirrel/Normal Idle/Timeline 1_0000.png" id="24_lih3k"]
+[ext_resource type="Texture2D" uid="uid://bogfmmteyni7l" path="res://Textures/Squirrel/Normal Idle/Timeline 1_0001.png" id="25_3nkds"]
+[ext_resource type="Texture2D" uid="uid://bsasfr6tv6ti1" path="res://Textures/Squirrel/Normal Idle/Timeline 1_0002.png" id="26_03ptg"]
+[ext_resource type="Texture2D" uid="uid://fbvndvwkmjwi" path="res://Textures/Squirrel/Normal Idle/Timeline 1_0003.png" id="27_ml2ft"]
+[ext_resource type="Texture2D" uid="uid://byv527n2saxp8" path="res://Textures/Squirrel/Normal Idle/Timeline 1_0004.png" id="28_bivdk"]
+[ext_resource type="Texture2D" uid="uid://babjjdo7cbohm" path="res://Textures/Squirrel/Normal Idle/Timeline 1_0005.png" id="29_a0ce6"]
+[ext_resource type="Texture2D" uid="uid://bjs3w848jcwwr" path="res://Textures/Squirrel/Normal Idle/Timeline 1_0006.png" id="30_ftynn"]
+[ext_resource type="Texture2D" uid="uid://lp6die8mnc48" path="res://Textures/Squirrel/Normal Idle/Timeline 1_0007.png" id="31_ougff"]
+[ext_resource type="Texture2D" uid="uid://ddkbijc3lxe5g" path="res://Textures/Squirrel/Normal Idle/Timeline 1_0008.png" id="32_8h4ri"]
+[ext_resource type="Texture2D" uid="uid://8d30lqfutfea" path="res://Textures/Squirrel/Normal Idle/Timeline 1_0009.png" id="33_dpk8y"]
+[ext_resource type="Texture2D" uid="uid://b8b6sfs4t26y2" path="res://Textures/Squirrel/Normal Idle/Timeline 1_0010.png" id="34_u2656"]
+[ext_resource type="Texture2D" uid="uid://b71xj48smjs6m" path="res://Textures/Squirrel/Normal Idle/Timeline 1_0011.png" id="35_e1rna"]
+[ext_resource type="Texture2D" uid="uid://bpiccr657b0e1" path="res://Textures/Squirrel/Normal Idle/Timeline 1_0012.png" id="36_cqd7u"]
+[ext_resource type="Texture2D" uid="uid://ogkhpdhm3elx" path="res://Textures/Squirrel/Normal Idle/Timeline 1_0013.png" id="37_tmd42"]
+[ext_resource type="Texture2D" uid="uid://cmx268le06424" path="res://Textures/Squirrel/Normal Idle/Timeline 1_0014.png" id="38_21wpc"]
+[ext_resource type="Texture2D" uid="uid://yjnjeqjyl0ji" path="res://Textures/Squirrel/Normal Idle/Timeline 1_0015.png" id="39_ip3hv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ucw4"]
 atlas = ExtResource("2_r4guj")
@@ -92,10 +108,6 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xq6wp"]
-atlas = ExtResource("19_a50i2")
-region = Rect2(600, 0, 600, 600)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s28w1"]
 atlas = ExtResource("19_a50i2")
 region = Rect2(600, 0, 600, 600)
 
@@ -208,7 +220,52 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s28w1")
+"texture": ExtResource("24_lih3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_3nkds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_03ptg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ml2ft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_bivdk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_a0ce6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_ftynn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_ougff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_8h4ri")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_dpk8y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_u2656")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_e1rna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_cqd7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_tmd42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_21wpc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_ip3hv")
 }],
 "loop": true,
 "name": &"idle",
@@ -274,7 +331,7 @@ animation = &"still"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x27mp")
-animation = &"glide"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
