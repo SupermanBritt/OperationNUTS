@@ -400,3 +400,6 @@ func dropBody():
 
 func getHasBody():
 	return hasBody
+
+func getInVent():
+	return inVent
