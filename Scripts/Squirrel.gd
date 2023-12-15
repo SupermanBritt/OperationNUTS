@@ -229,6 +229,7 @@ func setRotate(radians):
 		newY = baseTailPos.y
 	tail.position.x = newX
 	tail.position.y = newY
+	
 	#for node in get_children():
 		#if node.get_class() != "AnimatedSprite2D":
 			#node.set_rotation(0)
