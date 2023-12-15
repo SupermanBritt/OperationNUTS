@@ -195,7 +195,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and isClinging:
 		isClinging = false
 		velocity.y = jump_velocity * 1.2
-		velocity.x = wall_jump_pushback * -on_wall()
+		velocity.x = wall_jump_pushback * -direction_facing
 		wall_jump_timer = Time.get_ticks_msec()
 	#print("x:", velocity.x, ", y:", velocity.y, ", max_speed:", max_speed)
 	
