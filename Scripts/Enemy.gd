@@ -40,7 +40,7 @@ func _physics_process(delta):
 	
 	#if $BounceHitWall.is_colliding():
 	# Checking if the enemy has traveled the pathLength
-	if abs(startingX-currentX) > pathLength or startDirection * currentX < startDirection * startingX or get_child(3).get_child(2).is_colliding():
+	if abs(startingX-currentX) > pathLength or startDirection * currentX < startDirection * startingX or checkForBounce():
 		scale.x *= -1
 		velocity.x *= -1
 #		print("Scale is: ", scale.x)
@@ -50,3 +50,9 @@ func _physics_process(delta):
 		#velocity.x *= -1
 ###		print("Scale is: ", scale.x)
 	move_and_slide()
+	
+func checkForBounce():
+	if get_child(3).get_child(2).is_colliding():
+		if !get_child(3).get_child(2).get_collider().is_in_group("interactable"):
+			return true
+	return false
