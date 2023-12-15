@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bfpmm1v732cy7" path="res://Scenes/end_door.tscn" id="7_ntgka"]
 [ext_resource type="PackedScene" uid="uid://dt57gpyxrtkf6" path="res://Sprites/cardboard.tscn" id="8_xnjx8"]
 
-[node name="level1" type="Node2D"]
+[node name="level2" type="Node2D"]
 
 [node name="TempBackground" type="Sprite2D" parent="."]
 z_index = -1
@@ -72,13 +72,10 @@ position = Vector2(-3363, -11102)
 position = Vector2(2067, -11129)
 
 [node name="Enemy11" parent="." instance=ExtResource("3_xvfxj")]
-position = Vector2(-3970, -14175)
+position = Vector2(-1139, -14093)
 
 [node name="Cardboard" parent="." instance=ExtResource("8_xnjx8")]
-position = Vector2(4299, -318)
-
-[node name="Cardboard2" parent="." instance=ExtResource("8_xnjx8")]
-position = Vector2(6617, -4563)
+position = Vector2(626, -318)
 
 [node name="Cardboard3" parent="." instance=ExtResource("8_xnjx8")]
 position = Vector2(8668, -10506)
@@ -87,12 +84,9 @@ position = Vector2(8668, -10506)
 position = Vector2(9101, -13524)
 
 [node name="Cardboard5" parent="." instance=ExtResource("8_xnjx8")]
-position = Vector2(-3653, -4537)
+position = Vector2(-1602, -4508)
 
 [node name="Cardboard6" parent="." instance=ExtResource("8_xnjx8")]
 position = Vector2(-2431, -7501)
-
-[node name="Cardboard7" parent="." instance=ExtResource("8_xnjx8")]
-position = Vector2(-1187, -10533)
 
 [connection signal="venting" from="Squirrel" to="TileMap" method="_on_squirrel_venting"]
