@@ -43,7 +43,7 @@ func _process(_delta):
 	if is_colliding() && get_collider() != null && !(get_collider().is_in_group("walls")):
 		currentBody = get_collider()
 		_on_body_entered(currentBody, get_collision_point().x, get_collision_point().y)
-	elif Input.is_action_just_pressed("kill") && get_parent().getHasBody():
+	elif Input.is_action_just_pressed("kill") && get_parent().getHasBody() && !get_parent().getInVent():
 		var childrenCount = get_tree().get_current_scene().get_child_count()
 		for i in childrenCount:
 			var child = get_tree().get_current_scene().get_child(i)

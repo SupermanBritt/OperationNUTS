@@ -1,7 +1,6 @@
 extends RayCast2D
 
 func isColliding():
-	print(is_colliding())
 	return is_colliding()
 
 func getCollisionPointX():
