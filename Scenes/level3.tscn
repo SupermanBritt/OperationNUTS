@@ -102,6 +102,6 @@ position = Vector2(-1209, -7836)
 position = Vector2(8210, -10785)
 
 [node name="Trashcan4" parent="." instance=ExtResource("8_840mh")]
-position = Vector2(8584, -13799)
+position = Vector2(8548, -13793)
 
 [connection signal="venting" from="Squirrel" to="TileMap" method="_on_squirrel_venting"]

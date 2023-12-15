@@ -116,6 +116,7 @@ radius = 307.0
 height = 1776.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_mask = 129
 script = ExtResource("1_3338g")
 metadata/_edit_lock_ = true
 
@@ -135,6 +136,7 @@ position = Vector2(-12.5, 863)
 shape = SubResource("RectangleShape2D_jwkg5")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["enemy"]]
+collision_mask = 129
 script = ExtResource("2_wul0i")
 metadata/_edit_lock_ = true
 
@@ -187,4 +189,5 @@ color = Color(1, 0.219608, 0.231373, 1)
 polygon = PackedVector2Array(-300, -1000, 300, -1000, 300, -900, -300, -900)
 script = ExtResource("8_ccqgo")
 
+[connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]
 [connection signal="suspicionValue" from="Flashlight" to="SusMeter" method="_on_flashlight_suspicion_value"]

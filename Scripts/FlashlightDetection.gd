@@ -23,9 +23,9 @@ func _process(_delta):
 			susValue = 0
 		emit_signal("suspicionValue", susValue)
 		
-	var bottom = $RayCastBottom.is_colliding() and $RayCastBottom.get_collider().is_in_group("player")
-	var middle = $RayCastMiddle.is_colliding() and $RayCastMiddle.get_collider().is_in_group("player")
-	var top = $RayCastTop.is_colliding() and $RayCastTop.get_collider().is_in_group("player")
+	var bottom = $RayCastBottom.is_colliding() and ($RayCastBottom.get_collider().is_in_group("player") or $RayCastBottom.get_collider().is_in_group("dead_enemy"))
+	var middle = $RayCastMiddle.is_colliding() and ($RayCastMiddle.get_collider().is_in_group("player") or $RayCastMiddle.get_collider().is_in_group("dead_enemy"))
+	var top = $RayCastTop.is_colliding() and ($RayCastTop.get_collider().is_in_group("player") or $RayCastTop.get_collider().is_in_group("dead_enemy"))
 	
 	if  bottom or top or middle:
 		susValue += susIncrement

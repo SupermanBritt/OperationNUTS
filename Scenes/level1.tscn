@@ -27,7 +27,7 @@ polygon = PackedVector2Array(-12214, -18928, 13840, -22260, -4476, -5970, -15007
 metadata/_edit_lock_ = true
 
 [node name="Squirrel" parent="." instance=ExtResource("2_6iihy")]
-position = Vector2(-12752, -1748)
+position = Vector2(-7984, -8260)
 
 [node name="Enemy" parent="." instance=ExtResource("6_gav6d")]
 position = Vector2(-10235, -14271)
