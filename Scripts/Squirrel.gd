@@ -35,6 +35,7 @@ var direction_held_y
 var direction_facing_y = -1
 var prevDirectionFacing_y = direction_facing_y
 var finished_eating_or_puking = true
+var finished_attacking = true
 
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _tail_sprite = $TailAnimatedSprite
@@ -64,7 +65,7 @@ func tail_animation():
 		_tail_sprite.stop()
 
 func squirrel_animation():
-	if finished_eating_or_puking:
+	if finished_eating_or_puking && finished_attacking:
 		if is_dead:
 			_animated_sprite.stop()
 		elif direction_held_y and isClinging && !hasBody:
@@ -405,7 +406,9 @@ func getInVent():
 	return inVent
 
 func callAttack():
+	finished_attacking = false
 	_animated_sprite.play("attack")
+	finishedAttacking()
 
 func callPuke():
 	finished_eating_or_puking = false
@@ -420,3 +423,8 @@ func callEat():
 func finishedEating():
 	await get_tree().create_timer(0.3333).timeout
 	finished_eating_or_puking = true
+	
+	
+func finishedAttacking():
+	await get_tree().create_timer(0.58333333333).timeout
+	finished_attacking = true

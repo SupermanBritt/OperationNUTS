@@ -54,6 +54,6 @@ func _physics_process(delta):
 func checkForBounce():
 	if get_child(3).get_child(2).is_colliding():
 		var body = get_child(3).get_child(2).get_collider()
-		if !body.is_in_group("interactable") and !body.is_in_group("player") and body.is_in_group("dead_body"):
+		if !body.is_in_group("interactable") and !body.is_in_group("player") and !body.is_in_group("dead_body"):
 			return true
 	return false
