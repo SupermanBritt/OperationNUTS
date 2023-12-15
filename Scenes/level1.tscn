@@ -60,7 +60,7 @@ speed = 800.0
 pathLength = 2400.0
 
 [node name="Cardboard" parent="." instance=ExtResource("8_7w8od")]
-position = Vector2(-11675, -13555)
+position = Vector2(-7535, -13555)
 
 [node name="Trashcan" parent="." instance=ExtResource("8_c78fp")]
 position = Vector2(-3540, -8337)
