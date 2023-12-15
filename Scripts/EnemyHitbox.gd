@@ -17,10 +17,18 @@ func _process(_delta):
 func die(x, y):
 	var deadenemy = preloadedSprite.instantiate()
 	if get_parent().speed == 0:
-		deadenemy.position.x = x + 900 * sign(get_parent().startDirection)
+		if sign(get_parent().startDirection) == 1:
+			deadenemy.position.x = x #+ 900 * sign(get_parent().startDirection)
+		else:
+			deadenemy.position.x = x + 900 * sign(get_parent().startDirection)
+		deadenemy.direction_facing = sign(get_parent().startDirection)
 	else:
-		deadenemy.position.x = x + 900 * sign(get_parent().velocity.x)
-	deadenemy.position.y = y - 200
+		if sign(get_parent().velocity.x) == 1:
+			deadenemy.position.x = x# + 900 * sign(get_parent().velocity.x)
+		else:
+			deadenemy.position.x = x + 900 * sign(get_parent().velocity.x)
+		deadenemy.direction_facing = sign(get_parent().velocity.x)
+	deadenemy.position.y = get_parent().position.y + 900
 	get_tree().current_scene.add_child(deadenemy)
 	get_parent().get_parent().get_node("end_door").decrement_enemies()
 	get_parent().queue_free()

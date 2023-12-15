@@ -27,7 +27,7 @@ var currVent = []
 var in_debug_mode = false
 var spawn_pos
 var is_dead = false
-var allow_debug = true
+var allow_debug = false
 var prevDirectionFacing = direction_facing
 var baseTailPos
 var direction_held
@@ -35,6 +35,7 @@ var direction_held_y
 var direction_facing_y = -1
 var prevDirectionFacing_y = direction_facing_y
 var finished_eating_or_puking = true
+var finished_attacking = true
 
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _tail_sprite = $TailAnimatedSprite
@@ -64,7 +65,7 @@ func tail_animation():
 		_tail_sprite.stop()
 
 func squirrel_animation():
-	if finished_eating_or_puking:
+	if finished_eating_or_puking && finished_attacking:
 		if is_dead:
 			_animated_sprite.stop()
 		elif direction_held_y and isClinging && !hasBody:
@@ -213,6 +214,7 @@ func _physics_process(delta):
 	else:
 		move_and_slide()
 	
+	
 func setRotate(radians):
 	get_child(1).set_rotation(radians)
 	var tail = get_child(0)
@@ -230,6 +232,7 @@ func setRotate(radians):
 		newY = baseTailPos.y
 	tail.position.x = newX
 	tail.position.y = newY
+	
 	#for node in get_children():
 		#if node.get_class() != "AnimatedSprite2D":
 			#node.set_rotation(0)
@@ -278,6 +281,8 @@ func _on_terrain_detector_body_shape_exited(_body_rid, _body, _body_shape_index,
 func set_is_dead(isdead):
 	is_dead = isdead
 
+var layerID = 2
+
 func vent():
 	var ventDir = currVent[0]
 	var map = currVent[1]
@@ -286,30 +291,30 @@ func vent():
 		inVent = !inVent
 		match ventDir:
 			1: #Left
-				position.y = ventLocation.y + sign(ventLocation.y) * -300
+				position.y = ventLocation.y + sign(ventLocation.y) * -300 - 200
 				map.x -= 1
-				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+				while current_tilemap.get_cell_tile_data(layerID, map) != null and current_tilemap.get_cell_tile_data(layerID, map).get_custom_data("tileType") == 0:
 					map.x -= 1
 				position.x = map.x * 600 + 300
 				emit_signal("venting")
 			2: #Top
 				position.x = ventLocation.x + 300
 				map.y -= 1
-				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+				while current_tilemap.get_cell_tile_data(layerID, map) != null and current_tilemap.get_cell_tile_data(layerID, map).get_custom_data("tileType") == 0:
 					map.y -= 1
 				position.y = map.y * 600 + 300
 				emit_signal("venting")
 			3: #Right
-				position.y = ventLocation.y + sign(ventLocation.y) * -300
+				position.y = ventLocation.y + sign(ventLocation.y) * -300  - 200
 				map.x += 1
-				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+				while current_tilemap.get_cell_tile_data(layerID, map) != null and current_tilemap.get_cell_tile_data(layerID, map).get_custom_data("tileType") == 0:
 					map.x += 1
 				position.x = map.x * 600 + 300
 				emit_signal("venting")
 			4: #Bottom
 				position.x = ventLocation.x + 300
 				map.y += 1
-				while current_tilemap.get_cell_tile_data(0, map) != null and current_tilemap.get_cell_tile_data(0, map).get_custom_data("tileType") == 0:
+				while current_tilemap.get_cell_tile_data(layerID, map) != null and current_tilemap.get_cell_tile_data(layerID, map).get_custom_data("tileType") == 0:
 					map.y += 1
 				position.y = map.y * 600 + 100
 				emit_signal("venting")
@@ -401,7 +406,9 @@ func getInVent():
 	return inVent
 
 func callAttack():
+	finished_attacking = false
 	_animated_sprite.play("attack")
+	finishedAttacking()
 
 func callPuke():
 	finished_eating_or_puking = false
@@ -416,3 +423,8 @@ func callEat():
 func finishedEating():
 	await get_tree().create_timer(0.3333).timeout
 	finished_eating_or_puking = true
+	
+	
+func finishedAttacking():
+	await get_tree().create_timer(0.58333333333).timeout
+	finished_attacking = true

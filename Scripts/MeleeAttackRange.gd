@@ -60,14 +60,20 @@ func _process(_delta):
 		var deadenemy = preloadedDeadEnemySprite.instantiate()
 		#this is the place to change the spawning
 		var deadBodySpawning = get_parent().get_node("DeadBodySpawningDetection")
+		var bodyXDisplacment = 900
+		if get_parent().direction_facing == -1:
+			bodyXDisplacment = 0
 		if(deadBodySpawning.isColliding()):
-			deadenemy.position.x = deadBodySpawning.getCollisionPointX()
-			deadenemy.position.y = deadBodySpawning.getCollisionPointY()
+			deadenemy.position.x = deadBodySpawning.getCollisionPointX() - bodyXDisplacment
+			deadenemy.position.y = deadBodySpawning.getCollisionPointY() + 200
+			deadenemy.direction_facing = get_parent().direction_facing * 2
 			get_tree().current_scene.add_child(deadenemy)
+			
 			get_parent().dropBody()
 		else:
-			deadenemy.position.x = deadBodySpawning.getPointX()
-			deadenemy.position.y = deadBodySpawning.getPointY()
+			deadenemy.position.x = deadBodySpawning.getPointX() - bodyXDisplacment
+			deadenemy.position.y = deadBodySpawning.getPointY() + 200
+			deadenemy.direction_facing = get_parent().direction_facing * 2
 			get_tree().current_scene.add_child(deadenemy)
 			get_parent().dropBody()
 			#print(deadBodySpawning.getPointX())
