@@ -65,14 +65,6 @@ func tail_animation():
 func squirrel_animation():
 	if is_dead:
 		_animated_sprite.stop()
-	#elif isClinging and direction_facing == 1 and sign(velocity.y) == -1:
-		#_animated_sprite.play("climb_right_up")
-	#elif isClinging and direction_facing == 1 and sign(velocity.y) == 1:
-		#_animated_sprite.play("climb_right_down")
-	#elif isClinging and direction_facing == -1 and sign(velocity.y) == -1:
-		#_animated_sprite.play("climb_left_up")
-	#elif isClinging and direction_facing == -1 and sign(velocity.y) == 1:
-		#_animated_sprite.play("climb_left_down")
 	elif direction_held_y and isClinging:
 		_animated_sprite.play("run")
 	elif !direction_held_y and isClinging:

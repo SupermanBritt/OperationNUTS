@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://coogyl0u8ymia"]
+[gd_scene load_steps=70 format=3 uid="uid://coogyl0u8ymia"]
 
 [ext_resource type="Script" path="res://Scripts/Squirrel.gd" id="1_7axbj"]
 [ext_resource type="Texture2D" uid="uid://drfmxxngm8kky" path="res://Textures/Squirrel/SpritesheetTail.png" id="2_r4guj"]
@@ -44,17 +44,11 @@
 [ext_resource type="Texture2D" uid="uid://yjnjeqjyl0ji" path="res://Textures/Squirrel/Normal Idle/Timeline 1_0015.png" id="39_ip3hv"]
 [ext_resource type="Texture2D" uid="uid://dhneedko2rpkq" path="res://Textures/Squirrel/Jump-Animation/1.png" id="41_noheg"]
 [ext_resource type="Texture2D" uid="uid://c0yaa1o4b7gjt" path="res://Textures/Squirrel/Jump-Animation/2.png" id="42_78xkb"]
-[ext_resource type="Texture2D" uid="uid://d1asqxtrlr3gy" path="res://Textures/Squirrel/Jump-Animation/3.png" id="43_mubya"]
 [ext_resource type="Texture2D" uid="uid://bd5nql3be6f5r" path="res://Textures/Squirrel/Jump-Animation/4.png" id="44_p1c4t"]
-[ext_resource type="Texture2D" uid="uid://55ibsqocqnbt" path="res://Textures/Squirrel/Jump-Animation/5.png" id="45_akrae"]
 [ext_resource type="Texture2D" uid="uid://bdwtaginfpsp8" path="res://Textures/Squirrel/Jump-Animation/6.png" id="46_6bw2u"]
-[ext_resource type="Texture2D" uid="uid://drvr6tpoa6q3s" path="res://Textures/Squirrel/Jump-Animation/7.png" id="47_f1tpy"]
 [ext_resource type="Texture2D" uid="uid://ctwbb6bki5afl" path="res://Textures/Squirrel/Jump-Animation/8.png" id="48_amxvu"]
-[ext_resource type="Texture2D" uid="uid://i5whc6hw8pqu" path="res://Textures/Squirrel/Jump-Animation/9.png" id="49_6d7w6"]
 [ext_resource type="Texture2D" uid="uid://c1qbf1prcm5c5" path="res://Textures/Squirrel/Jump-Animation/10.png" id="50_yfpsq"]
-[ext_resource type="Texture2D" uid="uid://bpdsug5qmns4y" path="res://Textures/Squirrel/Jump-Animation/11.png" id="51_q2xjr"]
 [ext_resource type="Texture2D" uid="uid://iu3g23a516ga" path="res://Textures/Squirrel/Jump-Animation/12.png" id="52_r3kla"]
-[ext_resource type="Texture2D" uid="uid://bw2kwvbtm1i61" path="res://Textures/Squirrel/Jump-Animation/13.png" id="53_0kt74"]
 [ext_resource type="Texture2D" uid="uid://d3sw2vw0m2etl" path="res://Textures/Squirrel/Jump-Animation/14.png" id="54_rt6u1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ucw4"]
@@ -163,7 +157,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"climb_idle",
-"speed": 24.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -228,7 +222,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"glide",
-"speed": 24.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -281,7 +275,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 24.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -289,7 +283,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump_down",
-"speed": 24.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -299,44 +293,26 @@ animations = [{
 "texture": ExtResource("42_78xkb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("43_mubya")
-}, {
-"duration": 1.0,
 "texture": ExtResource("44_p1c4t")
-}, {
-"duration": 1.0,
-"texture": ExtResource("45_akrae")
 }, {
 "duration": 1.0,
 "texture": ExtResource("46_6bw2u")
 }, {
 "duration": 1.0,
-"texture": ExtResource("47_f1tpy")
-}, {
-"duration": 1.0,
 "texture": ExtResource("48_amxvu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("49_6d7w6")
 }, {
 "duration": 1.0,
 "texture": ExtResource("50_yfpsq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("51_q2xjr")
-}, {
-"duration": 1.0,
 "texture": ExtResource("52_r3kla")
-}, {
-"duration": 1.0,
-"texture": ExtResource("53_0kt74")
 }, {
 "duration": 1.0,
 "texture": ExtResource("54_rt6u1")
 }],
-"loop": false,
+"loop": true,
 "name": &"jump_up",
-"speed": 24.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -382,7 +358,7 @@ animation = &"still"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x27mp")
-animation = &"idle"
+animation = &"jump_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
