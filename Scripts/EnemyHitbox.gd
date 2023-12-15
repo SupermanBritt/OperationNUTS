@@ -4,7 +4,7 @@ var preloadedSprite = preload("res://Sprites/dead_enemy.tscn")
 
 # Checks if the player has hit the enemy
 func _on_body_entered(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") or body.is_in_group("dead_enemy"):
 		Global.goto_scene("res://Scenes/game_over.tscn")
 
 

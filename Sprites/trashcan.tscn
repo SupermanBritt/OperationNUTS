@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3plt6d1vd211"]
+
+[ext_resource type="Script" path="res://Scripts/cardboard.gd" id="1_t3sqa"]
+[ext_resource type="Shader" path="res://Shaders/EnemyOutline.gdshader" id="2_ykt8f"]
+[ext_resource type="Texture2D" uid="uid://b6tegfw8r3qv" path="res://Textures/BodyContainers/Trashcan_notUsed.png" id="3_67xpd"]
+[ext_resource type="Texture2D" uid="uid://vtvsr74ikywc" path="res://Textures/BodyContainers/Trashcan_Used.png" id="4_oc8l8"]
+[ext_resource type="Script" path="res://Scripts/ObjectAnimatedSprite2D.gd" id="5_8m0or"]
+[ext_resource type="Script" path="res://Scripts/ObjectHitboxCollision2D.gd" id="6_hmhti"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tqbw0"]
+resource_local_to_scene = true
+shader = ExtResource("2_ykt8f")
+shader_parameter/enabled = false
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(0, 1, 0, 1)
+shader_parameter/line_scale = 15.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_buuxn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_67xpd")
+}],
+"loop": false,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_oc8l8")
+}],
+"loop": false,
+"name": &"fill",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slp8y"]
+size = Vector2(622, 896)
+
+[node name="Trashcan" type="Area2D" groups=["interactable"]]
+script = ExtResource("1_t3sqa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_tqbw0")
+position = Vector2(11, -582)
+sprite_frames = SubResource("SpriteFrames_buuxn")
+animation = &"empty"
+script = ExtResource("5_8m0or")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 25)
+shape = SubResource("RectangleShape2D_slp8y")
+script = ExtResource("6_hmhti")

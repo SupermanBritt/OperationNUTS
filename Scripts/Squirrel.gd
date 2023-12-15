@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var hasBody = false;
-var max_speed_final : float = 3500.0
+var max_speed_final : float = 3000.0
 @export var max_speed : float = max_speed_final
 @export var jump_velocity: float = -6000.0
 @export var gravity : float = 14000.0
@@ -387,16 +387,19 @@ func grabBody():
 	hasBody = true;
 	max_speed = max_speed - 1500
 	jump_velocity = jump_velocity + 2000
-	wall_climbing_speed = wall_climbing_speed - 1500
+	#acceleration = acceleration - 400
+#var max_speed_final : float = 3000.0
+#@export var max_speed : float = max_speed_final
+#@export var jump_velocity: float = -6000.0
+#@export var gravity : float = 14000.0
+#@export var friction : float = 200.0
+#@export var acceleration : float = 500.0
 
 func dropBody():
 	hasBody = false
 	max_speed = max_speed + 1500
 	jump_velocity = jump_velocity - 2000
-	wall_climbing_speed = wall_climbing_speed + 1500
+	#acceleration = acceleration + 400
 
 func getHasBody():
 	return hasBody
-
-func getInVent():
-	return inVent

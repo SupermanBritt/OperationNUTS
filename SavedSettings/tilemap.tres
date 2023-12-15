@@ -259,7 +259,7 @@ texture_region_size = Vector2i(600, 600)
 4:2/0/physics_layer_1/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ge6if"]
-texture = ExtResource("2_tmmkl")
+texture = ExtResource("3_1rmg5")
 texture_region_size = Vector2i(600, 600)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)

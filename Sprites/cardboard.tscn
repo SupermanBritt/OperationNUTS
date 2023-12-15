@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dt57gpyxrtkf6"]
+[gd_scene load_steps=10 format=3 uid="uid://dt57gpyxrtkf6"]
 
 [ext_resource type="Script" path="res://Scripts/cardboard.gd" id="1_4tfn5"]
 [ext_resource type="Shader" path="res://Shaders/EnemyOutline.gdshader" id="1_vp74q"]
-[ext_resource type="Texture2D" uid="uid://bsr8hoxp3ubfu" path="res://Textures/CardboardBox.png" id="2_h3dka"]
+[ext_resource type="Texture2D" uid="uid://cw7pgt70h66vo" path="res://Textures/BodyContainers/Box_notUsed.png" id="3_3vov4"]
 [ext_resource type="Script" path="res://Scripts/ObjectAnimatedSprite2D.gd" id="3_oy4ch"]
 [ext_resource type="Script" path="res://Scripts/ObjectHitboxCollision2D.gd" id="4_a27vy"]
+[ext_resource type="Texture2D" uid="uid://dr111o7bi3w22" path="res://Textures/BodyContainers/Box_Used.png" id="4_qpatv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tqbw0"]
 resource_local_to_scene = true
@@ -21,24 +22,35 @@ shader_parameter/alpha = 1.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_h3dka")
+"texture": ExtResource("3_3vov4")
 }],
-"loop": true,
-"name": &"default",
+"loop": false,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qpatv")
+}],
+"loop": false,
+"name": &"fill",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_slp8y"]
-size = Vector2(600, 600)
+size = Vector2(622, 946)
 
 [node name="Cardboard" type="Area2D" groups=["interactable"]]
 script = ExtResource("1_4tfn5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_tqbw0")
+position = Vector2(12, -749)
 sprite_frames = SubResource("SpriteFrames_buuxn")
+animation = &"fill"
 script = ExtResource("3_oy4ch")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, -173)
 shape = SubResource("RectangleShape2D_slp8y")
 script = ExtResource("4_a27vy")
